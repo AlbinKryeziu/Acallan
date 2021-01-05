@@ -1,0 +1,24 @@
+@media (min-width: 790px) {
+    .shadow-box h2 {
+        display: none;
+    } 
+}
+
+.shadow-box-1:hover h2 {
+    display: block;
+}
+.shadow-box-1:hover h2 {
+    display: block;
+}
+.shadow-box-2:hover h2 {
+    display: block;
+}
+.shadow-box-3:hover h2 {
+    display: block;
+}
+.shadow-box-4:hover h2 {
+    display: block;
+}
+.shadow-box-5:hover h2 {
+    display: block;
+}

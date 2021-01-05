@@ -1,0 +1,11 @@
+.page-banner {
+    padding: 15vh 0;    
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: color;
+    background-attachment: fixed;
+}
+
+.m-auto{
+    margin:auto;
+}

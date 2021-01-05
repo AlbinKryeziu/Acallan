@@ -1,0 +1,300 @@
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+div {
+    font-family: "Montserrat", Sans-serif;
+}
+
+p {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header .logo img {
+    width: 200px;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .flex {
+        display: block;
+    }
+
+    .section {
+        padding: 10px !important;
+    }
+
+    .buttons {
+        width: 100% !important;
+    }
+
+    .title {
+        font-size: 20px !important;
+    }
+
+    .shadow-box {
+        width: auto !important;
+    }
+
+    footer .column-1 {
+        width: auto !important;
+    }
+
+    footer .column {
+        width: auto !important;
+        margin-bottom: 30px;
+    }
+
+    .section-1 .half-width {
+        width: 100% !important;
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+.menu {
+    margin: auto;
+    margin-right: 0;
+}
+
+.menu ul {
+    margin: 0px;
+    list-style: none;
+}
+
+.menu ul li {
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #444;
+    line-height: 20px;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline;
+    text-transform: uppercase;
+}
+
+.menu li a {
+    color: black;
+}
+
+.menu li a:active {
+    color: #ed1b24;
+}
+
+.banner,
+section {
+    max-width: 100%;
+}
+
+.banner-scroll {
+    padding: 4vh 0;
+    background-attachment: fixed;
+}
+
+.banner {
+    padding: 40vh 0;
+    background-image: url("../images/banner.jpg");
+}
+
+.bg-overlay {
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: color;
+}
+
+.section {
+    padding: 50px;
+}
+
+.section-1 {
+    background-image: url("../images/section1-bg.jpg");
+    background-size: cover;
+}
+
+.section-1 .content {
+    background-color: #fff;
+}
+
+.section-1 .half-width {
+    width: 50% !important;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.25em;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.shadow-box {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 33%;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.shadow-box h2 {
+    font-size: 20px;
+}
+
+.buttons {
+    width: 40%;
+    margin: auto;
+}
+
+.buttons .button {
+    width: -webkit-fill-available;
+    text-align: center;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-radius: 0 0 0 0;
+    padding: 15px 30px;
+    margin: 20px;
+}
+
+.buttons .button a {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.icon-box {
+    min-width: 33%;
+}
+
+.icon-box .iconbox-image img {
+    width: 180px;
+    height: 68px;
+}
+
+.icon-box .iconbox-content {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.box-container {
+    margin-top: 50px;
+}
+
+.left-side,
+.right-side {
+    max-width: 50%;
+}
+
+footer {
+    border-top: 1px solid #e9282c;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: url(images/footer-bg.jpg);
+    background-size: cover;
+}
+
+footer .logo img {
+    width: 150px;
+}
+
+footer .column-1 {
+    width: 40%;
+}
+
+footer .column {
+    width: 20%;
+}
+
+.red-text {
+    color: #ed1b24;
+}
+
+.banner-title {
+    color: white;
+    font-size: 100px;
+    font-weight: 400;
+}
+
+.banner-sub-title {
+    color: white;
+    margin: 40px 0;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #ed1b24;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: black;
+}
