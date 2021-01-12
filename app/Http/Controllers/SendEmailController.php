@@ -23,6 +23,9 @@ class SendEmailController extends Controller
 
         $data = array(
             'name'      =>  $request->name,
+            'surname'   =>   $request->surname,
+            'email'   =>   $request->email,
+            'need'   =>   $request->need,
             'message'   =>   $request->message
         );
 

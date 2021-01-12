@@ -1,3 +1,7 @@
-<p>Hi, This is {{ $data['name'] }}</p>
-<p>I have some query like {{ $data['message'] }}</p>
-<p>It would be appriciative, if you gone through this feedback.</p>
+<h3>This is an email from contact form</h3>
+<p>Hello, This is:</p>
+<p>First Name - {{ $data['name'] }}</p>
+<p>Last Name - {{ $data['surname'] }}</p>
+<p>E-Mail - {{ $data['email'] }}</p>
+<p>Request - {{ $data['need'] }}</p>
+<p>My message is: {{ $data['message'] }}</p>
