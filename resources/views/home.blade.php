@@ -32,8 +32,8 @@
 
     <div class="section section-1">
         <div class="container content">
-            <h1 class="title">Who We Are</h1>
-            <p class="center">We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies. </p>
+            <h1 class="title">{{__('home_title')}}</h1>
+            <p class="center">{{__('container_tittle')}}</p>
             <div class="box-container flex">
                 <div class="shadow-box center shadow-box-1">
                     <img src="images/meeting-bro.jpg" alt="">

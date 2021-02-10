@@ -5,10 +5,10 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{url('/')}}">Home</a></li>
-                <li><a href="{{url('/about-us')}}">About Us</a></li>
-                <li><a href="{{url('/how-it-works')}}">How It Works</a></li>
-                <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
+                <li><a href="{{url('/home')}}">{{__('home')}}</a></li>
+                <li><a href="{{url('/about-us')}}">@lang('aboutUs')</a></li>
+                <li><a href="{{url('/how-it-works')}}">@lang('howItWork')</a></li>
+                <li><a href="{{url('/contact-us')}}">@lang('contactUs')</a></li>
                 <li>
                     <div class="dropdown">
                         <button class="dropbtn">LOGIN</button>

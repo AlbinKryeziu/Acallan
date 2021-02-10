@@ -13,4 +13,9 @@ class ProfileController extends Controller
             'user' => User::find($id)
         ]);
     }
+
+    public function adminpanel(){
+
+        return view('admin/dashboard');
+    }
 }

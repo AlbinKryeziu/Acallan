@@ -1,5 +1,11 @@
 {
     "register":"Registrarse",
     "login":"Sesión",
-    "home_banner":"La tecnología ayuda a crear soluciones de vanguardia como ProMedRep"
+    "home":"hogar",
+    "aboutUs":"Sobre nosotras",
+    "howItWork":"Cómo funciona",
+    "contactUs":"Contacta con nosotras",
+    "home_banner":"La tecnología ayuda a crear soluciones de vanguardia como ProMedRep",
+    "home_title":"QUIENES SOMOS",
+    "container_tittle":"Somos emprendedores jóvenes y dinámicos con la visión de mejorar el acceso de clientes y de calidad para mejorar las estrategias de marketing farmacéutico."
 }

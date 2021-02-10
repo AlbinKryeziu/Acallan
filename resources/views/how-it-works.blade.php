@@ -26,7 +26,7 @@
     <div class="section section-1">
         <div class="container content">
             <h1 class="title">Step 1</h1>
-            <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+            <p class="center"></p>
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/signup.jpg" alt="">

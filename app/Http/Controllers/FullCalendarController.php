@@ -5,50 +5,52 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class FullCalendarController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if(request()->ajax()) 
-        {
- 
-         $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
-         $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
- 
-         $data = Event::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
-         return response()->json(['title' => $data->title, 'start' => $data->start, 'end' => $data->end]);
+        if ($request->ajax()) {
+            $data = Event::where('user_id',Auth::id())->whereDate('start', '>=', $request->start)
+                ->whereDate('end', '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
+            return response()->json($data);
         }
-        return view('fullcalendar');
     }
+
     
-   
     public function create(Request $request)
-    {  
-        $insertArr = [ 'title' => $request->title,
-                       'start' => $request->start,
-                       'end' => $request->end
+    {
+        $insertArr = ['title' => $request->title, 
+                      'start' => $request->start, 
+                      'end' => $request->end,
+                      'user_id' => Auth::id(),
                     ];
-        $event = Event::insert($insertArr);   
-        // return Response::json($event);
-        return response()->json(['title' => $request->title, 'start' => $request->start, 'end' => $request->end]);
+                      
+        $event = Event::insert($insertArr);
+        return response()->json($event);
     }
-     
- 
+
     public function update(Request $request)
-    {   
-        $where = array('id' => $request->id);
-        $updateArr = ['title' => $request->title,'start' => $request->start, 'end' => $request->end];
-        $event  = Event::where($where)->update($updateArr);
- 
-        return Response::json($event);
-    } 
- 
- 
+    {
+        $where = ['id' => $request->id];
+        $updateArr = ['title' => $request->title, 
+                      'start' => $request->start, 
+                      'end' => $request->end,
+                      'user_id' => Auth::id(),
+                    
+                    ];
+        $data = Event::where($where)->update($updateArr);
+
+        return response()->json($data);
+    }
+
     public function destroy(Request $request)
     {
-        $event = Event::where('id',$request->id)->delete();
-   
-        return Response::json($event);
+        $data = Event::where('id', $request->id)->delete();
+
+        return response()->json($data);
     }
 }

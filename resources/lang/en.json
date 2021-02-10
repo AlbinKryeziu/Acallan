@@ -1,5 +1,12 @@
 {
     "register":"Register",
     "login":"Login",
-    "home_banner":"Technology helps build cutting edge solutions like ProMedRep"
+    "home":"home",
+    "aboutUs":"About Us",
+    "howItWork":"How It Works",
+    "contactUs":"CONTACT US",
+
+    "home_banner":"Technology helps build cutting edge solutions like ProMedRep",
+    "home_title":"WHO WE ARE",
+    "container_tittle":"We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies."
 }

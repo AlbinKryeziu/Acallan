@@ -10,11 +10,13 @@
             <div class="px-4 py-5 bg-white sm:p-6">
                 <table>
                     <th style="text-align: left;">Time Slot</th>
-                    <th style="text-align: left;">Date</th>
+                    <th style="text-align: left; text-align: center;">Date</th>
+                    
                     @foreach ($events as $event)
                     <tr>
-                        <td style="width: 70%;">{{$event->title}}</td>
+                        <td style="width: 70%;" >{{$event->title}}</td>
                         <td>{{date('d-m-Y', strtotime($event->start))}}</td>
+                        <td>{{date('H:m:s', strtotime($event->start))}} / {{date('H:m:s', strtotime($event->end))}}</td>
                     </tr>
                     @endforeach
                 </table>

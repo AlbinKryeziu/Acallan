@@ -1,13 +1,20 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/path/to/bootstrap/js/bootstrap.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+
 
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
 
@@ -16,14 +23,12 @@
     </div>
     @if (auth()->user()->hasRole('admin'))
     <h1>ADMIN</h1>
-    @endif
-
-    @if (auth()->user()->hasRole('client'))
+    @elseif (auth()->user()->hasRole('client'))
     <h1>CLIENT</h1>
-    @endif
-
-    @if (auth()->user()->hasRole('doc'))
+    @elseif(auth()->user()->hasRole('doc'))
     <h1>DOCTOR</h1>
+    @else 
+    <h1></h1>
     @endif
     <div class="mt-6 text-gray-500">
         <!-- Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
@@ -42,10 +47,10 @@
         <div class="ml-6">
             <div class="mt-2 text-sm text-gray-500">
                 <ul>
-                    @foreach (App\Models\User::getUsersByRole('client') as $client)
+                    {{-- @foreach (App\Models\User::getUsersByRole('client') as $client)
                     <li class="flex text-sm mt-4"><img src="images/icons/user.svg" alt="" width="15px"
                         class="mr-4"><a href="{{url('user/profile/'.$client->id)}}">{{$client->name}}</a></li>
-                    @endforeach
+                    @endforeach --}}
                 </ul>
             </div>
         </div>
@@ -94,6 +99,22 @@
     <div id='calendar'></div>
 </div>
 @endif
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                ...
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 @if (auth()->user()->hasRole('client'))
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 bg-gray-200">
@@ -102,6 +123,9 @@
             <table>
                 <th style="text-align: left;">Available Doctors</th>
                 <th style="text-align: left;"></th>
+                {{-- @if(is_null(App\Models\User::getUsersByRole('doc')))
+                  <p>Not </p>  
+                @else
                 @foreach (App\Models\User::getUsersByRole('doc') as $doctor)
                 <tr>
                     <td style="width: 50%;">{{$doctor->name}}</td>
@@ -111,92 +135,135 @@
                     </td>
                 </tr>
                 @endforeach
+                @endif --}}
             </table>
         </div>
     </div>
 </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="bini">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endif
 
 <script>
     $(document).ready(function () {
+       
     var SITEURL = "{{ url('/') }}";
+      
     $.ajaxSetup({
+        
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+      
     var calendar = $('#calendar').fullCalendar({
-        editable: true,
-        events: SITEURL + "fullcalendar",
-        displayEventTime: true,
-        editable: true,
-        eventRender: function (event, element, view) {
-            if (event.allDay === 'true') {
-                event.allDay = true;
-            } else {
-                event.allDay = false;
-            }
-        },
-        selectable: true,
-        selectHelper: true,
-        select: function (start, end, allDay) {
-            var title = prompt('Event Title:');
-            if (title) {
-                var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                $.ajax({
-                    url: SITEURL + "/fullcalendar/create",
-                    data: 'title=' + title + '&start=' + start + '&end=' + end,
-                    type: "POST",
-                    success: function (data) {
-                        displayMessage("Added Successfully");
-                    }
-                });
-                calendar.fullCalendar('renderEvent',
-                    {
-                        title: title,
-                        start: start,
-                        end: end,
-                        allDay: allDay
-                    },
-                    true
-                );
-            }
-            calendar.fullCalendar('unselect');
-        },
-        eventDrop: function (event, delta) {
-            var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-            $.ajax({
-                url: SITEURL + '/fullcalendar/update',
-                data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
-                type: "POST",
-                success: function (response) {
-                    displayMessage("Updated Successfully");
-                }
-            });
-        },
-        eventClick: function (event) {
-            var deleteMsg = confirm("Do you really want to delete?");
-            if (deleteMsg) {
-                $.ajax({
-                    type: "POST",
-                    url: SITEURL + '/fullcalendar/delete',
-                    data: "&id=" + event._id,
-                    success: function (response) {
-                        if (parseInt(response) > 0) {
-                            $('#calendar').fullCalendar('removeEvents', event._id);
-                            displayMessage("Deleted Successfully");
+                        editable: true,
+                        events: SITEURL + "/fullcalender",
+                        displayEventTime: false,
+                        editable: true,
+                        
+                        eventRender: function (event, element, view) {
+                            if (event.allDay === 'true') {
+                                    event.allDay = true;
+                            } else {
+                                    event.allDay = false;
+                            }
+                        },
+                        selectable: true,
+                        selectHelper: true,
+                        select: function (start, end, allDay) {
+                            var title = prompt('Event Title:');
+                            if (title) {
+                                var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                                var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                                $.ajax({
+                                    url: SITEURL + "/fullcalendareventmaster/create",
+                                    data: {
+                                        title: title,
+                                        start: start,
+                                        end: end,
+                                        type: 'add'
+                                    },
+                                    type: "POST",
+                                    success: function (data) {
+                                        displayMessage("Event Created Successfully");
+      
+                                        calendar.fullCalendar('renderEvent',
+                                            {
+                                                id: data.id,
+                                                title: title,
+                                                start: start,
+                                                end: end,
+                                                allDay: allDay
+                                            },true);
+      
+                                        calendar.fullCalendar('unselect');
+                                    }
+                                });
+                            }
+                        },
+                        eventDrop: function (event, delta) {
+                            var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+      
+                            $.ajax({
+                                url: SITEURL + '/fullcalendareventmaster/update',
+                                data: {
+                                    title: event.title,
+                                    start: start,
+                                    end: end,
+                                    id: event.id,
+                                    type: 'update'
+                                },
+                                type: "POST",
+                                success: function (response) {
+                                    displayMessage("Event Updated Successfully");
+                                }
+                            });
+                        },
+                        eventClick: function (event) {
+                           
+                            deleteMsg = confirm("Are you sure for this")
+                            if (deleteMsg) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: SITEURL + '/fullcalendareventmaster/delete',
+                                    data: {
+                                            id: event.id,
+                                            type: 'delete'
+                                    },
+                                    success: function (response) {
+                                        calendar.fullCalendar('removeEvents', event.id);
+                                        displayMessage("Event Deleted Successfully");
+                                    }
+                                });
+                            }
                         }
-                    }
-                });
-            }
-        }
+     
+                    });
+     
     });
-});
-function displayMessage(message) {
-    $(".response").html("<div class='success'>" + message + "</div>");
-    setInterval(function () { $(".success").fadeOut(); }, 3000);
-}
-
-</script>
+     
+    function displayMessage(message) {
+        toastr.success(message, 'Event');
+    } 
+      
+    </script>
