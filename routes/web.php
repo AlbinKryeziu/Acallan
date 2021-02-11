@@ -36,6 +36,7 @@ Route::get('fullcalender', [FullCalendarController::class, 'index']);
 Route::post('/fullcalendareventmaster/create',[FullCalendarController::class,'create']);
 Route::post('/fullcalendareventmaster/update',[FullCalendarController::class,'update']);
 Route::post('/fullcalendareventmaster/delete',[FullCalendarController::class,'destroy']);
+Route::delete('/events/delete/{eventId}', [EventController::class, 'delete']);
 
 
 Route::get('/events', [EventController::class, 'index']);
