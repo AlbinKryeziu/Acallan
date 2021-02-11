@@ -54,9 +54,6 @@ Route::get('/doctor/view', [DoctorController::class, 'index']);
 
 
 
-Route::get('/about-us', function () {
-    return view('about-us');
-});
 
 Route::get('/how-it-works', function () {
     return view('how-it-works');
@@ -69,6 +66,10 @@ Route::prefix('{language}')->group(function () {
     Route::get('/', function () {
         return view('home');
     });
+    Route::get('/about-us', function () {
+        return view('about-us');
+    });
+    
    
    
 });

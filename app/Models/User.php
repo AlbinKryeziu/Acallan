@@ -75,4 +75,21 @@ class User extends Authenticatable
     {
         return User::all()->filter->hasRole($role)->values();;
     }
+
+    public function isAdmin() {
+
+        return $this->hasRole('admin'); 
+    }
+
+    public function isDoctor() {
+
+        return $this->hasRole('doc'); 
+    }
+
+    public function isClient() {
+
+        return $this->hasRole('client'); 
+    }
+
 }
+

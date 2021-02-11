@@ -10,18 +10,15 @@
         <br>
         
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-jet-nav-link href="{{ url('/doctor/view') }}">
+              Doctor
+            </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/formular/doctor') }}">
                 Create Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/') }}">
-                
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/') }}">
-                Home
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/') }}">
-                Home
-            </x-jet-nav-link>
+            <x-jet-nav-link href="">
+                Client
+            </x-jet-nav-link> 
         </div>
     </x-slot>
 
@@ -55,15 +52,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Password</label>
-                                <div class="col-lg-6">
-                                    <input type="password" class="form-control" id="password"  name="password" />
-                                    @error('password')
-                                    <label class="error" style="color: red">{{ $message }}</label>
-                                    @enderror
-                                </div>
-                            </div>
+                           
         
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Birthday:</label>

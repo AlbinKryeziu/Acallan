@@ -13,7 +13,9 @@
                 Create Doctor
             </x-jet-nav-link>
             
-            
+            <x-jet-nav-link href="">
+                Client
+            </x-jet-nav-link>
            
         </div>
     </x-slot>

@@ -9,9 +9,9 @@
     @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="table-responsive" style="bottom: ;">
-                    <div class="table-wrapper">
+            <div class="bg-white  shadow-xl  p-4">
+                <div class="table">
+                    <div class="">
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
