@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\DoctorController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\FullCalendarController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\ProfileController;
 use Illuminate\Contracts\Session\Session;
 
 /*
@@ -30,38 +31,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     }
    
 })->name('dashboard');
-
-Route::get('fullcalender', [FullCalendarController::class, 'index']);
-
-Route::post('/fullcalendareventmaster/create',[FullCalendarController::class,'create']);
-Route::post('/fullcalendareventmaster/update',[FullCalendarController::class,'update']);
-Route::post('/fullcalendareventmaster/delete',[FullCalendarController::class,'destroy']);
-Route::delete('/events/delete/{eventId}', [EventController::class, 'delete']);
-
-
-Route::get('/events', [EventController::class, 'index']);
-Route::get('/user/profile/{id}', [ProfileController::class, 'index']);
-
-Route::get('/dashboard/user', [ProfileController::class, 'adminpanel']);
-
-Route::get('/formular/doctor', [DoctorController::class, 'formular']);
-Route::post('/add/doctor', [DoctorController::class, 'addDoctor']);
-Route::get('/doctor/view', [DoctorController::class, 'index']);
-
-
-
-
-
-
-
-
 Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
 
+Route::get('fullcalender', [FullCalendarController::class, 'index']);
 Route::get('/contact-us', [SendEmailController::class, 'index']);
 Route::post('/contact-us/send', [SendEmailController::class, 'send']);
-
 Route::prefix('{language}')->group(function () {
     Route::get('/', function () {
         return view('home');
@@ -69,10 +45,28 @@ Route::prefix('{language}')->group(function () {
     Route::get('/about-us', function () {
         return view('about-us');
     });
-    
-   
-   
 });
+
+
+Route::post('/fullcalendareventmaster/create',[FullCalendarController::class,'create']);
+Route::post('/fullcalendareventmaster/update',[FullCalendarController::class,'update']);
+Route::post('/fullcalendareventmaster/delete',[FullCalendarController::class,'destroy']);
+
+Route::delete('/events/delete/{eventId}', [EventController::class, 'delete']);
+Route::get('/events', [EventController::class, 'index']);
+
+Route::get('/user/profile/{id}', [ProfileController::class, 'index']);
+Route::get('/dashboard/user', [ProfileController::class, 'adminpanel']);
+
+Route::get('/formular/doctor', [DoctorController::class, 'formular']);
+Route::post('/add/doctor', [DoctorController::class, 'addDoctor']);
+Route::get('/doctor/view', [DoctorController::class, 'index']);
+
+Route::get('/admin/client', [ClientController::class, 'index']);
+
+
+
+
 
 
 

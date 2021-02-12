@@ -51,11 +51,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($doctor as $key => $doctor)
+                                @foreach($client as $key => $client)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
-                                    <td>{{ $doctor->name }}</td>
-                                    <td>{{ $doctor->email }}</td>
+                                    <td>{{ $client->name }}</td>
+                                    <td>{{ $client->email }}</td>
 
                                     <td>
                                         <form action="" method="POST">

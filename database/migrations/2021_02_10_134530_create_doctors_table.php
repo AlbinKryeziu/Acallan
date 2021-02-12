@@ -14,10 +14,16 @@ class CreateDoctorsTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->dateTime('');
-            $table->dateTime('end');
+            $table->dateTime('birthday');
+            $table->string('specialty');
+            $table->string('phone');
+            $table->string('work_address');
+            $table->string('email');
+            $table->string('remark');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

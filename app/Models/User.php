@@ -91,5 +91,9 @@ class User extends Authenticatable
         return $this->hasRole('client'); 
     }
 
+    public function doctor(){
+        return $this->hasOne(Doctor::class);
+    }
+
 }
 

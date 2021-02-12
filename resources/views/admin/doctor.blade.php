@@ -11,14 +11,14 @@
         
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
             <x-jet-nav-link href="{{ url('/doctor/view') }}">
-              Doctor
+                Doctor
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/formular/doctor') }}">
                 Create Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="">
+            <x-jet-nav-link href="{{ url('/admin/client') }}">
                 Client
-            </x-jet-nav-link> 
+            </x-jet-nav-link>
         </div>
     </x-slot>
 
