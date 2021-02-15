@@ -10,27 +10,24 @@
             <x-jet-nav-link href="{{ url('/doctor/view') }}">
                 Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/formular/doctor') }}">
-                Create Doctor
-            </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/admin/client') }}">
                 Client
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ url('/admin/event') }}">
+                Event
             </x-jet-nav-link>
         </div>
     </x-slot>
     @php $i=1; @endphp
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-8" style="bottom: -14px;">
-                                    <h2>Doctor <b>Table</b></h2>
-                                </div>
-                            </div>
+                            <h4>Doctor's <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
+                            <br />
                         </div>
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -38,16 +35,8 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Speacility</th>
                                     <th>Action</th>
-                                    {{--
-                                    <th>Birthday</th>
-                                    <th class="text-center">History</th>
-                                    <th>Sex</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Actions</th>
-                                    --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,10 +45,15 @@
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
+                                    @if(is_null($doctor->doctor))
+                                    <td>/</td>
+                                    @else
+                                    <td>{{ $doctor->doctor->specialty }}</td>
+                                    @endif
 
                                     <td>
-                                        <form action="" method="POST">
-                                            <a href="">
+                                        <form action="{{ url('/delete/doctor/'.$doctor->id) }}" method="POST">
+                                            <a href="{{ url('/update/doctor/'.$doctor->id) }}">
                                                 <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                             </a>
 
@@ -78,4 +72,11 @@
             </div>
         </div>
     </div>
+    @if(Session::has('success'))
+    <script>
+        swal("Success", "{{Session::get('success')}}", "success", {
+            button: "ok",
+        });
+    </script>
+    @endif
 </x-app-layout>

@@ -9,13 +9,14 @@
     @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white  shadow-xl  p-4">
+            <div class="bg-white  shadow-xl p-4">
                 <div class="table">
                     <div class="">
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h4>Doctor <b>Table</b></h4>
+                                    <h4>Events <b>Table</b></h4>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -38,8 +39,8 @@
                                     <td>{{ $event->start }}</td>
                                     <td>{{ $event->end }}</td>
                                     <td>
-                                        <form action="{{ url('/events/delete',$event->id) }}" method="POST">
-                                            <a href="">
+                                        <form action="{{ url('/events/delete/'.$event->id) }}" method="POST">
+                                            <a href="{{ url('/events/editEvent/'.$event->id) }}">
                                                 <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                             </a>
 
@@ -59,4 +60,11 @@
             </div>
         </div>
     </div>
+    @if(Session::has('success'))
+    <script>
+        swal("Success","{{Session::get('success')}}","success",{
+            button:"ok",
+        })
+    </script>
+    @endif
 </x-app-layout>

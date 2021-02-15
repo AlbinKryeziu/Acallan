@@ -4,8 +4,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-        <br>
-        
+        <br />
+
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
             <x-jet-nav-link href="{{ url('/doctor/view') }}">
                 Doctor
@@ -22,55 +22,65 @@
     <div class="py-12">
         <div class="max-w-5xl	 mx-auto sm:px-16 lg:px-16">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <br>
-                <form method="POST" action="{{ url('/add/doctor') }}">
+                <br />
+                <form method="POST" action="{{ url('/update/doctor/admin/'.$doctor->id) }}">
                     @csrf
-                    <div class="card-box  p-7">
+                    <div class="card-box p-7">
                         <div class="row">
                             <div class="col-md-6 ">
                                 <h5 class="card-title">Personal Details</h5>
-                                <br>
+                                <br />
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Name:</label>
+                                    <label class="col-lg-3 col-form-label">Full Name:</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="
-                                        {{ old('name')}}" value="" name="name" />
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="name"
+                                            placeholder="
+                                    {{ old('name')}}"
+                                            value="{{ $doctor->name }}"
+                                            name="name"
+                                        />
                                         @error('fullname')
-                                        <label class="error" style="color: red" >{{ $message }}</label>
+                                        <label class="error" style="color: red;">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Email</label>
+                                    <label class="col-lg-3 col-form-label">Email:</label>
                                     <div class="col-lg-6">
-                                        <input type="email" class="form-control" id="email" 
-                                        value="" name="email" />
+                                        <input type="email" class="form-control" id="email" value="{{ $doctor->email }}" name="email" />
                                         @error('email')
-                                        <span class="error" style="color: red">{{ $message }}</span>
+                                        <span class="error" style="color: red;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Birthday:</label>
                                     <div class="col-lg-6">
-                                        <input type="date" class="form-control" id="myDate" value="" name="birthday">
+                                        <input type="date" class="form-control" id="myDate" value="{{ $doctor->doctor->birthday }}" name="birthday" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 p">
+                            <div class="col-md-6">
                                 <h5 class="card-title">Profession Details</h5>
-                                <br>
+                                <br />
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Specialty:</label>
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <select class="form-control select" name="specialitizy" value="
-                                                {{ old('depart')}}" id="depart">
-                                                     @foreach($specializity as $key => $depart)
+                                                <select
+                                                    class="form-control select"
+                                                    name="specialty"
+                                                    value="
+                                            {{ old('depart')}}"
+                                                    id="depart"
+                                                >
+                                                    @foreach($specializity as $key => $depart)
                                                     <option value="{{ $depart->specialty }}">{{ $depart->specialty }}</option>
                                                     @endforeach
-                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -79,52 +89,47 @@
                                     <label class="error">{{ $message }}</label>
                                     @enderror
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Phone:</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="phone" value="" id="phone" />
+                                        <input type="text" class="form-control" name="phone" value="{{ $doctor->doctor->phone }}" id="phone" />
                                         @error('phone')
-                                        <label class="error" style="color: red">{{ $message }}</label>
+                                        <label class="error" style="color: red;">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Work Address:</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="work_address" value="" id="work_address" />
+                                        <input type="text" class="form-control" name="work_address" value="{{ $doctor->doctor->work_address }}" id="work_address" />
                                         @error('phone')
-                                        <label class="error" style="color: red">{{ $message }}</label>
+                                        <label class="error" style="color: red;">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Remark:</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="remark" value="" id="remark" />
+                                        <input type="text" class="form-control" name="remark" value="{{ $doctor->doctor->remark }}" id="remark" />
                                         @error('phone')
-                                        <label class="error" style="color: red">{{ $message }}</label>
+                                        <label class="error" style="color: red;">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>
-                               
-                                        
-                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 float-right">
-                                <button type="submit" class="btn btn-info float-right">Create</button>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                        <div class="text-right" style="top:40px:">
-                        </div>
                         </div>
                     </div>
-            </form>
-        </div>
-        
+                    <div class="form-group">
+                        <div class="col-md-12 float-right">
+                            <button type="submit" class="btn btn-info float-right"> Change</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                    <div class="text-right" style="top:40px:">
+                    </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

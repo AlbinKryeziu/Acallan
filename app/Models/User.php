@@ -61,6 +61,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    
+
     public function role()
     {
         return $this->belongsToMany(Role::class, 'users_roles');
@@ -93,6 +95,10 @@ class User extends Authenticatable
 
     public function doctor(){
         return $this->hasOne(Doctor::class);
+    }
+
+    public function event(){
+        return $this->belongsTo(Event::class , 'user_id' , 'id');
     }
 
 }

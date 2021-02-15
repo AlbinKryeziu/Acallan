@@ -9,11 +9,11 @@
             <x-jet-nav-link href="{{ url('/doctor/view') }}">
                 Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/formular/doctor') }}">
-                Create Doctor
-            </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/admin/client') }}">
                 Client
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ url('/admin/event') }}">
+                Event
             </x-jet-nav-link>
         </div>
     </x-slot>
@@ -21,14 +21,14 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-              <p>Admin Panel</p>
+              <p></p>
             </div>
         </div>
     </div>
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-              <p>Admin Panel</p>
+              <p></p>
             </div>
         </div>
     </div>

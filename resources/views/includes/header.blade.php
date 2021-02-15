@@ -18,8 +18,8 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="{{url('/en')}}">EN</a></li>
-                <li><a href="{{url('/es')}}">ES</a></li>
+                <li><a href="lang/en">En</a></li>
+                <li><a href="lang/es">Es</a></li>
             </ul>
         </div>
     </div>

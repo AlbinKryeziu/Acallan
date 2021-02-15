@@ -21,21 +21,22 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-                @if (auth()->user()->hasRole('doc'))
+                @if(Auth::user()->isDoctor())
+                    
+            
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ url('/events') }}">
-                        Events
+                    <x-jet-nav-link href="{{ url('/events/doctor') }}">
+                        {{ __('Event') }}
                     </x-jet-nav-link>
                 </div>
                 @endif
-                @if (auth()->user()->hasRole('admin'))
+                @if(Auth::user()->isDoctor())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ url('/dashboard/user') }}">
-                       Admin
+                    <x-jet-nav-link href="{{ url('/events/doctor') }}">
+                        {{ __('Client') }}
                     </x-jet-nav-link>
                 </div>
-            @endif
-
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -147,7 +148,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('') }}
             </x-jet-responsive-nav-link>
         </div>
 

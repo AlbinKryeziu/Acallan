@@ -21,36 +21,53 @@
     @php $i=1; @endphp
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-8" style="bottom: -14px;">
-                                    <h4>Client's <b>Table</b></h4>
-                                </div>
+                            <h4>Event's <b>Table</b></h4>
+
+                            @if ($message = Session::get('success'))
+                            <br />
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $message }}</strong>
                             </div>
+                            @endif
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Event</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Created By</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($client as $key => $client)
+                                @foreach($event as $key => $event)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
-                                    <td>{{ $client->name }}</td>
-                                    <td>{{ $client->email }}</td>
+                                    <td>{{ $event->title }}</td>
+                                    <td>{{ $event->start }}</td>
+                                    <td>{{ $event->end }}</td>
+                                    @if(!is_null($event->user))
+                                    <td>{{$event->user->name}}</td>
+                                    @else
+                                    <td>/</td>
+                                    @endif @if(!is_null($event->user))
+                                    <td>{{$event->user->role->first()->name}}</td>
+                                    @else
+                                    <td>/</td>
+                                    @endif
 
                                     <td>
-                                        <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
+                                        <form action="{{ url('/admin/delete/event/'.$event->id) }}" method="POST">
                                             <a href="">
                                                 <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                             </a>
@@ -70,11 +87,4 @@
             </div>
         </div>
     </div>
-    @if(Session::has('success'))
-    <script>
-        swal("Success", "{{Session::get('success')}}", "success", {
-            button: "ok",
-        });
-    </script>
-    @endif
 </x-app-layout>
