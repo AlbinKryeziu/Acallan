@@ -46,7 +46,6 @@
                                     <th>End Date</th>
                                     <th>Created By</th>
                                     <th>Role</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,19 +64,6 @@
                                     @else
                                     <td>/</td>
                                     @endif
-
-                                    <td>
-                                        <form action="{{ url('/admin/delete/event/'.$event->id) }}" method="POST">
-                                            <a href="">
-                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                            </a>
-
-                                            @csrf @method('DELETE')
-                                            <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
-                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                            </button>
-                                        </form>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
