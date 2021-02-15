@@ -26,20 +26,20 @@
 
     <div class="section section-1">
         <div class="container content">
-            <h1 class="title">WHAT</h1>
-            <p class="center">We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies. </p>
+            <h1 class="title">@lang('about_title')</h1>
+            <p class="center">@lang('about_section1') </p>
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/meeting-bro.jpg" alt="">
-                <h4 class="my-auto">Enable healthcare providers to stay connected with pharma industry and manage their interviews virtually </h4>
+                <h4 class="my-auto">@lang('about_shadow')</h4>
             </div>
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/Social strategy-amico.jpg" alt="">
-                <h4 class="my-auto">Help pharma industry to optimize their efforts and enhance quality promotion of their products remotely with their clients </h4>
+                <h4 class="my-auto">@lang('about_shadow1')</h4>
             </div>
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/Social strategy-pana.jpg" alt="">
-                <h4 class="my-auto">Create value for health care provider and the pharma industry </h4>
+                <h4 class="my-auto">@lang('about_shadow2')</h4>
             </div>
         </div>
     </div>

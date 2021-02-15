@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])
     })
     ->name('dashboard');
     
- Route::get('/home', function () {
+ Route::get('/', function () {
         return view('home');
     });
 Route::get('/how-it-works', function () {
@@ -69,6 +69,7 @@ Route::get('/dashboard/user', [ProfileController::class, 'adminpanel']);
 Route::get('/formular/doctor', [DoctorController::class, 'formular']);
 Route::post('/add/doctor', [DoctorController::class, 'addDoctor']);
 Route::get('/doctor/view', [DoctorController::class, 'index']);
+Route::get('/doctor/profile/{doctoId}', [DoctorController::class, 'profileDoctor']);
 
 Route::get('/update/doctor/{doctorID}', [DoctorController::class, 'updateForm']);
 Route::get('/admin/event', [DoctorController::class, 'event']);

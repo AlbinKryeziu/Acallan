@@ -153,4 +153,15 @@ class DoctorController extends Controller
             ->back()
             ->with('error', 'Something went wrong');
     }
+
+    public function profileDoctor($doctorId)
+    {
+        $doctor = User::with('event', 'doctor')
+            ->where('id', $doctorId)
+            ->get();
+
+        return view('admin/profile-doctor', [
+            'doctor' => $doctor,
+        ]);
+    }
 }

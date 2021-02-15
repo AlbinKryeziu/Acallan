@@ -5,7 +5,7 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{url('/home')}}">{{__('home')}}</a></li>
+                <li><a href="{{url('/')}}">{{__('home')}}</a></li>
                 <li><a href="{{url('/about-us')}}">@lang('aboutUs')</a></li>
                 <li><a href="{{url('/how-it-works')}}">@lang('howItWork')</a></li>
                 <li><a href="{{url('/contact-us')}}">@lang('contactUs')</a></li>

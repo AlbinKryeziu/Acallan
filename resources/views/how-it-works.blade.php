@@ -25,14 +25,14 @@
 
     <div class="section section-1">
         <div class="container content">
-            <h1 class="title">Step 1</h1>
+            <h1 class="title">@lang('how_it_work-step1')</h1>
             <p class="center"></p>
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/signup.jpg" alt="">
                 <div class="my-auto">
-                    <h2>Creating an Account</h2>
-                    <h4>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</h4>
+                    <h2>@lang('how_it_work-title1')</h2>
+                    <h4>@lang('how_it_work-paragraf1')</h4>
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@
 
     <div class="section section-1">
         <div class="container content">
-            <h1 class="title">How To Reach Us</h1>
+            <h1 class="title">@lang('contact_us_title')</h1>
             <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
 

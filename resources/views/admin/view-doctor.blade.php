@@ -52,14 +52,20 @@
                                     @endif
 
                                     <td>
+                                       
                                         <form action="{{ url('/delete/doctor/'.$doctor->id) }}" method="POST">
-                                            <a href="{{ url('/update/doctor/'.$doctor->id) }}">
-                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                            <a href="{{ url('/doctor/profile/'.$doctor->id) }}">
+                                                <i class="fa fa-eye" aria-hidden="true" style="color: #17a2b8"></i>
                                             </a>
-
+                                            <a href="{{ url('/update/doctor/'.$doctor->id) }}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: black;"></i>
+                                               
+                                            </a>
+                                           
+                                                
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
-                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </form>
                                     </td>
