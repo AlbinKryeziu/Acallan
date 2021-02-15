@@ -8,9 +8,12 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 
-/*
+
+/* 
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -23,21 +26,39 @@ use Illuminate\Contracts\Session\Session;
 
 // Route::redirect('/', '/en');
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', function () {
         if (Auth::user()->hasRole('admin')) {
-            return view('admin/dashboard');
+            $doctor = User::with('doctor')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'Doctor');
+                })
+                ->get();
+            $client = User::with('doctor')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'client');
+                })
+                ->get();
+            $doctor = User::with('doctor')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'Doctor');
+                })
+                ->get();
+            $event = Event::all();
+            return view('admin/dashboard', [
+                'doctor' => $doctor,
+                'client' => $client,
+                'event' => $event,
+            ]);
         } elseif (Auth::user()->hasRole('doc')) {
             return view('dashboard');
         }
     })
     ->name('dashboard');
-    
- Route::get('/', function () {
-        return view('home');
-    });
+
+Route::get('/', function () {
+    return view('home');
+});
 Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
@@ -45,14 +66,11 @@ Route::get('/about-us', function () {
     return view('about-us');
 });
 
-
 Route::get('fullcalender', [FullCalendarController::class, 'index']);
 Route::get('/contact-us', [SendEmailController::class, 'index']);
 Route::post('/contact-us/send', [SendEmailController::class, 'send']);
 
-Route::get('lang/{locale}', [HomeController::class ,'lang']);
-
-
+Route::get('lang/{locale}', [HomeController::class, 'lang']);
 
 Route::post('/fullcalendareventmaster/create', [FullCalendarController::class, 'create']);
 Route::post('/fullcalendareventmaster/update', [FullCalendarController::class, 'update']);
@@ -79,5 +97,3 @@ Route::delete('/admin/delete/event/{eventId}', [DoctorController::class, 'delete
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
-
-
