@@ -107,6 +107,7 @@ Route::get('/pacient/store', [PacientController::class,'store']);
 Route::post('/pacient/add/doctor', [PacientController::class,'addDoctor']);
 Route::get('/pacient/events/{doctorId}', [PacientController::class,'eventsByDoctor']);
 Route::post('/pacient/request/{eventId}', [PacientController::class,'requestEvent']);
+Route::get('/pacient/event', [PacientController::class,'eventStatus']);
 
 
 

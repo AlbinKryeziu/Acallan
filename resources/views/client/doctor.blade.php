@@ -10,7 +10,7 @@
             <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
                 Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
+            <x-jet-nav-link href="{{ url('/pacient/event') }}">
                 Event
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/admin/event') }}">

@@ -86,8 +86,14 @@ class PacientController extends Controller
         return redirect()->back();
     }
 
-    public function eventsRequestByClient()
+    public function eventStatus()
     {
-        $eventRequest = EventRequest::with('event', 'requestClient')->get();
+        $event = EventRequest::with('event')
+            ->where('request_id', Auth::id())
+            ->get();
+
+        return view('client/event', [
+            'event' => $event,
+        ]);
     }
 }
