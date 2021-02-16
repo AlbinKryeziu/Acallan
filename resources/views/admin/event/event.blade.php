@@ -26,7 +26,7 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>Event's <b>Table</b></h4>
+                            <h4>Events <b>Table</b></h4>
 
                             @if ($message = Session::get('success'))
                             <br />

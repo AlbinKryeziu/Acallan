@@ -61,7 +61,7 @@
                                 <h5 class="card-title">Profession Details</h5>
                                 <br>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Specialty:</label>
+                                    <label class="col-lg-3 col-form-label">Specialties:</label>
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-md-12">

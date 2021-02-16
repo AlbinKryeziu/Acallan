@@ -28,7 +28,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8" style="bottom: -14px;">
-                                    <h4>Client's <b>Table</b></h4>
+                                    <h4>Clients <b>Table</b></h4>
                                 </div>
                             </div>
                             <br />
@@ -51,9 +51,7 @@
 
                                     <td>
                                         <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
-                                            <a href="">
-                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                            </a>
+                                            
 
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">

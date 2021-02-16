@@ -28,6 +28,7 @@
                                     <th>Title</th>
                                     <th>Start date</th>
                                     <th>End date</th>
+                                    <th>Request Event</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,6 +39,8 @@
                                     <td>{{ $event->title }}</td>
                                     <td>{{ $event->start }}</td>
                                     <td>{{ $event->end }}</td>
+                                    <td style="text-align: center"><a href="{{ url('/events/request/event/'.$event->id) }}"><i class="fa fa-eye" style="color: black" aria-hidden="true"></i></a>
+                                    </td>
                                     <td>
                                         <form action="{{ url('/events/delete/'.$event->id) }}" method="POST">
                                             <a href="{{ url('/events/editEvent/'.$event->id) }}">

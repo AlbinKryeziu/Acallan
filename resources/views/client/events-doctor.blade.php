@@ -10,10 +10,10 @@
             <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
                 Doctor
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
+            <x-jet-nav-link href="{{ url('/pacient/event') }}">
                 Event
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
+            <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
                 Gift
             </x-jet-nav-link>
         </div>
@@ -209,6 +209,12 @@
                                 </div>
                                 <div class="row gutters-sm">
                                     <div class="col-sm-12 mb-3">
+                                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @endif
                                         <table class="table table-hover table-bordered">
                                             <thead>
                                                 <tr>

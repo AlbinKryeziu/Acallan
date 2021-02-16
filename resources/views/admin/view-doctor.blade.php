@@ -26,7 +26,7 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>Doctor's <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
+                            <h4>Doctors <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
@@ -35,7 +35,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Speacility</th>
+                                    <th>Specialties</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

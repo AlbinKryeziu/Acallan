@@ -23,10 +23,10 @@
         <div class="max-w-2xl mx-auto sm:px-8 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <br />
-                <form class="form-horizontal p-4" method="POST" action="{{ url('/pacient/add/doctor') }}">
+                <form class="form-horizontal p-4" method="POST" action="{{ url('/pacient/store/addgift/'.$doctor->id) }}">
                     @csrf
                     <fieldset>
-                        <legend style="text-align: center;">Add Doctor </legend>
+                        <legend style="text-align: center;">Sent Gift </legend>
                         @if ($message = Session::get('warning'))
                         <div class="alert alert-warning alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -40,14 +40,26 @@
                         @endif
 
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Name</label>
+                            <label class="col-md-12 control-label" for="name">Doctor</label>
                             <div class="col-md-12">
                             <select class="form-control input-md" id="doctor" name="doctorId">
-                                @foreach($doctor as $key => $doctor)
+                                
                               <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                               
-                              @endforeach
+                             
                             </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="name">Links</label>
+                            <div class="col-md-12">
+                            <input type="text" class="form-control" name="links" placeholder="wwww.example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="name">Description</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control" id="" name="description" rows="3"></textarea>
                             </div>
                         </div>
                     
@@ -63,4 +75,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>

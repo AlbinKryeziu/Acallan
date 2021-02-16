@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClientDoctor;
 use App\Models\Event;
 use App\Models\EventRequest;
+use App\Models\GiftClient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,9 @@ class PacientController extends Controller
             'doctor_id' => $request->doctorId,
             'client_id' => Auth::id(),
         ]);
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with('success', 'The doctor has been successfully added');
     }
 
     public function eventsByDoctor($doctorId)
@@ -83,7 +86,9 @@ class PacientController extends Controller
             'status' => 0,
         ]);
 
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with('success', 'The event was successfully sent');
     }
 
     public function eventStatus()
@@ -94,6 +99,35 @@ class PacientController extends Controller
 
         return view('client/event', [
             'event' => $event,
+        ]);
+    }
+
+    public function storeGift($doctorId)
+    {
+        $doctor = User::find($doctorId);
+        return view('client/sent-gift', [
+            'doctor' => $doctor,
+        ]);
+    }
+
+    public function addGift(Request $request, $doctorId)
+    {
+        GiftClient::create([
+            'links' => $request->links,
+            'description' => $request->description,
+            'doctor_id' => $doctorId,
+            'client_id' => Auth::id(),
+        ]);
+        return redirect()
+            ->back()
+            ->with('success', 'The gift was successfully sent');
+    }
+
+    public function myGift()
+    {
+        $gift = GiftClient::with('doctor', 'client')->get();
+        return view('client/gift', [
+            'gift' => $gift,
         ]);
     }
 }

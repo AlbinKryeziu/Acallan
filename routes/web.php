@@ -60,6 +60,7 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->name('dashboard');
 
 Route::get('/', function () {
+    
     return view('home');
 });
 Route::get('/how-it-works', function () {
@@ -83,6 +84,9 @@ Route::delete('/events/delete/{eventId}', [EventController::class, 'delete']);
 Route::get('/events/doctor', [EventController::class, 'index']);
 Route::get('/events/editEvent/{eventId}', [EventController::class, 'editEvent']);
 Route::post('/events/update/{eventId}', [EventController::class, 'updateEvent']);
+Route::get('/events/request/event/{eventId}', [EventController::class, 'eventRequest']);
+Route::post('/events/request/accept', [EventController::class, 'aceptEvent']);
+Route::post('/events/request/rejected', [EventController::class, 'rejectetEevnt']);
 
 Route::get('/user/profile/{id}', [ProfileController::class, 'index']);
 Route::get('/dashboard/user', [ProfileController::class, 'adminpanel']);
@@ -108,6 +112,10 @@ Route::post('/pacient/add/doctor', [PacientController::class,'addDoctor']);
 Route::get('/pacient/events/{doctorId}', [PacientController::class,'eventsByDoctor']);
 Route::post('/pacient/request/{eventId}', [PacientController::class,'requestEvent']);
 Route::get('/pacient/event', [PacientController::class,'eventStatus']);
+Route::get('/pacient/store/gift/{doctorId}', [PacientController::class,'storeGift']);
+Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class,'addGift']);
+Route::get('/pacient/store/mygift', [PacientController::class,'myGift']);
+
 
 
 

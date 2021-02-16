@@ -13,7 +13,7 @@
             <x-jet-nav-link href="{{ url('/pacient/event') }}">
                 Event
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
+            <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
                 Gift
             </x-jet-nav-link>
         </div>

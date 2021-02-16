@@ -10,9 +10,9 @@ class EventRequest extends Model
 {
     use HasFactory;
     
-    const sent = 0;
-    const accepted = 1;
-    const rejected = 2;
+    const Sent = 0;
+    const Accepted = 1;
+    const Rejected = 2;
 
     protected $fillable = [
         'request_id',
