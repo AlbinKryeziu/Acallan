@@ -15,22 +15,21 @@ class EventController extends Controller
 {
     public function index()
     {
-        //  return Event::with('requestEvent')->get();
+       $event =  Event::where('user_id', Auth::id());
         return view('events/events', [
-            'events' => Event::where('user_id', Auth::id())->get(),
+            'events' => $event->paginate(10),
         ]);
     }
     public function eventRequest($eventId)
     {
-        $eventAccepted = EventRequest::where('event_id', $eventId)
-            ->where('status', 1)
-            ->count();
-        $eventRequest = Event::with('requestEvent')
-            ->where('id', $eventId)
+       
+        $event = Event::where('id', $eventId)
             ->get();
+         $eventRequest = EventRequest::where('event_id',$eventId);
         return view('doctor/request-event', [
-            'eventRequest' => $eventRequest,
-            'eventAccepted' => $eventAccepted,
+            'event' => $event,
+            'eventRequest' =>$eventRequest->paginate(6),
+           
         ]);
     }
 

@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($eventRequest as $key => $event)
+                                @foreach($event as $key => $event)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $event->title }}</td>
@@ -60,7 +60,7 @@
                             <th colspan="">Action</th>
 
                             <tbody>
-                                @foreach($event->requestEvent as $key => $request)
+                                @foreach($eventRequest as $key => $request)
                                 <tr>
                                     <td colspan="2">#</td>
                                     <td colspan="">{{ $request->requestClient->name }}</td>
@@ -74,20 +74,12 @@
                                          <i class="fa fa-check fa-lg acceptEvent" data-evenRequstId="{{$request->id}}" data-eventId="{{ $request->event_id }}" aria-hidden="true"></i>
                                          <i class="fa fa-times fa-lg rejectedEvent"  data-eventId="{{ $request->id }}" aria-hidden="true" style="color: red;"></i>
                                           @endif
-                                         
-                                        
-                                         
-                                         
-                                          
-                                          {{-- <i class="fa fa-check fa-lg acceptEvent" data-evenRequstId="{{$request->id}}" data-eventId="{{ $request->event_id }}" aria-hidden="true"></i>
-                                         <i class="fa fa-times fa-lg rejectedEvent" data-eventId="{{$request->id}}" aria-hidden="true" style="color: red;"></i>
-                                         <p style="color: red">Rejected</p> 
-                                         <i class="fa fa-times fa-lg rejectedEvent" data-evenRequstId="{{$request->id}}"   aria-hidden="true" style="color: red;"></i>  --}}
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $eventRequest->links() }}
                     </div>
                 </div>
             </div>
