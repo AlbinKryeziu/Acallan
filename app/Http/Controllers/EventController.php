@@ -41,11 +41,14 @@ class EventController extends Controller
             'status' => EventRequest::Accepted,
         ]);
         if ($event) {
-             $eventRequest = EventRequest::where('id', $requestId)->first();
+            $updateStatusToEvent = Event::where('id',$eventId)->update([
+                'status' => EventRequest::Accepted,
+            ]);
+            $eventRequest = EventRequest::where('id', $requestId)->first();
             $doctor = Event::where('id', $eventId)->first();
         
             $data = [
-                'name' => $eventRequest->requestClient->first()->name,
+                'name' => $eventRequest->requestClient->name,
                 'doctor' => $doctor->user->name,
                 'start' => $doctor->start,
                 'end' => $doctor->end,

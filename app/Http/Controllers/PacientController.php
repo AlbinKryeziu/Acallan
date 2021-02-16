@@ -62,10 +62,12 @@ class PacientController extends Controller
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
                 ->whereNotIn('id', $eventId)
+                ->where('status',0)
                 ->get();
         } else {
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
+                ->where('status',0)
                 ->get();
         }
 

@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($doctor as $key => $doctor)
+                                @foreach($doctors as $key => $doctor)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $doctor->name }}</td>
@@ -73,6 +73,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $doctors->links() }}
                     </div>
                 </div>
             </div>

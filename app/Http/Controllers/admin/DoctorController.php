@@ -19,14 +19,13 @@ class DoctorController extends Controller
     public function index()
     {
         if (Auth::user()->isAdmin()) {
-            $doctor = User::with('doctor')
+            $doctors = User::with('doctor')
                 ->whereHas('role', function ($q) {
                     $q->where('name', 'Doctor');
-                })
-                ->get();
+                });
 
             return view('admin/view-doctor', [
-                'doctor' => $doctor,
+                'doctors' => $doctors->paginate(10),
             ]);
         }
         return redirect()->back();
