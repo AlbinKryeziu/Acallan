@@ -8,6 +8,7 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PacientController;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
@@ -52,6 +53,8 @@ Route::middleware(['auth:sanctum', 'verified'])
             ]);
         } elseif (Auth::user()->hasRole('doc')) {
             return view('dashboard');
+        }elseif (Auth::user()->hasRole('client')) {
+            return view('client/dashboard');
         }
     })
     ->name('dashboard');
@@ -97,3 +100,13 @@ Route::delete('/admin/delete/event/{eventId}', [DoctorController::class, 'delete
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
+
+
+Route::get('/pacient/doctor', [PacientController::class,'doctor']);
+Route::get('/pacient/store', [PacientController::class,'store']);
+Route::post('/pacient/add/doctor', [PacientController::class,'addDoctor']);
+Route::get('/pacient/events/{doctorId}', [PacientController::class,'eventsByDoctor']);
+Route::post('/pacient/request/{eventId}', [PacientController::class,'requestEvent']);
+
+
+
