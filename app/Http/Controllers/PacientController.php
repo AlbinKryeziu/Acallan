@@ -16,15 +16,15 @@ class PacientController extends Controller
     public function doctor()
     {
         $doctorId = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
-        $doctor = User::with('doctor')
+        $doctors = User::with('doctor')
             ->whereHas('role', function ($q) {
                 $q->where('name', 'Doctor');
             })
-            ->whereIn('id', $doctorId)
-            ->get();
+            ->whereIn('id', $doctorId);
+           
 
         return view('client/doctor', [
-            'doctor' => $doctor,
+            'doctors' => $doctors->paginate(10),
         ]);
     }
 
@@ -93,12 +93,10 @@ class PacientController extends Controller
 
     public function eventStatus()
     {
-        $event = EventRequest::with('event')
-            ->where('request_id', Auth::id())
-            ->get();
-
+        $events = EventRequest::with('event')
+            ->where('request_id', Auth::id());
         return view('client/event', [
-            'event' => $event,
+            'events' => $events->paginate(10),
         ]);
     }
 

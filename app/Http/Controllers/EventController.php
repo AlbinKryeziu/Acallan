@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EventAccepted;
 use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\Role;
@@ -10,26 +11,24 @@ use Hamcrest\Core\Every;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
     public function index()
     {
-       $event =  Event::where('user_id', Auth::id());
+        $event = Event::where('user_id', Auth::id());
         return view('events/events', [
             'events' => $event->paginate(10),
         ]);
     }
     public function eventRequest($eventId)
     {
-       
-        $event = Event::where('id', $eventId)
-            ->get();
-         $eventRequest = EventRequest::where('event_id',$eventId);
+        $event = Event::where('id', $eventId)->get();
+        $eventRequest = EventRequest::where('event_id', $eventId);
         return view('doctor/request-event', [
             'event' => $event,
-            'eventRequest' =>$eventRequest->paginate(6),
-           
+            'eventRequest' => $eventRequest->paginate(6),
         ]);
     }
 
@@ -41,6 +40,18 @@ class EventController extends Controller
         $event = EventRequest::where('id', $requestId)->update([
             'status' => EventRequest::Accepted,
         ]);
+        if ($event) {
+             $eventRequest = EventRequest::where('id', $requestId)->first();
+            $doctor = Event::where('id', $eventId)->first();
+        
+            $data = [
+                'name' => $eventRequest->requestClient->first()->name,
+                'doctor' => $doctor->user->name,
+                'start' => $doctor->start,
+                'end' => $doctor->end,
+            ];
+            Mail::to($eventRequest->requestClient->email)->send(new EventAccepted($data));
+        }
         $eventrefuzed = EventRequest::where('event_id', $eventId)
             ->where('status', 0)
             ->get();

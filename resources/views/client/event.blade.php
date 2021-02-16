@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($event as $key => $event)
+                                @foreach($events as $key => $event)
                                 <tr>
                                     <td>@php echo $i++ @endphp</td>
                                     <td>{{ $event->event->title }}</td>
@@ -58,13 +58,16 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
                 <p style="text-align: right; padding: 10px;">
                     Status: Sent: <i class="fa fa-circle-o fa-lg" aria-hidden="true" data-togle="ieafnhajuefn" style="color: #0b51be;"></i> Accepted:
                     <i class="fa fa-check-circle fa-lg" aria-hidden="true" style="color: green;"></i> Rejected: <i class="fa fa-times-circle fa-lg" aria-hidden="true" style="color: #992208;"></i>
                 </p>
+                {{ $events->links() }}
             </div>
+          
         </div>
     </div>
 </x-app-layout>
