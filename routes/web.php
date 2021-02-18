@@ -101,6 +101,9 @@ Route::get('/admin/event', [DoctorController::class, 'event']);
 Route::post('/update/doctor/admin/{doctorID}', [DoctorController::class, 'updateDoctor']);
 Route::delete('/delete/doctor/{doctorID}', [DoctorController::class, 'deleteDoctor']);
 Route::delete('/admin/delete/event/{eventId}', [DoctorController::class, 'deleteEvent']);
+Route::get('/doctor/client', [DoctorController::class, 'doctorClients']);
+Route::get('/doctor/gift/client/{ClientId}', [DoctorController::class, 'pacientGift']);
+Route::get('/doctor/client/event/accepted/{ClientId}', [DoctorController::class, 'clientEventAccepted']);
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);

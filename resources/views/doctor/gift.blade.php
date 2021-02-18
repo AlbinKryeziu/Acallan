@@ -15,7 +15,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4>Request Event <b>Table</b></h4>
+                                    <h4>Gifts <b>Table</b></h4>
                                     <br />
                                 </div>
                             </div>
@@ -25,18 +25,18 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
+                                    <th>Client Name</th>
+                                    <th>Email</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($event as $key => $event)
+                                @foreach($client as $key => $client)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
-                                    <td>{{ $event->title }}</td>
-                                    <td>{{ $event->start }}</td>
-                                    <td>{{ $event->end }}</td>
+                                    <td>{{ $client->name }}</td>
+                                    <td>{{ $client->email }}</td>
+                                   
                                 </tr>
 
                                 @endforeach
@@ -53,33 +53,24 @@
                         <table class="table table-hover table-bordered">
                             <tr></tr>
                             <tr>
-                                <th colspan="8" style="text-align: center;">Requests for appointments from clients</th>
+                                <th colspan="8" style="text-align: center;">Request Client</th>
                             </tr>
                             <th colspan="2">#</th>
                             <th colspan="">Client Name</th>
                             <th colspan="">Action</th>
 
                             <tbody>
-                                @foreach($eventRequest as $key => $request)
+                                @foreach($gifts as $key => $gift)
                                 <tr>
                                     <td colspan="2">#</td>
-                                    <td colspan="">{{ $request->requestClient->name }}</td>
-                                    <td colspan="">
-                                       
-                                           @if($request->status == 1) 
-                                            <p style="color: green">Accepted</p> 
-                                          @elseif($request->status == 2)
-                                          <p style="color: red">Rejected</p>
-                                         @elseif($request->status == 0)
-                                         <i class="fa fa-check fa-lg acceptEvent" data-evenRequstId="{{$request->id}}" data-eventId="{{ $request->event_id }}" aria-hidden="true"></i>
-                                         <i class="fa fa-times fa-lg rejectedEvent"  data-eventId="{{ $request->id }}" aria-hidden="true" style="color: red;"></i>
-                                          @endif
-                                    </td>
+                                    <td colspan="" onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-link" aria-hidden="true"></i></td>
+                                    <td colspan="">{{ $gift->links}}</td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $eventRequest->links() }}
+                        {{ $gifts->links() }}
                     </div>
                 </div>
             </div>
@@ -101,7 +92,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Do you really want to accept this request for an appointment?</p>
+                        <p>Do you really want to delete these records? This process cannot be undone.</p>
                         <input type="hidden" name="requestId" id="requestId" />
                         <input type="hidden" name="eventid" id="eventId" />
                     </div>
@@ -152,7 +143,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Do you really want to cancel this appointment request?</p>
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
                     <input type="hidden" name="eventid" id="rejecteId" />
                 </div>
                 <div class="modal-footer justify-content-center">

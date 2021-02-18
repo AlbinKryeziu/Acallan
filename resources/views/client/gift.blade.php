@@ -48,7 +48,8 @@
                                     <td>@php
                                         echo $i++
                                     @endphp</td>
-                                    <td onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i></td>
+                                    <td onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-link" aria-hidden="true"></i>
+                                    </td>
                                     <td>{{$gift->description }}</td>
                                     <td>{{ $gift->doctor->name }}</td>
                                     <td>{{ $gift->client->name }}</td>

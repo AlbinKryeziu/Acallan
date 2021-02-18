@@ -15,4 +15,8 @@ class ClientDoctor extends Model
         'client_id',
         'doctor_id'
     ];
+
+    public function client(){
+        return $this->belongsTo(User::class,'client_id','id');
+    }
 }

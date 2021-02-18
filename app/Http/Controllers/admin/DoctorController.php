@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
+use App\Models\EventRequest;
+use App\Models\GiftClient;
 use App\Models\Specialty;
 use PhpParser\Comment\Doc;
 
@@ -163,4 +166,31 @@ class DoctorController extends Controller
             'doctor' => $doctor,
         ]);
     }
+    public function doctorClients(){
+     $client = ClientDoctor::with('client')->where('doctor_id',Auth::id());
+       return view('doctor/client',[
+           'client' => $client->paginate(10),
+       ]);
+    }
+
+    public function pacientGift($clientId){
+        $client = User::where('id',$clientId)->get();
+        $gifts = GiftClient::where('client_id',$clientId)->where('doctor_id',Auth::id());
+        return view('doctor/gift',[
+            'client' => $client,
+            'gifts' => $gifts->paginate(10),
+        ]);
+    }
+   public function clientEventAccepted($clientId){
+  
+       $acceptedRequest = EventRequest::where('request_id',$clientId)->where('status',1)->pluck('event_id',);
+        $event = Event::where('user_id',Auth::id())->whereIn('id',$acceptedRequest)->get();
+        $name = EventRequest::where('request_id',$clientId)->first();
+        return view('doctor/event-with-client',[
+            'event' => $event,
+            'name' =>$name,
+            
+        ]);
+   }
+   
 }
