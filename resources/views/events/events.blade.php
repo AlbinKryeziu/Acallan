@@ -20,6 +20,14 @@
                                 </div>
                             </div>
                         </div>
+                        <form method="POST" action="{{ url('/meetings') }}">
+                            @csrf
+                            <input type="date" name="start_time">
+                            <input type="text" name="agenda">
+                            <input type="text" name="topic">
+                            <input type="text" name="duration">
+                            <button type="submit">`Save</button>
+                        </form>
                         @if($events->count() >= 1)
                         <table class="table table-hover table-bordered">
                             <thead>

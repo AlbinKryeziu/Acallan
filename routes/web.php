@@ -9,7 +9,7 @@ use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PacientController;
-use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\MeetingController;
 use App\Models\Event;
 use Illuminate\Support\Carbon;
 use App\Models\User;
@@ -130,6 +130,6 @@ Route::get('/pacient/store/mygift', [PacientController::class,'myGift']);
 
 Route::post('createzoom', [ZoomController::class , 'store']);
 
-
+Route::post('/meetings', [MeetingController::class, 'store']);
 
 

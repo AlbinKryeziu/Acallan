@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventRequestsTable extends Migration
+class CreateZoomMeetingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,20 @@ class CreateEventRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_requests', function (Blueprint $table) {
+        Schema::create('zoom_meetings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('status');
+            $table->dateTime('start_data');
+            $table->dateTime('end_data');
+            $table->string('duration');
+            $table->text('start_url');
+            $table->text('join_url');
             $table->unsignedBigInteger('request_id')->nullable();
             $table->foreign('request_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('doctor_id')->nullable();
+            $table->foreign('doctor_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('event_id')->nullable();
             $table->foreign('event_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
-           
         });
     }
 
@@ -32,6 +37,6 @@ class CreateEventRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_requests');
+        Schema::dropIfExists('zoom_meetings');
     }
 }

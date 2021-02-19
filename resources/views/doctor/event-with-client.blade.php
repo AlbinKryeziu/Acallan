@@ -37,7 +37,7 @@
                             <tr></tr>
                             <tr>
                               
-                                    
+                                  
                                
                                 <th colspan="8" style="text-align: center;">Events with {{ $name->requestClient->name }} </th>
                                 
