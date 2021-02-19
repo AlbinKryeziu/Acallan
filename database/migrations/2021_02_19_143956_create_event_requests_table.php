@@ -15,13 +15,12 @@ class CreateEventRequestsTable extends Migration
     {
         Schema::create('event_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('status');
+            $table->boolean('string');
             $table->unsignedBigInteger('request_id')->nullable();
             $table->foreign('request_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->timestamps();
-           
         });
     }
 

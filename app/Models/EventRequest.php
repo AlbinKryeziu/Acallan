@@ -19,6 +19,7 @@ class EventRequest extends Model
         'event_id',
         'status',
     ];
+    protected $table = 'event_requests';
 
     public function requestClient(){
         return $this->belongsTo(User::class ,'request_id','id');
