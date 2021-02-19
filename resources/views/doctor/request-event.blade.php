@@ -73,20 +73,19 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <td> 
-                    
                         </table>
                         
                         {{ $eventRequest->links() }}
-                     
-                    </div>
-                    @else
-                      <tr class="border border-warning">
+                        @else
+                        <tr class="border border-warning">
                                 <td colspan="border border-warning"><div class="alert alert-secondary" role="alert">
                                     No meeting request so far
                                   </div></td>
                             </tr>
                     @endif  
+                     
+                    </div>
+                    
                 </div>   
             </div>
         </div>
