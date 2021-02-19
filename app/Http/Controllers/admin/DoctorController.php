@@ -15,6 +15,7 @@ use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\GiftClient;
 use App\Models\Specialty;
+use Carbon\Carbon;
 use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
@@ -191,6 +192,15 @@ class DoctorController extends Controller
             'name' =>$name,
             
         ]);
+   }
+     public function todayEvent(){
+     $date = Carbon::today()->toDateTimeString();
+     $event = Event::with(['requestEvent' => function($q){
+        $q->where('status', 1);
+     }])->where('user_id',Auth::id())->whereDate('start',$date)->where('status',1)->get();
+     return view('vendor/jetstream/components/welcome',[
+         'event' => $event
+     ]);
    }
    
 }

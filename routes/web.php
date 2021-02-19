@@ -9,7 +9,9 @@ use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PacientController;
+use App\Http\Controllers\ZoomController;
 use App\Models\Event;
+use Illuminate\Support\Carbon;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 
@@ -52,7 +54,13 @@ Route::middleware(['auth:sanctum', 'verified'])
                 'event' => $event,
             ]);
         } elseif (Auth::user()->hasRole('doc')) {
-            return view('dashboard');
+            $date = Carbon::today()->toDateTimeString();
+            $event = Event::with(['requestEvent' => function($q){
+            $q->where('status', 1);
+            }])->where('user_id',Auth::id())->whereDate('start',$date)->where('status',1)->get();
+            return view('dashboard',[
+                'event' =>$event,
+            ]);
         }elseif (Auth::user()->hasRole('client')) {
             return view('client/dashboard');
         }
@@ -104,6 +112,7 @@ Route::delete('/admin/delete/event/{eventId}', [DoctorController::class, 'delete
 Route::get('/doctor/client', [DoctorController::class, 'doctorClients']);
 Route::get('/doctor/gift/client/{ClientId}', [DoctorController::class, 'pacientGift']);
 Route::get('/doctor/client/event/accepted/{ClientId}', [DoctorController::class, 'clientEventAccepted']);
+Route::get('/doctor/today/event', [DoctorController::class, 'todayEvent']);
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
@@ -118,6 +127,8 @@ Route::get('/pacient/event', [PacientController::class,'eventStatus']);
 Route::get('/pacient/store/gift/{doctorId}', [PacientController::class,'storeGift']);
 Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class,'addGift']);
 Route::get('/pacient/store/mygift', [PacientController::class,'myGift']);
+
+Route::post('createzoom', [ZoomController::class , 'store']);
 
 
 

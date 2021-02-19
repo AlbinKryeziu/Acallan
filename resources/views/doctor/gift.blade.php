@@ -7,6 +7,7 @@
         <br />
     </x-slot>
     @php $i=1; @endphp
+    @php $countGift=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl p-4">
@@ -57,14 +58,14 @@
                             </tr>
                             <th colspan="2">#</th>
                             <th colspan="">Client Name</th>
-                            <th colspan="">Action</th>
+                            <th colspan="">Description</th>
 
                             <tbody>
                                 @foreach($gifts as $key => $gift)
                                 <tr>
-                                    <td colspan="2">#</td>
+                                    <td colspan="2">@php echo $countGift++ @endphp</td>
                                     <td colspan="" onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-link" aria-hidden="true"></i></td>
-                                    <td colspan="">{{ $gift->links}}</td>
+                                    <td colspan="">{{ $gift->description}}</td>
                                     
                                 </tr>
                                 @endforeach

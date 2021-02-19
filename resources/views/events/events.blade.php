@@ -9,18 +9,18 @@
     @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white  shadow-xl p-4">
+            <div class="bg-white shadow-xl p-4">
                 <div class="table">
                     <div class="">
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
                                     <h4>Events <b>Table</b></h4>
-                                    <br>
+                                    <br />
                                 </div>
                             </div>
                         </div>
-
+                        @if($events->count() >= 1)
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -39,7 +39,8 @@
                                     <td>{{ $event->title }}</td>
                                     <td>{{ $event->start }}</td>
                                     <td>{{ $event->end }}</td>
-                                    <td style="text-align: center"><a href="{{ url('/events/request/event/'.$event->id) }}"><i class="fa fa-eye" style="color: black" aria-hidden="true"></i></a>
+                                    <td style="text-align: center;">
+                                        <a href="{{ url('/events/request/event/'.$event->id) }}"><i class="fa fa-eye" style="color: black;" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ url('/events/delete/'.$event->id) }}" method="POST">
@@ -57,9 +58,12 @@
 
                                 @endforeach
                             </tbody>
-                          
                         </table>
-                        {{ $events->links() }}
+                        {{ $events->links() }} @else
+                        <div class="alert alert-secondary" role="alert">
+                            No events recorded so far
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -67,9 +71,9 @@
     </div>
     @if(Session::has('success'))
     <script>
-        swal("Success","{{Session::get('success')}}","success",{
-            button:"ok",
-        })
+        swal("Success", "{{Session::get('success')}}", "success", {
+            button: "ok",
+        });
     </script>
     @endif
 </x-app-layout>

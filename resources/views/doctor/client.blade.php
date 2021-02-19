@@ -20,12 +20,13 @@
                                 </div>
                             </div>
                         </div>
+                        @if($client->count() >= 1)
 
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>name</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Event History</th>
                                     <th>Gift</th>
@@ -37,24 +38,27 @@
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $client->client->name }}</td>
                                     <td>{{ $client->client->email }}</td>
-                                    <td><a href="{{ url('/doctor/client/event/accepted/'.$client->client_id)}}"><i class="fa fa-calendar " style="color: black" aria-hidden="true"></i></a>
-                                        
-
+                                    <td>
+                                        <a href="{{ url('/doctor/client/event/accepted/'.$client->client_id)}}"><i class="fa fa-calendar" style="color: black;" aria-hidden="true"></i></a>
                                     </td>
-                                    <td><a href="{{ url('/doctor/gift/client/'.$client->client_id) }}" ><i class="fa fa-gift fa-lg" aria-hidden="true" style="color: black"></i></a></td>
+                                    <td>
+                                        <a href="{{ url('/doctor/gift/client/'.$client->client_id) }}"><i class="fa fa-gift fa-lg" aria-hidden="true" style="color: black;"></i></a>
+                                    </td>
                                 </tr>
 
-                                @endforeach 
+                                @endforeach
                             </tbody>
                         </table>
-                       
+                        @else
+                        <div class="alert alert-secondary" role="alert">
+                            No registered clients so far
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-       
     </div>
- 
 
     <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
@@ -78,8 +82,6 @@
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </div>
-
-                
 
                 @if(Session::has('success'))
                 <script>
@@ -128,3 +130,6 @@
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </div>
+        </form>
+    </div>
+</div>

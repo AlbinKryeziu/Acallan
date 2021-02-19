@@ -52,9 +52,11 @@
 
                         <table class="table table-hover table-bordered">
                             <tr></tr>
+                            @if($eventRequest->count() >= 1)
                             <tr>
                                 <th colspan="8" style="text-align: center;">Requests for appointments from clients</th>
                             </tr>
+
                             <th colspan="2">#</th>
                             <th colspan="">Client Name</th>
                             <th colspan="">Action</th>
@@ -65,28 +67,28 @@
                                     <td colspan="2">#</td>
                                     <td colspan="">{{ $request->requestClient->name }}</td>
                                     <td colspan="">
-                                       
-                                           @if($request->status == 1) 
-                                            <p style="color: green">Accepted</p> 
-                                          @elseif($request->status == 2)
-                                          <p style="color: red">Rejected</p>
-                                         @elseif($request->status == 0)
-                                         <i class="fa fa-check fa-lg acceptEvent" data-evenRequstId="{{$request->id}}" data-eventId="{{ $request->event_id }}" aria-hidden="true"></i>
-                                         <i class="fa fa-times fa-lg rejectedEvent"  data-eventId="{{ $request->id }}" aria-hidden="true" style="color: red;"></i>
-                                          @endif
+                                        @if($request->status == 1)
+                                        <p style="color: green;">Accepted</p>
+                                        <p style="color: red;">Rejected</p>
+                                        @elseif($request->status == 0)
+                                        <i class="fa fa-check fa-lg acceptEvent" data-evenRequstId="{{$request->id}}" data-eventId="{{ $request->event_id }}" aria-hidden="true"></i>
+                                        <i class="fa fa-times fa-lg rejectedEvent" data-eventId="{{ $request->id }}" aria-hidden="true" style="color: red;"></i>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $eventRequest->links() }}
+                        {{ $eventRequest->links() }} @else
+                        <div class="alert alert-secondary" role="alert">
+                            No appointment requests registered so far
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-       
     </div>
- 
 
     <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
@@ -110,8 +112,6 @@
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </div>
-
-                
 
                 @if(Session::has('success'))
                 <script>
@@ -160,3 +160,6 @@
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
