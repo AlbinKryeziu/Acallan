@@ -102,6 +102,9 @@ class User extends Authenticatable
     public function event(){
         return $this->hasMany(Event::class , 'user_id' , 'id');
     }
+    public function acces(){
+        return $this->hasMany(Specialty::class,'doctor_access','id');
+    }
 
 }
 

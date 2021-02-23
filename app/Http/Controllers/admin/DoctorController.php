@@ -28,6 +28,12 @@ class DoctorController extends Controller
                 $q->where('name', 'Doctor');
             });
 
+            if (request()->has('q')) {
+                $doctors = User::with('doctor')->whereHas('role', function ($q) {
+                    $q->where('name', 'Doctor');
+                })->where('name', 'LIKE', '%' . request()->get('q') . '%');
+            }
+
             return view('admin/view-doctor', [
                 'doctors' => $doctors->paginate(10),
             ]);

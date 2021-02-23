@@ -24,54 +24,52 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <div class="table">
-                    
                     <div class="table-wrapper">
                         <div class="table-title">
+                            <a href="{{ URL::previous() }}"><i class="fa fa-arrow-left fa-lg" aria-hidden="true" style="color: black;"></i></a>
                             <div class="row">
                                 <div class="col-sm-8" style="bottom: -14px;">
-                                    <h4>Clients <b>Table</b></h4>
+                                    <h4>Events <b>Table</b></h4>
                                 </div>
                             </div>
                             <br />
+                            <form>
+                                @csrf
+                            <div class="input-group rounded col-4 float-right">
+                                <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <span class="input-group-text border-0" id="search-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                            </form>
                         </div>
-                        <form>
-                            @csrf
-                        <div class="input-group rounded col-4 float-right">
-                            <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <span class="input-group-text border-0" id="search-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                        </form>
-                        <br>
-                        <br>
+                        <br />
+                        <br />
+
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Access to the doctor</th>
-                                    <th>Details</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Client Name</th>
+                                    <th>Doctor Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($client as $key => $client)
+                                @foreach($events as $key => $event)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
-                                    <td>{{ $client->name }}</td>
-                                    <td>{{ $client->email }}</td>
-                                    <td style="text-align: center;"><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-plus fa-lg" aria-hidden="true" style="color: black;"></i></i></a></td>
-                                    <td><a href="{{ url('/client/info/'.$client->id) }}"><i class="fa fa-info-circle fa-lg" style="color:black" aria-hidden="true"></a></i></td>
-                                    <td>
-                                        <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
-                                            @csrf @method('DELETE')
-                                            <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
-                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <td>{{ $event->event->title }}</td>
+                                    <td>{{ $event->event->start }}</td>
+                                    <td>{{ $event->event->end }}</td>
+                                    <td>Received</td>
+                                    <td>{{ $event->requestClient->name }}</td>
+                                    <td>{{ $event->event->user->name }}</td>
+                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true" style="color: red;"></i></td>
                                 </tr>
                                 @endforeach
                             </tbody>

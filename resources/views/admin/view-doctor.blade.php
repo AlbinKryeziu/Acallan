@@ -29,6 +29,17 @@
                             <h4>Doctors <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
                             <br />
                         </div>
+                        <form>
+                            @csrf
+                        <div class="input-group rounded col-4 float-right">
+                            <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                        </form>
+                        <br>
+                        <br>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>

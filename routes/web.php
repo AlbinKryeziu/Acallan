@@ -119,6 +119,9 @@ Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClien
 Route::get('/client/access/{userId}', [ClientController::class,'storeAccess']);
 Route::post('/client/access/doctor', [ClientController::class,'accessDoctor']);
 Route::get('/client/info/{clientId}', [ClientController::class,'infoClient']);
+Route::get('/client/profile/{clientId}', [ClientController::class,'profileClient']);
+Route::get('/client/evnts/{clientId}', [ClientController::class,'eventClient']);
+
 
 
 Route::get('/pacient/doctor', [PacientController::class,'doctor']);
