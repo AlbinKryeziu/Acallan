@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DoctorRequest;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
@@ -23,10 +24,9 @@ class DoctorController extends Controller
     public function index()
     {
         if (Auth::user()->isAdmin()) {
-            $doctors = User::with('doctor')
-                ->whereHas('role', function ($q) {
-                    $q->where('name', 'Doctor');
-                });
+            $doctors = User::with('doctor')->whereHas('role', function ($q) {
+                $q->where('name', 'Doctor');
+            });
 
             return view('admin/view-doctor', [
                 'doctors' => $doctors->paginate(10),
@@ -45,7 +45,7 @@ class DoctorController extends Controller
         return redirect()->back();
     }
 
-    public function addDoctor(Request $request)
+    public function addDoctor(DoctorRequest $request)
     {
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
         $password = substr($random, 0, 10);
@@ -57,22 +57,23 @@ class DoctorController extends Controller
         ]);
         if ($doctor) {
             $doctor->role()->attach(2);
+            $doctorProfile = new Doctor();
+            $doctorProfile->name = $request->name;
+            $doctorProfile->birthday = $request->birthday;
+            $doctorProfile->specialty_id = $request->specialitizy;
+            $doctorProfile->work_address = $request->work_address;
+            $doctorProfile->email = $request->email;
+            $doctorProfile->remark = $request->remark;
+            $doctorProfile->user_id = $doctor->id;
+            $doctorProfile->id_doctor = $request->IdDoctor;
+            $doctorProfile->pin = $request->pin;
+            $doctorProfile->save();
 
             $data = [
                 'name' => $request->name,
                 'password' => $password,
                 'email' => $request->email,
             ];
-
-            $doctorProfile = new Doctor();
-            $doctorProfile->name = $request->name;
-            $doctorProfile->birthday = $request->birthday;
-            $doctorProfile->specialty = $request->specialty;
-            $doctorProfile->work_address = $request->work_address;
-            $doctorProfile->email = $request->email;
-            $doctorProfile->remark = $request->remark;
-            $doctorProfile->user_id = $doctor->id;
-            $doctorProfile->save();
 
             Mail::to($request->email)->send(new WelcomeMail($data));
         }
@@ -167,40 +168,51 @@ class DoctorController extends Controller
             'doctor' => $doctor,
         ]);
     }
-    public function doctorClients(){
-     $client = ClientDoctor::with('client')->where('doctor_id',Auth::id());
-       return view('doctor/client',[
-           'client' => $client->paginate(10),
-       ]);
+    public function doctorClients()
+    {
+        $client = ClientDoctor::with('client')->where('doctor_id', Auth::id());
+        return view('doctor/client', [
+            'client' => $client->paginate(10),
+        ]);
     }
 
-    public function pacientGift($clientId){
-        $client = User::where('id',$clientId)->get();
-        $gifts = GiftClient::where('client_id',$clientId)->where('doctor_id',Auth::id());
-        return view('doctor/gift',[
+    public function pacientGift($clientId)
+    {
+        $client = User::where('id', $clientId)->get();
+        $gifts = GiftClient::where('client_id', $clientId)->where('doctor_id', Auth::id());
+        return view('doctor/gift', [
             'client' => $client,
             'gifts' => $gifts->paginate(10),
         ]);
     }
-   public function clientEventAccepted($clientId){
-  
-       $acceptedRequest = EventRequest::where('request_id',$clientId)->where('status',1)->pluck('event_id',);
-        $event = Event::where('user_id',Auth::id())->whereIn('id',$acceptedRequest)->get();
-        $name = EventRequest::where('request_id',$clientId)->first();
-        return view('doctor/event-with-client',[
+    public function clientEventAccepted($clientId)
+    {
+        $acceptedRequest = EventRequest::where('request_id', $clientId)
+            ->where('status', 1)
+            ->pluck('event_id');
+        $event = Event::where('user_id', Auth::id())
+            ->whereIn('id', $acceptedRequest)
+            ->get();
+        $name = EventRequest::where('request_id', $clientId)->first();
+        return view('doctor/event-with-client', [
             'event' => $event,
-            'name' =>$name,
-            
+            'name' => $name,
         ]);
-   }
-     public function todayEvent(){
-     $date = Carbon::today()->toDateTimeString();
-     $event = Event::with(['requestEvent' => function($q){
-        $q->where('status', 1);
-     }])->where('user_id',Auth::id())->whereDate('start',$date)->where('status',1)->get();
-     return view('vendor/jetstream/components/welcome',[
-         'event' => $event
-     ]);
-   }
-   
+    }
+    public function todayEvent()
+    {
+        $date = Carbon::today()->toDateTimeString();
+        $event = Event::with([
+            'requestEvent' => function ($q) {
+                $q->where('status', 1);
+            },
+        ])
+            ->where('user_id', Auth::id())
+            ->whereDate('start', $date)
+            ->where('status', 1)
+            ->get();
+        return view('vendor/jetstream/components/welcome', [
+            'event' => $event,
+        ]);
+    }
 }

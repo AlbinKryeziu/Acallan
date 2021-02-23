@@ -39,6 +39,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Access to the doctor</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -48,11 +49,9 @@
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->email }}</td>
-
+                                    <td><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-link fa-lg" aria-hidden="true"></i></a></td>
                                     <td>
                                         <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
-                                            
-
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
                                                 <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>

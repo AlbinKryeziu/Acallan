@@ -33,6 +33,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>ID Doctor</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Specialties</th>
@@ -43,26 +44,24 @@
                                 @foreach($doctors as $key => $doctor)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
+                                    <td>{{ $doctor->doctor->id_doctor }}</td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
                                     @if(is_null($doctor->doctor))
                                     <td>/</td>
                                     @else
-                                    <td>{{ $doctor->doctor->specialty }}</td>
+                                    <td>{{ $doctor->doctor->specialty->specialty }}</td>
                                     @endif
 
                                     <td>
-                                       
                                         <form action="{{ url('/delete/doctor/'.$doctor->id) }}" method="POST">
                                             <a href="{{ url('/doctor/profile/'.$doctor->id) }}">
-                                                <i class="fa fa-eye" aria-hidden="true" style="color: #17a2b8"></i>
+                                                <i class="fa fa-eye" aria-hidden="true" style="color: #17a2b8;"></i>
                                             </a>
                                             <a href="{{ url('/update/doctor/'.$doctor->id) }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: black;"></i>
-                                               
                                             </a>
-                                           
-                                                
+
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>

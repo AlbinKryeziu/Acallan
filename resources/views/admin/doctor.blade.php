@@ -18,6 +18,11 @@
             </x-jet-nav-link>
         </div>
     </x-slot>
+    <style>
+        .error{
+            font-size: 13px;
+        }
+    </style>
 
     <div class="py-12">
         <div class="max-w-5xl	 mx-auto sm:px-16 lg:px-16">
@@ -33,9 +38,8 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Name:</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="
-                                        {{ old('name')}}" value="" name="name" />
-                                        @error('fullname')
+                                        <input type="text" class="form-control" id="name" placeholder="" value="{{ old('name')}}" name="name" />
+                                        @error('name')
                                         <label class="error" style="color: red" >{{ $message }}</label>
                                         @enderror
                                     </div>
@@ -44,14 +48,34 @@
                                     <label class="col-lg-3 col-form-label">Email</label>
                                     <div class="col-lg-6">
                                         <input type="email" class="form-control" id="email" 
-                                        value="" name="email" />
+                                        value="{{ old('email')}}" name="email" />
                                         @error('email')
                                         <span class="error" style="color: red">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Birthday:</label>
+                                    <label class="col-lg-3 col-form-label">ID Doctor</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="IdDoctor" 
+                                        value="{{ old('IdDoctor')}}" name="IdDoctor" />
+                                        @error('IdDoctor')
+                                        <span class="error" style="color: red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label">Pin</label>
+                                    <div class="col-lg-6">
+                                        <input type="number" class="form-control" id="pin" 
+                                        value="{{ old('pin')}}" name="pin" />
+                                        @error('pin')
+                                        <span class="error" style="color: red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label">Birthday:</label>π
                                     <div class="col-lg-6">
                                         <input type="date" class="form-control" id="myDate" value="" name="birthday">
                                     </div>
@@ -65,19 +89,20 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <select class="form-control select" name="specialitizy" value="
-                                                {{ old('depart')}}" id="depart">
+                                                <select class="form-control select" name="specialitizy" value="{{ old('specialitizy')}}" id="specialitizy">
+                                                    <option value="{{ old('specialitizy')}}">Select Specialties </option>
                                                      @foreach($specializity as $key => $depart)
-                                                    <option value="{{ $depart->specialty }}">{{ $depart->specialty }}</option>
+                                                    <option value="{{ $depart->id }}">{{ $depart->specialty }}</option>
                                                     @endforeach
                                                     
                                                 </select>
                                             </div>
                                         </div>
+                                        @error('specialitizy')
+                                        <label class="error" style="color: red; font-size:12px;">{{ $message }}</label>
+                                        @enderror
                                     </div>
-                                    @error('depart')
-                                    <label class="error">{{ $message }}</label>
-                                    @enderror
+                                   
                                 </div>
                                 
                                 <div class="form-group row">

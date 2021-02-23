@@ -116,6 +116,8 @@ Route::get('/doctor/today/event', [DoctorController::class, 'todayEvent']);
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
+Route::get('/client/access/{userId}', [ClientController::class,'storeAccess']);
+Route::post('/client/access/doctor', [ClientController::class,'accessDoctor']);
 
 
 Route::get('/pacient/doctor', [PacientController::class,'doctor']);
@@ -127,6 +129,7 @@ Route::get('/pacient/event', [PacientController::class,'eventStatus']);
 Route::get('/pacient/store/gift/{doctorId}', [PacientController::class,'storeGift']);
 Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class,'addGift']);
 Route::get('/pacient/store/mygift', [PacientController::class,'myGift']);
+
 
 Route::post('createzoom', [ZoomController::class , 'store']);
 

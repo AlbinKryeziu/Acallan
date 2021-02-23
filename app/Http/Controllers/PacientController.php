@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientDoctor;
+use App\Models\Doctor;
 use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\GiftClient;
@@ -21,7 +22,6 @@ class PacientController extends Controller
                 $q->where('name', 'Doctor');
             })
             ->whereIn('id', $doctorId);
-           
 
         return view('client/doctor', [
             'doctors' => $doctors->paginate(10),
@@ -32,11 +32,12 @@ class PacientController extends Controller
     {
         $doctorID = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
 
-        $doctor = User::with('doctor')
-            ->whereHas('role', function ($q) {
-                $q->where('name', 'Doctor');
-            })
-            ->whereNotIn('id', $doctorID)
+        $accesUser = User::where('id', Auth::id())
+            ->pluck('doctor_access')
+            ->toArray();
+        $doctor = Doctor::with('user')
+            ->whereIn('specialty_id', $accesUser[0][0])
+            ->whereNotIn('user_id', $doctorID)
             ->get();
 
         return view('client/add-doctor', [
@@ -62,12 +63,12 @@ class PacientController extends Controller
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
                 ->whereNotIn('id', $eventId)
-                ->where('status',0)
+                ->where('status', 0)
                 ->get();
         } else {
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
-                ->where('status',0)
+                ->where('status', 0)
                 ->get();
         }
 
@@ -82,7 +83,6 @@ class PacientController extends Controller
 
     public function requestEvent(Request $request, $eventId)
     {
-       
         $event = EventRequest::create([
             'request_id' => Auth::id(),
             'event_id' => $eventId,
@@ -96,8 +96,7 @@ class PacientController extends Controller
 
     public function eventStatus()
     {
-        $events = EventRequest::with('event')
-            ->where('request_id', Auth::id());
+        $events = EventRequest::with('event')->where('request_id', Auth::id());
         return view('client/event', [
             'events' => $events->paginate(10),
         ]);
