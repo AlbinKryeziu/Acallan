@@ -14,6 +14,7 @@ class GiftClient extends Model
         'description',
         'client_id',
         'doctor_id',
+        'type',
 
     ];
 

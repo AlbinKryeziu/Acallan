@@ -51,7 +51,7 @@
                                     @endphp</td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
-                                    <td>{{ $doctor->doctor->specialty }}</td>
+                                    <td>{{ $doctor->doctor->specialty->specialty }}</td>
                                     
                                     <td><a href="{{ url('/pacient/store/gift/'.$doctor->id) }}"><i class="fa fa-gift" aria-hidden="true" style="color: black"></i></a></td>
                                     <td><a href="{{ url('/pacient/events/'.$doctor->id) }}"><i class="fa fa-calendar" aria-hidden="true" style="color: black"></a></i></td>

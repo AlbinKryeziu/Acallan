@@ -37,7 +37,7 @@
 
                                                 <h4>{{ $doctor->name }}</h4>
                                                 <p class="text-secondary mb-1">{{ $doctor->role->first()->name }}</p>
-                                                <strong> <p class="text-secondary mb-1">{{ $doctor->doctor->specialty }}</p></strong>
+                                                <strong> <p class="text-secondary mb-1">{{ $doctor->doctor->specialty->specialty }}</p></strong>
                                                 <p class="text-muted font-size-sm">{{ $doctor->email }}</p>
                                             </div>
                                         </div>

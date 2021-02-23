@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GiftRequest;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
@@ -31,7 +32,6 @@ class PacientController extends Controller
     public function store()
     {
         $doctorID = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
-
         $accesUser = User::where('id', Auth::id())
             ->pluck('doctor_access')
             ->toArray();
@@ -110,13 +110,15 @@ class PacientController extends Controller
         ]);
     }
 
-    public function addGift(Request $request, $doctorId)
+    public function addGift(GiftRequest $request, $doctorId)
     {
+  
         GiftClient::create([
             'links' => $request->links,
             'description' => $request->description,
             'doctor_id' => $doctorId,
             'client_id' => Auth::id(),
+            'type' => $request->type,
         ]);
         return redirect()
             ->back()

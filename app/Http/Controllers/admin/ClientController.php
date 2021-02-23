@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClientDoctor;
+use App\Models\Doctor;
 use App\Models\Specialty;
 use App\Models\User;
 use Facade\FlareClient\Http\Client;
@@ -51,8 +53,21 @@ class ClientController extends Controller
     }
     public function accessDoctor(Request $request)
     {
+        $userId = $request->userId;
         $user = User::where('id', $request->userId)->update([
             'doctor_access' => [$request->speciality],
         ]);
+
+        if ($user) {
+            $accesUser = User::where('id', $userId)
+                ->pluck('doctor_access')
+                ->toArray();
+            $doctor = Doctor::with('user')
+                ->whereIn('specialty_id', $accesUser[0][0])
+                ->pluck('user_id');
+            $doctor = ClientDoctor::where('client_id', $userId)
+                ->whereNotIn('doctor_id', $doctor)
+                ->delete();
+        }
     }
 }
