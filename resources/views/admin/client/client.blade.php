@@ -40,6 +40,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Access to the doctor</th>
+                                    <th>Details</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -49,7 +50,8 @@
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->email }}</td>
-                                    <td><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-link fa-lg" aria-hidden="true"></i></a></td>
+                                    <td style="text-align: center;"><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-plus fa-lg" aria-hidden="true" style="color: black;"></i></i></a></td>
+                                    <td><a href="{{ url('/client/info/'.$client->id) }}"><i class="fa fa-info-circle fa-lg" style="color:black" aria-hidden="true"></a></i></td>
                                     <td>
                                         <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
                                             @csrf @method('DELETE')

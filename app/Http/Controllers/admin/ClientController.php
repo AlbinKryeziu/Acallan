@@ -41,14 +41,14 @@ class ClientController extends Controller
             ->pluck('doctor_access')
             ->toArray();
 
-        $a = Specialty::whereIn('id', $acces[0][0])->get();
+        
 
         $speciality = Specialty::get();
         return view('admin/client/access', [
             'user' => $user,
             'speciality' => $speciality,
             'acces' => $acces,
-            'a' => $a,
+          
         ]);
     }
     public function accessDoctor(Request $request)
@@ -69,5 +69,12 @@ class ClientController extends Controller
                 ->whereNotIn('doctor_id', $doctor)
                 ->delete();
         }
+    }
+
+    public function infoClient($clientId){
+        $client = User::where('id',$clientId)->first();
+        return view('admin/client/info',[
+            'client' =>$client,
+        ]);
     }
 }
