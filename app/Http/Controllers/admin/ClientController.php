@@ -72,6 +72,7 @@ class ClientController extends Controller
                 ->whereNotIn('doctor_id', $doctor)
                 ->delete();
         }
+        return redirect()->back()->with('success','The access process was completed successfully');
     }
 
     public function infoClient($clientId)
@@ -86,7 +87,7 @@ class ClientController extends Controller
     {
         $client = User::where('id', $clientId)->get();
         $speaciltyId = User::where('id', $clientId)->pluck('doctor_access');
-        $acces = Specialty::whereIn('id', $speaciltyId)->get();
+        $acces = Specialty::whereIn('id', $speaciltyId[0][0])->get();
         return view('admin/client/profile', [
             'client' => $client,
             'acces' => $acces,

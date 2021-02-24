@@ -191,7 +191,8 @@
                                                 <h6 class="mb-0">Access</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                @foreach($acces as $key => $acces) {{ $acces->specialty }} @endforeach
+                                                @foreach($acces as $key => $acces)
+                                                 <li>{{ $acces->specialty }} @endforeach
                                             </div>
                                         </div>
                                     </div>

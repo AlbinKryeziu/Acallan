@@ -65,9 +65,12 @@
                                     <td style="text-align: center;"><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-plus fa-lg" aria-hidden="true" style="color: black;"></i></i></a></td>
                                     <td><a href="{{ url('/client/info/'.$client->id) }}"><i class="fa fa-info-circle fa-lg" style="color:black" aria-hidden="true"></a></i></td>
                                     <td>
+                                        
                                         <form action="{{ url('/admin/delete/'.$client->id) }}" method="POST">
+                                          
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">
+                                             
                                                 <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                             </button>
                                         </form>
