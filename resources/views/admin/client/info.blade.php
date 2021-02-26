@@ -36,7 +36,7 @@
                             <h5 class="card-title" style="text-align: center;">Event</h5>
                         </div>
                     </div>
-                    <div class="card" style="height: 200px; border-top: 1px solid #17a2b8;">
+                    <div class="card" style="height: 200px; border-top: 1px solid #17a2b8;" onclick="window.location='{{ url('/client/gift/'.$client->id) }}'">
                         <i class="fa fa-gift  fa-5x" style="text-align: center; padding: 30px; color:#17a2b8;"></i>
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center;">Gift</h5>

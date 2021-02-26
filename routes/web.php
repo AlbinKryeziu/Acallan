@@ -121,7 +121,10 @@ Route::post('/client/access/doctor', [ClientController::class,'accessDoctor']);
 Route::get('/client/info/{clientId}', [ClientController::class,'infoClient']);
 Route::get('/client/profile/{clientId}', [ClientController::class,'profileClient']);
 Route::get('/client/evnts/{clientId}', [ClientController::class,'eventClient']);
-
+Route::get('/client/gift/{clientId}', [ClientController::class,'giftClient']);
+Route::delete('/client/delete/gift/{giftId}', [ClientController::class,'deleteGIft']);
+Route::get('/client/create/events/admin/{clientId}', [ClientController::class,'creatEventAdmin']);
+Route::post('/client/store/events/admin/', [ClientController::class,'storeEventAdmin']);
 
 
 Route::get('/pacient/doctor', [PacientController::class,'doctor']);

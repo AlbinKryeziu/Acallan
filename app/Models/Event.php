@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class Event extends Model
 {
     use HasFactory;
+    
+    const Sent = 0;
+    const Accepted = 1;
+    const Rejected = 2;
 
     public function user(){
 

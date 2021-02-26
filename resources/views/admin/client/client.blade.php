@@ -51,6 +51,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Create Event </th>
                                     <th>Access to the doctor</th>
                                     <th>Details</th>
                                     <th>Action</th>
@@ -62,6 +63,7 @@
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->email }}</td>
+                                    <td style="text-align: center"><a href="{{ url('/client/create/events/admin/'.$client->id) }}"><i class="fa fa-calendar" aria-hidden="true"></i></a></td>
                                     <td style="text-align: center;"><a href="{{ url('/client/access/'.$client->id) }}"><i class="fa fa-plus fa-lg" aria-hidden="true" style="color: black;"></i></i></a></td>
                                     <td><a href="{{ url('/client/info/'.$client->id) }}"><i class="fa fa-info-circle fa-lg" style="color:black" aria-hidden="true"></a></i></td>
                                     <td>

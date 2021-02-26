@@ -5,13 +5,16 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
+use App\Models\Event;
 use App\Models\EventRequest;
+use App\Models\GiftClient;
 use App\Models\Specialty;
 use App\Models\User;
-use Facade\FlareClient\Http\Client;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Util\Json;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ClientController extends Controller
 {
@@ -24,7 +27,9 @@ class ClientController extends Controller
             if (request()->has('q')) {
                 $client = User::whereHas('role', function ($q) {
                     $q->where('name', 'Client');
-                })->where('name', 'LIKE', '%' . request()->get('q') . '%')->get();
+                })
+                    ->where('name', 'LIKE', '%' . request()->get('q') . '%')
+                    ->get();
             }
 
             return view('admin/client/client', [
@@ -72,7 +77,9 @@ class ClientController extends Controller
                 ->whereNotIn('doctor_id', $doctor)
                 ->delete();
         }
-        return redirect()->back()->with('success','The access process was completed successfully');
+        return redirect()
+            ->back()
+            ->with('success', 'The access process was completed successfully');
     }
 
     public function infoClient($clientId)
@@ -111,5 +118,82 @@ class ClientController extends Controller
         return view('admin/client/events', [
             'events' => $events,
         ]);
+    }
+
+    public function giftClient($clientId)
+    {
+        $client = User::findOrFail($clientId);
+        $gift = GiftClient::where('client_id', $clientId)->get();
+        return view('admin/client/client-gift', [
+            'gift' => $gift,
+            'client' => $client,
+        ]);
+    }
+
+    public function deleteGIft($giftId)
+    {
+        $deleteGift = GiftClient::findOrFail($giftId);
+        $deleteGift->delete();
+        if ($deleteGift) {
+            return redirect()
+                ->back()
+                ->with('success', 'The gift has been successfully deleted');
+        }
+    }
+
+    public function creatEventAdmin(Request $request, $clientId)
+    {
+        $client = User::findOrFail($clientId);
+        $accessClient = User::where('id', $clientId)
+            ->pluck('doctor_access')
+            ->toArray();
+        $doctorSpeciality = Doctor::with('user')
+            ->whereIn('specialty_id', $accessClient[0][0])
+            ->pluck('user_id');
+        $doctor = User::whereIn('id', $doctorSpeciality)->get();
+        return view('admin/client/create-events', [
+            'client' => $client,
+            'doctor' => $doctor,
+        ]);
+    }
+    public function storeEventAdmin(Request $request)
+    {
+        
+        $clientId = $request->clientId;
+        $doctorId = $request->doctorId;
+        $start = Carbon::parse($request->start)->format('Y-m-d H:i:s');
+        $end = Carbon::parse($request->end)->format('Y-m-d H:i:s');
+
+        $checkEventbyDoctor = Event::where('user_id', $doctorId)
+            ->whereBetween('start', [$start, $end])
+            ->whereBetween('end', [$start, $end])
+            ->get();
+        $eventClient = EventRequest::where('request_id', $clientId)->pluck('event_id');
+        $checkEventByClient = Event::whereIn('id', $eventClient)
+            ->whereBetween('start', [$start, $end])
+            ->whereBetween('end', [$start, $end])
+            ->get();
+        if (!$checkEventbyDoctor->isEmpty() || !$checkEventByClient->isEmpty()) {
+            return redirect()
+                ->back()
+                ->with('warning', 'There is an event for this date please choose another date');
+        }
+        $createEventDoctor = new Event();
+        $createEventDoctor->title = $request->event;
+        $createEventDoctor->start = $request->start;
+        $createEventDoctor->end = $request->end;
+        $createEventDoctor->user_id = $request->doctorId;
+        $createEventDoctor->status = Event::Accepted;
+        $createEventDoctor->save();
+        if ($createEventDoctor) {
+            $createRequstEvent = new EventRequest();
+            $createRequstEvent->request_id = $clientId;
+            $createRequstEvent->event_id = $createEventDoctor->id;
+            $createRequstEvent->status = EventRequest::Accepted;
+            $createRequstEvent->save();
+        }
+        if ($createEventDoctor || $createRequstEvent){
+            return redirect()->back()->with('success','The event was successfully created');
+        }
     }
 }
