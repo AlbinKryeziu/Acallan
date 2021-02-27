@@ -189,6 +189,8 @@ class ClientController extends Controller
             $createRequstEvent->request_id = $clientId;
             $createRequstEvent->event_id = $createEventDoctor->id;
             $createRequstEvent->status = EventRequest::Accepted;
+            $createRequstEvent->product = $request->product;
+            $createRequstEvent->article = $request->article;
             $createRequstEvent->save();
         }
         if ($createEventDoctor || $createRequstEvent) {

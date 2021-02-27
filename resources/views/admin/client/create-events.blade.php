@@ -79,6 +79,24 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="name">Product</label>
+                            <div class="col-md-12">
+                                <input type="text" name="product" class="form-control">
+                                @error('description')
+                                <label class="error" style="color: red;">{{ $message }}</label>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="name">Article</label>
+                            <div class="col-md-12">
+                                <input type="text" name="article" class="form-control">
+                                @error('description')
+                                <label class="error" style="color: red;">{{ $message }}</label>
+                                @enderror
+                            </div>
+                        </div>
                         
 
                         <div class="form-group">

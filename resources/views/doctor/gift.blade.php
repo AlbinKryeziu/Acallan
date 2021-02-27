@@ -62,13 +62,15 @@
                             <th colspan="2">#</th>
                             <th colspan="">Client Name</th>
                             <th colspan="">Description</th>
+                            <th colspan="">Type</th>
 
                             <tbody>
                                 @foreach($gifts as $key => $gift)
                                 <tr>
                                     <td colspan="2">@php echo $countGift++ @endphp</td>
-                                    <td colspan="" onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-link" aria-hidden="true"></i></td>
+                                    <td colspan="" onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-folder-open" aria-hidden="true"></i></td>
                                     <td colspan="">{{ $gift->description}}</td>
+                                    <td colspan="">{{ $gift->type}}</td>
                                     
                                 </tr>
                                 @endforeach

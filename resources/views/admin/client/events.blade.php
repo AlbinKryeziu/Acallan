@@ -51,11 +51,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
+                                    <th>Start date</th>
+                                    <th>End date</th>
                                     <th>Status</th>
-                                    <th>Client Name</th>
-                                    <th>Doctor Name</th>
+                                    <th>Product</th>
+                                    <th>Article</th>
+                                    <th>Client name</th>
+                                    <th>Doctor name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -66,10 +68,12 @@
                                     <td>{{ $event->event->title }}</td>
                                     <td><strong>{{ Carbon\Carbon::parse($event->event->start)->format('d-m-Y H:i') }}</strong></td>
                                     <td><strong>{{ Carbon\Carbon::parse($event->event->end)->format('d-m-Y H:i') }}</strong></td>
-                                    <td>@if($event->status = 1) <span style="color: green"> Accepted</span> @elseif($event->status = 2) <span style="color: red">Rejected </span> @elseif($event->status = 0) <span style="color: #ff9900">Rejected </span>@endif</td>
+                                    <td>@if($event->status == 1) <span style="color: green"> Accepted</span> @elseif($event->status == 2) <span style="color: red">Rejected </span> @elseif($event->status == 0) <span style="color: #ff9900">Rejected </span>@endif</td>
+                                    <td>{{ $event->product }}</td>
+                                    <td>{{ $event->article }}</td>
                                     <td>{{ $event->requestClient->name }}</td>
                                     <td>{{ $event->event->user->name }}</td>
-                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true" style="color: red;"></i></td>
+                                    <td>/</td>
                                 </tr>
                                 @endforeach
                             </tbody>
