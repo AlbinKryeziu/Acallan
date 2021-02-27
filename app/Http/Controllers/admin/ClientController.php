@@ -197,4 +197,21 @@ class ClientController extends Controller
                 ->with('success', 'The event was successfully created');
         }
     }
+
+    public function eventRequestAdmin($eventId){
+   
+         $events = Event::where('id',$eventId)->get();
+         $eventRequest = EventRequest::with('requestClient')->where('event_id',$eventId);
+         if (request()->has('q')) {
+           $eventRequest = EventRequest::with('event')
+                ->whereHas('event', function ($q) {
+                    $q->where('title', 'LIKE', '%' . request()->get('q') . '%');
+                })
+                ->where('event_id', $eventId);
+        }
+        return view('admin/event/request',[
+            'events' => $events,
+            'eventRequest' => $eventRequest->paginate(1),
+        ]);
+    }
 }
