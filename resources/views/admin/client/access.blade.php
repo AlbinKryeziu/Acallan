@@ -50,8 +50,8 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name">Access:</label>
                             <div class="col-md-12">
-                                @foreach($speciality as $key => $speciality) <input type="checkbox" name="speciality[]" value="{{ $speciality->id}}" @foreach($activeAccess as $key => $a) @if($speciality->id == $a->id) checked @endif
-                                @endforeach />
+                                @foreach($speciality as $key => $speciality) <input type="checkbox" name="speciality[]" value="{{ $speciality->id}}"  @forelse($activeAccess as $key => $a) @if($speciality->id == $a->id) checked @endif @empty checked @endforelse   
+                               />
 
                                 <label for="vehicle1">{{ $speciality->specialty}}</label><br />
 

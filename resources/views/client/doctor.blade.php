@@ -27,7 +27,10 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
+                            @if($user->doctor_access)
+                           
                             <h4>My Doctors <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">Add Doctor</button></h4>
+                            @endif
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
