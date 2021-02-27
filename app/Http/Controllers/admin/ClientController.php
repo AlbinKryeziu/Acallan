@@ -198,20 +198,35 @@ class ClientController extends Controller
         }
     }
 
-    public function eventRequestAdmin($eventId){
-   
-         $events = Event::where('id',$eventId)->get();
-         $eventRequest = EventRequest::with('requestClient')->where('event_id',$eventId);
-         if (request()->has('q')) {
-           $eventRequest = EventRequest::with('event')
+    public function eventRequestAdmin($eventId)
+    {
+        $events = Event::where('id', $eventId)->get();
+        $eventRequest = EventRequest::with('requestClient')->where('event_id', $eventId);
+        if (request()->has('q')) {
+            $eventRequest = EventRequest::with('event')
                 ->whereHas('event', function ($q) {
                     $q->where('title', 'LIKE', '%' . request()->get('q') . '%');
                 })
                 ->where('event_id', $eventId);
         }
-        return view('admin/event/request',[
+        return view('admin/event/request', [
             'events' => $events,
             'eventRequest' => $eventRequest->paginate(1),
         ]);
+    }
+    public function adminDeleteEvent($eventId)
+    {
+        $requestEvent = EventRequest::where('event_id', $eventId)->get();
+        if (!$requestEvent->isEmpty()) {
+            foreach ($requestEvent as $request) {
+                $request->delete();
+            }
+        }
+        $event = Event::where('id', $eventId)->delete();
+        if ($event) {
+            return redirect()
+                ->back()
+                ->with('success', 'The event was successfully deleted');
+        }
     }
 }

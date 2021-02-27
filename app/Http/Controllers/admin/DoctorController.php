@@ -73,7 +73,7 @@ class DoctorController extends Controller
             $doctorProfile->email = $request->email;
             $doctorProfile->remark = $request->remark;
             $doctorProfile->user_id = $doctor->id;
-            $doctorProfile->id_doctor = $request->IdDoctor;
+            $doctorProfile->id_doctor = $request->id_doctor;
             $doctorProfile->pin = $request->pin;
             $doctorProfile->save();
 
@@ -157,6 +157,7 @@ class DoctorController extends Controller
     }
     public function deleteEvent($eventId)
     {
+        return 'ok';
         $event = Event::find($eventId);
         $event->delete();
         if ($event) {

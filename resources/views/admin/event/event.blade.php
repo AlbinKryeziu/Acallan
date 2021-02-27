@@ -75,7 +75,13 @@
                                     <td>{{ $event->start }}</td>
                                     <td>{{ $event->end }}</td>
                                     <td style="text-align: center"><a href="{{ url('/admin/request/event/'.$event->id) }}"><i class="fa fa-calendar-check-o" aria-hidden="true" style="color: black"></i></a></td>
-                                     <td></td>
+                                     <td>
+                                         <form method="POST" action="{{ url('/delete/events/admin/'.$event->id) }}">
+                                             @csrf
+                                             @method('Delete')
+                                             <button class="fa fa-trash" type="submit" style="color: #B20404"></button>
+                                         </form>
+                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>

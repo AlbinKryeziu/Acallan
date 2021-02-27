@@ -26,8 +26,8 @@ class DoctorRequest extends FormRequest
         return [
             'name'=>'required',
             'email'=>'required|email|unique:users',
-            'IdDoctor'=>'required|min:10|max:10',
-            'pin'=>'required',
+            'id_doctor'=>'required|min:10|max:10|unique:doctors',
+            'pin'=>'required|unique:doctors',
             'specialitizy'=>'required',
         ];
     }
@@ -37,9 +37,10 @@ class DoctorRequest extends FormRequest
             'name.required'=>'Please fill the name',
             'email.required'=>'Please fill the email',
             'email.unique'=>'This email used',
-            'IdDoctor.required'=>'Please fill the Id Doctor',
-            'IdDoctor.min'=>'Please must be 10 characters',
-            'IdDoctor.max'=>'Please should not be more than 10 characters',
+            'id_doctor.required'=>'Please fill the Id Doctor',
+            'id_doctor.min'=>'Please must be 10 characters',
+            'id_doctor.max'=>'Please should not be more than 10 characters',
+            'id_doctor.unique'=>'This id exists please write another',
             'pin.required'=>'Please fill the  pin',
             'specialitizy.required'=>'Please fill the  specialitizy',
         ];

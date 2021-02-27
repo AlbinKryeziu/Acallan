@@ -55,11 +55,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">ID Doctor</label>
+                                    <label class="col-lg-3 col-form-label">ID doctor</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="IdDoctor" 
-                                        value="{{ old('IdDoctor')}}" name="IdDoctor" />
-                                        @error('IdDoctor')
+                                        <input type="text" class="form-control" id="id_doctor" 
+                                        value="{{ old('IdDoctor')}}" name="id_doctor" />
+                                        @error('id_doctor')
                                         <span class="error" style="color: red">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Birthday:</label>π
+                                    <label class="col-lg-3 col-form-label">Birthday:</label>
                                     <div class="col-lg-6">
                                         <input type="date" class="form-control" id="myDate" value="" name="birthday">
                                     </div>
