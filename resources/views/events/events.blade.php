@@ -2,7 +2,7 @@
     <x-slot name="header">
         @include('admin/asset')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __(' Doctor Dashboard') }}
         </h2>
         <br />
     </x-slot>
@@ -20,14 +20,14 @@
                                 </div>
                             </div>
                         </div>
-                        <form method="POST" action="{{ url('/meetings') }}">
+                        {{-- <form method="POST" action="{{ url('/meetings') }}">
                             @csrf
                             <input type="date" name="start_time">
                             <input type="text" name="agenda">
                             <input type="text" name="topic">
                             <input type="text" name="duration">
                             <button type="submit">`Save</button>
-                        </form>
+                        </form> --}}
                         @if($events->count() >= 1)
                         <table class="table table-hover table-bordered">
                             <thead>

@@ -74,10 +74,8 @@
             </div>
         </div>
     </div>
-    @php $date = Carbon\Carbon::today()->toDateTimeString(); $events = App\Models\Event::with(['requestEvent' => function($q){ $q->where('status', 1);
-    }])->where('user_id',Auth::id())->whereDate('start',$date)->where('status',1)->paginate(5); @endphp
-
-    <div class="max-w-7xl p-4">
+   
+    {{-- <div class="max-w-7xl p-4">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -113,7 +111,7 @@
             </tbody>
             {{ $events->links() }}
         </table>
-    </div>
+    </div> --}}
 
     <div class="container py-4">
         <div class="response alert alert-success mt-2" style="display: none;"></div>
