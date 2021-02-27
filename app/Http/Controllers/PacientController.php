@@ -86,12 +86,15 @@ class PacientController extends Controller
         ]);
     }
 
-    public function requestEvent(Request $request, $eventId)
+    public function requestEvent(Request $request)
     {
+        $eventId = $request->eventId;
         $event = EventRequest::create([
             'request_id' => Auth::id(),
             'event_id' => $eventId,
             'status' => EventRequest::Sent,
+            'product' => $request->product,
+            'article' => $request->article,
         ]);
 
         return redirect()

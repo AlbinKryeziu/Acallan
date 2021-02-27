@@ -133,7 +133,7 @@ Route::get('/pacient/doctor', [PacientController::class,'doctor']);
 Route::get('/pacient/store', [PacientController::class,'store']);
 Route::post('/pacient/add/doctor', [PacientController::class,'addDoctor']);
 Route::get('/pacient/events/{doctorId}', [PacientController::class,'eventsByDoctor']);
-Route::post('/pacient/request/{eventId}', [PacientController::class,'requestEvent']);
+Route::post('/pacient/request', [PacientController::class,'requestEvent']);
 Route::get('/pacient/event', [PacientController::class,'eventStatus']);
 Route::get('/pacient/store/gift/{doctorId}', [PacientController::class,'storeGift']);
 Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class,'addGift']);

@@ -232,14 +232,11 @@
                                                     <td>{{ $event->title }}</td>
                                                     <td>{{ Carbon\Carbon::parse($event->start)->format('d-m-Y H:s') }}</td>
                                                     <td>{{ Carbon\Carbon::parse($event->end)->format('d-m-Y H:s') }}</td>
-                                                    <form method="Post" action="{{ url('/pacient/request/'.$event->id) }}">
-                                                        @csrf
-                                                      
-                                                    <td><button type="submit" title="delete" style="border: none; background-color: transparent; color: black;">
-                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                                        <input type="hidden" name="user_id" value="{{ $event->user_id }}">
-                                                    </button></td>
-                                                    </form>
+                                                
+                                                       <td><i class="fa fa-clock-o acceptEvent" data-eventId="{{ $event->id }}"  aria-hidden="true"></i></td>
+                                                        {{-- <input type="hidden" name="user_id" value="{{ $event->user_id }}"> --}}
+                                                   
+                                                    
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -253,5 +250,57 @@
             </div>
         </div>
         @endforeach
+
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <form action="{{ url('/pacient/request') }}" method="POST">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header flex-column">
+                            <div class="icon-box" style="border: 3px solid green;">
+                                <i class="fa fa-calendar" aria-hidden="true" style="color:green"></i>
+                            </div>
+                            <h4 class="modal-title w-100">Sent Event </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <label style="float: left"><strong>Product</strong></label>
+                           <input type="text" name="product" class="form-control ">
+                           <br>
+                           <label style="float: left"><strong>Article</strong></label>
+                           <input type="text" name="article" class="form-control">
+                         
+                            <input type="hidden" name="eventId" id="eventId" />
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+    
+                    @if(Session::has('success'))
+                    <script>
+                        swal("Success", "{{Session::get('success')}}", "success", {
+                            button: "ok",
+                        });
+                    </script>
+                    @endif
+                    <script>
+                        $(document).on("click", ".acceptEvent", function () {
+                            var requestId = $(this).attr("data-evenRequstId");
+                            var eventId = $(this).attr("data-eventId");
+                            $("#eventId").val(eventId);
+                            $("#myModal").modal("show");
+                        });
+    
+                        $(document).on("click", ".rejectedEvent", function () {
+                            var userID = $(this).attr("data-eventId");
+                            $("#rejecteId").val(userID);
+                            $("#rejectet").modal("show");
+                        });
+                    </script>
+                </form>
+            </div>
+        </div>
 
 </x-app-layout>

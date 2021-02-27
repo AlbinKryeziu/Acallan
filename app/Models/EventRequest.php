@@ -18,6 +18,8 @@ class EventRequest extends Model
         'request_id',
         'event_id',
         'status',
+        'product',
+        'article',
     ];
     protected $table = 'event_requests';
 
