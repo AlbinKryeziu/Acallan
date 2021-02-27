@@ -2,7 +2,7 @@
     <x-slot name="header">
         @include('admin/asset')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Client Dashboard') }}
         </h2>
         <br />
 
@@ -25,7 +25,7 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>My Doctors <b>Table</b></h4>
+                            <h4>Gift <b>Table</b></h4>
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
@@ -37,17 +37,20 @@
                                     <th>Type</th>
                                     <th>Doctor</th>
                                     <th>Client</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($gift as $key => $gift)
                                 <tr>
                                     <td>@php echo $i++ @endphp</td>
-                                    <td onclick="window.open('{{$gift->links}}', '_blank')"><i class="fa fa-link" aria-hidden="true"></i></td>
+                                    <td onclick="window.open('{{$gift->links}}', '_blank')"><a href=""><i class="fa fa-folder-open" aria-hidden="true" style="color: black"></i></a></i></td>
                                     <td>{{$gift->description }}</td>
                                     <td>{{$gift->type }}</td>
                                     <td>{{ $gift->doctor->name }}</td>
                                     <td>{{ $gift->client->name }}</td>
+                                   
+                                    </a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -2,7 +2,7 @@
     <x-slot name="header">
         @include('admin/asset')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Client Dashboard') }}
         </h2>
         <br />
 
@@ -32,11 +32,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Event Name</th>
+                                    <th>Event name</th>
                                     <th>Doctor Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
+                                     <th>Product</th>
+                                     <th>Article</th>
+                                    <th>Start date</th>
+                                    <th>End date</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,6 +48,8 @@
                                     <td>@php echo $i++ @endphp</td>
                                     <td>{{ $event->event->title }}</td>
                                     <td>{{ $event->event->user->name }}</td>
+                                    <td>{{ $event->product}}</td>
+                                    <td>{{ $event->article}}</td>
                                     <td>{{ $event->event->start}}</td>
                                     <td>{{ $event->event->end}}</td>
                                     @if($event->status == 0)
@@ -54,6 +59,7 @@
                                     @elseif($event->status == 2)
                                     <td><i class="fa fa-times-circle fa-lg" aria-hidden="true" style="color: #992208;"></i></td>
                                     @endif
+                                    <td><a href="{{ url('/edit/event/request/'.$event->id) }}"><i class="fa fa-pencil" aria-hidden="true" style="color: black"></i>
                                 </tr>
                                 @endforeach
                             </tbody>
