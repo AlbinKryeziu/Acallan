@@ -29,9 +29,11 @@ class DoctorController extends Controller
             });
 
             if (request()->has('q')) {
-                $doctors = User::with('doctor')->whereHas('role', function ($q) {
-                    $q->where('name', 'Doctor');
-                })->where('name', 'LIKE', '%' . request()->get('q') . '%');
+                $doctors = User::with('doctor')
+                    ->whereHas('role', function ($q) {
+                        $q->where('name', 'Doctor');
+                    })
+                    ->where('name', 'LIKE', '%' . request()->get('q') . '%');
             }
 
             return view('admin/view-doctor', [
@@ -144,10 +146,13 @@ class DoctorController extends Controller
 
     public function event()
     {
-        $event = Event::with('user')->get();
+        $events = Event::with('user');
+        if (request()->has('q')) {
+            $events = Event::with('user')->where('title', 'LIKE', '%' . request()->get('q') . '%');
+        }
 
         return view('admin/event/event', [
-            'event' => $event,
+            'events' => $events->paginate(15),
         ]);
     }
     public function deleteEvent($eventId)

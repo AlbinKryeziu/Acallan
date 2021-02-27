@@ -36,7 +36,18 @@
                             </div>
                             @endif
                             <br />
+                            
                         </div>
+                        <form>
+                            @csrf
+                        <div class="input-group rounded col-4 float-right p-2">
+                            <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                        </form>
+                        
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -44,12 +55,12 @@
                                     <th>Event</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Created By</th>
+                                    <th>Name</th>
                                     <th>Role</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($event as $key => $event)
+                                @foreach($events as $key => $event)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $event->title }}</td>
@@ -68,6 +79,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $events->links() }}
                     </div>
                 </div>
             </div>

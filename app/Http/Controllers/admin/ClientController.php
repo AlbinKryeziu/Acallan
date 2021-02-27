@@ -48,15 +48,15 @@ class ClientController extends Controller
     public function storeAccess($userId)
     {
         $user = User::where('id', $userId)->first();
-        $acces = User::where('id', $userId)
+        $access = User::where('id', $userId)
             ->pluck('doctor_access')
             ->toArray();
-
+        $activeAccess = Specialty::whereIn('id', $access[0][0])->get();
         $speciality = Specialty::get();
         return view('admin/client/access', [
             'user' => $user,
             'speciality' => $speciality,
-            'acces' => $acces,
+            'activeAccess' => $activeAccess,
         ]);
     }
     public function accessDoctor(Request $request)
@@ -73,7 +73,7 @@ class ClientController extends Controller
             $doctor = Doctor::with('user')
                 ->whereIn('specialty_id', $accesUser[0][0])
                 ->pluck('user_id');
-            $doctor = ClientDoctor::where('client_id', $userId)
+            $doctors = ClientDoctor::where('client_id', $userId)
                 ->whereNotIn('doctor_id', $doctor)
                 ->delete();
         }
@@ -158,7 +158,6 @@ class ClientController extends Controller
     }
     public function storeEventAdmin(Request $request)
     {
-        
         $clientId = $request->clientId;
         $doctorId = $request->doctorId;
         $start = Carbon::parse($request->start)->format('Y-m-d H:i:s');
@@ -192,8 +191,10 @@ class ClientController extends Controller
             $createRequstEvent->status = EventRequest::Accepted;
             $createRequstEvent->save();
         }
-        if ($createEventDoctor || $createRequstEvent){
-            return redirect()->back()->with('success','The event was successfully created');
+        if ($createEventDoctor || $createRequstEvent) {
+            return redirect()
+                ->back()
+                ->with('success', 'The event was successfully created');
         }
     }
 }

@@ -64,8 +64,8 @@
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $event->event->title }}</td>
-                                    <td>{{ $event->event->start }}</td>
-                                    <td>{{ $event->event->end }}</td>
+                                    <td><strong>{{ Carbon\Carbon::parse($event->event->start)->format('d-m-Y H:i') }}</strong></td>
+                                    <td><strong>{{ Carbon\Carbon::parse($event->event->end)->format('d-m-Y H:i') }}</strong></td>
                                     <td>@if($event->status = 1) <span style="color: green"> Accepted</span> @elseif($event->status = 2) <span style="color: red">Rejected </span> @elseif($event->status = 0) <span style="color: #ff9900">Rejected </span>@endif</td>
                                     <td>{{ $event->requestClient->name }}</td>
                                     <td>{{ $event->event->user->name }}</td>
