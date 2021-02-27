@@ -205,10 +205,10 @@ class DoctorController extends Controller
         $event = Event::where('user_id', Auth::id())
             ->whereIn('id', $acceptedRequest)
             ->get();
-        $name = EventRequest::where('request_id', $clientId)->first();
+         $user = User::findOrFail($clientId);
         return view('doctor/event-with-client', [
             'event' => $event,
-            'name' => $name,
+            'user' => $user,
         ]);
     }
     public function todayEvent()

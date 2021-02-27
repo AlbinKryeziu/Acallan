@@ -34,14 +34,10 @@
                         </div>
 
                         <table class="table table-hover table-bordered">
-                            <tr></tr>
-                            <tr>
-                              
-                                  
-                               
-                                <th colspan="8" style="text-align: center;">Events with {{ $name->requestClient->name }} </th>
-                                
+                            <tr></tr>  
+                                <th colspan="8" style="text-align: center;">Events with {{ $user->name }} </th> 
                             </tr>
+                            @if($event->count() >=1)
                             <th colspan="2">#</th>
                             <th colspan="">Event Name</th>
                             <th colspan="">Start Date</th>
@@ -54,17 +50,21 @@
                                     <td colspan="">{{ $event->title }}</td>
                                     <td colspan="">{{ $event->start}}</td>
                                     <td colspan="">{{ $event->end}}</td>
-                                    
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                       
+                        @else
+                      <tr class="border border-warning">
+                                <td colspan="border border-warning"><div class="alert alert-secondary" role="alert">
+                                    You have no events so far
+                                  </div></td>
+                            </tr>
+                    @endif
                     </div>
                 </div>
             </div>
         </div>
-       
     </div>
  
 
