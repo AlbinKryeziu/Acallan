@@ -43,6 +43,7 @@
                             <label class="col-md-12 control-label" for="name">Name</label>
                             <div class="col-md-12">
                             <select class="form-control input-md" id="doctor" name="doctorId">
+                                <option value="">Select Doctor</option>
                                 @foreach($doctor as $key => $doctor)
                               <option value="{{ $doctor->user->id }}">{{ $doctor->user->name }}</option>
                               

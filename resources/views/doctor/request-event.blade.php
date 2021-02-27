@@ -53,12 +53,16 @@
                             @if($eventRequest->count() >=1)
                             <th colspan="2">#</th>
                             <th colspan="">Client Name</th>
+                            <th colspan="">Product</th>
+                            <th colspan="">Article</th>
                             <th colspan="">Action</th>
                             <tbody>
                                 @foreach($eventRequest as $key => $request)
                                 <tr>
                                     <td colspan="2">#</td>
                                     <td colspan="">{{ $request->requestClient->name }}</td>
+                                    <td colspan="">{{ $request->product }}</td>
+                                    <td colspan="">{{ $request->article }}</td>
                                     <td colspan="">
                                        
                                            @if($request->status == 1) 

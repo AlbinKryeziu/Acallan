@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name">Doctor</label>
                             <div class="col-md-12">
-                                <select class="form-control input-md" id="doctor" name="doctorId">
+                                <select class="form-control input-md" id="doctor" name="doctorId" disabled>
                                     <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                                 </select>
                             </div>
