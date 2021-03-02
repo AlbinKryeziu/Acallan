@@ -157,21 +157,24 @@
         </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="bini">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="modal-body">
-                    <p>Modal body text goes here.</p>
+                    <h4>Edit Appointment</h4>
+    
+                    Start time:
+                    <br />
+                    <input type="text" class="form-control" name="start_time" id="start_time">
+    
+                    End time:
+                    <br />
+                    <input type="text" class="form-control" name="finish_time" id="finish_time">
                 </div>
+    
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="button" class="btn btn-primary" id="appointment_update" value="Save">
                 </div>
             </div>
         </div>
@@ -191,7 +194,13 @@
             var calendar = $("#calendar").fullCalendar({
                 editable: true,
                 events: SITEURL + "/fullcalender",
-                displayEventTime: false,
+            
+                header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+    },
+    defaultView: 'basicWeek',
                 editable: true,
 
                 eventRender: function (event, element, view) {
@@ -205,6 +214,8 @@
                 selectHelper: true,
                 select: function (start, end, allDay) {
                     var title = prompt("Event Title:");
+                    var startTime = prompt("Write time of start:");
+                    var endTime = prompt("Write time of end ");
                     if (title) {
                         var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                         var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
@@ -214,6 +225,8 @@
                                 title: title,
                                 start: start,
                                 end: end,
+                                startTime: startTime,
+                                endTime: endTime,
                                 type: "add",
                             },
                             type: "POST",
