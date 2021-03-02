@@ -8,13 +8,13 @@
 
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
             <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctor
+                Doctors
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Client
+                Clients
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Event
+                Events
             </x-jet-nav-link>
         </div>
     </x-slot>
