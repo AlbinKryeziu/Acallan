@@ -22,6 +22,7 @@ class CreateDoctorsTable extends Migration
             $table->string('work_address');
             $table->string('email');
             $table->string('remark');
+            $table->string('id_doctor');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

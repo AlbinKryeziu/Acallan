@@ -17,6 +17,7 @@ use App\Models\EventRequest;
 use App\Models\GiftClient;
 use App\Models\Specialty;
 use Carbon\Carbon;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
@@ -55,6 +56,8 @@ class DoctorController extends Controller
 
     public function addDoctor(DoctorRequest $request)
     {
+        
+        $id = IdGenerator::generate(['table' => 'doctors', 'field'=>'id_doctor','length' => 10, 'prefix' =>'IDD-']);
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
         $password = substr($random, 0, 10);
 
@@ -73,7 +76,7 @@ class DoctorController extends Controller
             $doctorProfile->email = $request->email;
             $doctorProfile->remark = $request->remark;
             $doctorProfile->user_id = $doctor->id;
-            $doctorProfile->id_doctor = $request->id_doctor;
+            $doctorProfile->id_doctor = $id;
             $doctorProfile->pin = $request->pin;
             $doctorProfile->save();
 

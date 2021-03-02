@@ -54,16 +54,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">ID doctor</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="id_doctor" 
-                                        value="{{ old('IdDoctor')}}" name="id_doctor" />
-                                        @error('id_doctor')
-                                        <span class="error" style="color: red">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label">Pin</label>
                                     <div class="col-lg-6">
