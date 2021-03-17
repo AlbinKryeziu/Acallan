@@ -11,7 +11,7 @@
                         <div class="table-title">
                             @if($user->doctor_access)
                            
-                            <h4>@lang('table_doctor') <b>@lang('table')</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">Add Doctor</button></h4>
+                            <h4>@lang('table_doctor') <b>@lang('table')</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">@lang('add_doctor')</button></h4>
                             @endif
                             <br />
                         </div>

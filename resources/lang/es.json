@@ -28,6 +28,7 @@
     
     "table":"Mesa",
     "name":"Nombre",
+    "full_name":"Nombre completo",
     "email":"Correo electrónico",
     "specialties":"Especialidades",
     "gift":"Regalo",
@@ -44,7 +45,18 @@
     "type":"Escribe",
     "doctor":"Doctora",
     "client":"Cliente",
-    "welcome_Client":"Bienvenida Cliente"
+    "welcome_Client":"Bienvenida Cliente",
+    "sent":"Enviada",
+    "accepted":"Aceptada",
+    "rejected":"Rechazada",
+    "sent_gift":"Regalo enviado",
+    "type_gift":"Tipo de regalo",
+    "links":"Enlaces",
+    "save":"Salvar",
+    "phone":"Teléfono",
+    "work_address":"Dirección de trabajo",
+    "remark":"Observación",
+    "add_doctor":"Agregar doctora"
     
     
     

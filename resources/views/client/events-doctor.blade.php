@@ -145,7 +145,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Full Name</h6>
+                                                <h6 class="mb-0">@lang('full_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->name }}
@@ -154,7 +154,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
+                                                <h6 class="mb-0">@lang('email')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->email }}
@@ -163,7 +163,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
+                                                <h6 class="mb-0">@lang('phone')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->phone }}
@@ -172,7 +172,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Work address</h6>
+                                                <h6 class="mb-0">@lang('work_address')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->work_address }}
@@ -181,7 +181,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Remark</h6>
+                                                <h6 class="mb-0">@lang('remark')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->remark }}
@@ -201,10 +201,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Event Name</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Sent</th>
+                                                    <th>@lang('event_name')</th>
+                                                    <th>@lang('start_date')</th>
+                                                    <th>@lang('end_date')</th>
+                                                    <th>@lang('sent')</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

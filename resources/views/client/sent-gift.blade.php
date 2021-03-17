@@ -8,7 +8,7 @@
                 <form class="form-horizontal p-4" method="POST" action="{{ url('/pacient/store/addgift/'.$doctor->id) }}">
                     @csrf
                     <fieldset>
-                        <legend style="text-align: center;">Sent Gift</legend>
+                        <legend style="text-align: center;">@lang('sent_gift')</legend>
                         @if ($message = Session::get('warning'))
                         <div class="alert alert-warning alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -22,7 +22,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Doctor</label>
+                            <label class="col-md-12 control-label" for="name">@lang('doctor')</label>
                             <div class="col-md-12">
                                 <select class="form-control input-md" id="doctor" name="doctorId" disabled>
                                     <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Links</label>
+                            <label class="col-md-12 control-label" for="name">@lang('links')</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="links" placeholder="wwww.example.com" />
                                 @error('links')
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Description</label>
+                            <label class="col-md-12 control-label" for="name">@lang('description')</label>
                             <div class="col-md-12">
                                 <textarea class="form-control" id="" name="description" rows="3"></textarea>
                                 @error('description')
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="type">Type of gift</label>
+                            <label class="col-md-12 control-label" for="type">@lang('type_gift')</label>
                             <div class="col-md-12">
                                 <select class="form-control input-md" id="type" name="type">
                                     <option value="">Select type of gift</option>
@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 float-right">
-                                <button type="submit" class="btn btn-info float-right">Save</button>
+                                <button type="submit" class="btn btn-info float-right">@lang('save')</button>
                             </div>
                         </div>
                     </fieldset>

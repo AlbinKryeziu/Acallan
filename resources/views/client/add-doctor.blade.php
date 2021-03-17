@@ -8,7 +8,7 @@
                 <form class="form-horizontal p-4" method="POST" action="{{ url('/pacient/add/doctor') }}">
                     @csrf
                     <fieldset>
-                        <legend style="text-align: center;">Add Doctor </legend>
+                        <legend style="text-align: center;">@lang('add_doctor') </legend>
                         @if ($message = Session::get('warning'))
                         <div class="alert alert-warning alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -22,7 +22,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Name</label>
+                            <label class="col-md-12 control-label" for="name">@lang('name')</label>
                             <div class="col-md-12">
                             <select class="form-control input-md" id="doctor" name="doctorId">
                                 <option value="">Select Doctor</option>
@@ -38,7 +38,7 @@
                         
                         <div class="form-group">
                             <div class="col-md-12 float-right">
-                                <button type="submit" class="btn btn-info float-right">Save</button>
+                                <button type="submit" class="btn btn-info float-right">@lang('save')</button>
                             </div>
                         </div>
                     </fieldset>
