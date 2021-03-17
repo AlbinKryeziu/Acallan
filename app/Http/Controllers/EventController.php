@@ -6,6 +6,7 @@ use App\Mail\EventAccepted;
 use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\Role;
+use App\Models\ZoomMeeting;
 use Facade\FlareClient\View;
 use Hamcrest\Core\Every;
 use Illuminate\Http\Request;
@@ -117,8 +118,11 @@ class EventController extends Controller
     public function delete($eventId)
     {
         $event = Event::find($eventId);
+     
         $event->delete();
         if ($event) {
+            $requestEvent = EventRequest::where('event_id',$eventId)->delete();
+            $zoom = ZoomMeeting::where('event_id',$eventId)->delete();
             return redirect()
                 ->back()
                 ->with('success', 'The event has been successfully deleted');
