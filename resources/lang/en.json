@@ -37,6 +37,7 @@
      "specialties":"Specialties",
      "gift":"Gift",
      "event":"Event",
+     "events":"Events",
      "action":"Action",
      "event_name":"Event name",
      "doctor_name":"Doctor Name",
@@ -49,6 +50,7 @@
      "type":"Type",
      "doctor":"Doctor",
      "client":"Client",
+     "clients":"Clients",
      "welcome_Client":"Welcome Client",
      "sent":"Sent",
      "accepted":"Accepted",
@@ -60,7 +62,14 @@
      "phone":"Phone",
      "work_address":"Work address",
      "remark":"Remark",
-     "add_doctor":"Add Doctor"
+     "add_doctor":"Add Doctor",
+     "event_history":"Event History",
+     "title":"Title",
+     "request_event":"Request Event",
+     "generate_zoom":"Generate Zoom",
+     "zoom_link":"Zoom link",
+     "no_result":"No registered gifts so far"
+
 
 
 

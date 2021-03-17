@@ -16,7 +16,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4>Gifts <b>Table</b></h4>
+                                    <h4>@lang('gift') <b>@lang('table')</b></h4>
                                     <br />
                                 </div>
                             </div>
@@ -26,8 +26,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Client Name</th>
-                                    <th>Email</th>
+                                    <th>@lang('client')</th>
+                                    <th>@lang('email')</th>
                                     
                                 </tr>
                             </thead>
@@ -60,9 +60,9 @@
                                 
                            
                             <th colspan="2">#</th>
-                            <th colspan="">Client Name</th>
-                            <th colspan="">Description</th>
-                            <th colspan="">Type</th>
+                            <th colspan="">@lang('client')</th>
+                            <th colspan="">@lang('description')</th>
+                            <th colspan="">@lang('type')</th>
 
                             <tbody>
                                 @foreach($gifts as $key => $gift)
@@ -81,7 +81,7 @@
                     @else
                       <tr class="border border-warning">
                                 <td colspan="border border-warning"><div class="alert alert-secondary" role="alert">
-                                    No registered gifts so far
+                                 @lang('no_result')
                                   </div></td>
                             </tr>
                     @endif

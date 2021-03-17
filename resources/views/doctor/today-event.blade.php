@@ -15,11 +15,11 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Event Name</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">Client</th>
-                            <th scope="col">Generate Zoom</th>
-                            <th scope="col">Zoom Link</th>
+                            <th scope="col">@lang('event_name')</th>
+                            <th scope="col">@lang('start_date')</th>
+                            <th scope="col">@lang('client')</th>
+                            <th scope="col">@lang('generate_zoom')</th>
+                            <th scope="col">@lang('zoom_link')</th>
                         </tr>
                     </thead>
                     <tbody>

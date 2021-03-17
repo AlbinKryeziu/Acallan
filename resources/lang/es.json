@@ -33,6 +33,7 @@
     "specialties":"Especialidades",
     "gift":"Regalo",
     "event":"Evento",
+    "events":"Eventos",
     "action":"Acción",
     "event_name":"Nombre del evento",
     "doctor_name":"Nombre del doctor",
@@ -45,6 +46,8 @@
     "type":"Escribe",
     "doctor":"Doctora",
     "client":"Cliente",
+    "clients":"Clientas",
+
     "welcome_Client":"Bienvenida Cliente",
     "sent":"Enviada",
     "accepted":"Aceptada",
@@ -56,7 +59,13 @@
     "phone":"Teléfono",
     "work_address":"Dirección de trabajo",
     "remark":"Observación",
-    "add_doctor":"Agregar doctora"
+    "add_doctor":"Agregar doctora",
+    "event_history":"Historial de eventos",
+    "title":"Título",
+     "request_event":"Solicitar evento",
+     "generate_zoom":"Generar zoom",
+     "zoom_link":"Enlace de zoom",
+     "no_result":"No hay regalos registrados hasta ahora"
     
     
     

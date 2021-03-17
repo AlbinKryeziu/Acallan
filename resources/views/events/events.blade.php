@@ -15,7 +15,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h4>Events <b>Table</b></h4>
+                                    <h4>@lang('events') <b>@lang('table')</b></h4>
                                     <br />
                                 </div>
                             </div>
@@ -33,11 +33,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Request Event</th>
-                                    <th>Action</th>
+                                    <th>@lang('title')</th>
+                                    <th>@lang('start_date')</th>
+                                    <th>@lang('end_date')</th>
+                                    <th>@lang('request_event')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>
