@@ -12,6 +12,17 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <br />
                 <table class="table">
+                    <div class="col-sm-12">
+                        <h4>Today  Event <b>Table</b></h4>
+                        <br />
+                        
+                    </div>
+                    <div class="col-sm-12">
+                        <p>Today date : <strong>{{ Carbon\Carbon::now()->format('Y-m-d') }}</strong> </p>
+                        <br />
+                        
+                    </div>
+                    
                     <thead>
                         <tr>
                             <th scope="col">#</th>

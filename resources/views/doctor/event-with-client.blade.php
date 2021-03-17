@@ -15,7 +15,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4>Accepted Events<b> Table</b></h4>
+                                    <h4>@lang('accepted_events')<b> @lang('table')</b></h4>
                                     <br />
                                 </div>
                             </div>
@@ -35,13 +35,13 @@
 
                         <table class="table table-hover table-bordered">
                             <tr></tr>  
-                                <th colspan="8" style="text-align: center;">Events with {{ $user->name }} </th> 
+                                <th colspan="8" style="text-align: center;">@lang('events_with') {{ $user->name }} </th> 
                             </tr>
                             @if($event->count() >=1)
                             <th colspan="2">#</th>
-                            <th colspan="">Event Name</th>
-                            <th colspan="">Start Date</th>
-                            <th colspan="">End Date</th>
+                            <th colspan="">@lang('event_name')</th>
+                            <th colspan="">@lang('start_date')</th>
+                            <th colspan="">@lang('end_date')</th>
 
                             <tbody>
                                 @foreach($event as $key => $event)
@@ -57,7 +57,7 @@
                         @else
                       <tr class="border border-warning">
                                 <td colspan="border border-warning"><div class="alert alert-secondary" role="alert">
-                                    You have no events so far
+                                   @lang('no_result')
                                   </div></td>
                             </tr>
                     @endif
