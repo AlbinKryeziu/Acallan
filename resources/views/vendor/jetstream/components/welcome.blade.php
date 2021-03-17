@@ -74,7 +74,13 @@
             </div>
         </div>
     </div>
-   
+   <form method="POST" action="{{ url('/meetings') }}">
+    @csrf
+<input type="name" class="form-control" name="start_time">
+<input type="name" class="form-control" name="email">
+<button type="submit">Add</button>
+
+   </form>
     {{-- <div class="max-w-7xl p-4">
         <table class="table">
             <thead class="thead-dark">

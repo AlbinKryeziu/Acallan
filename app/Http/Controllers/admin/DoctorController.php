@@ -226,7 +226,7 @@ class DoctorController extends Controller
             ->whereDate('start', $date)
             ->where('status', 1)
             ->get();
-        return view('vendor/jetstream/components/welcome', [
+        return view('doctor/today-event', [
             'event' => $event,
         ]);
     }

@@ -24,4 +24,7 @@ class Event extends Model
      return $this->hasMany(EventRequest::class,'event_id', 'id');
   }
   
+  public function zoom(){
+    return $this->hasOne(ZoomMeeting::class,'event_id', 'id');
+  }
 } 

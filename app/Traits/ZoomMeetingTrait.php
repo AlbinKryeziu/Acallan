@@ -41,30 +41,30 @@ trait ZoomMeetingTrait
         return env('ZOOM_API_URL', '');
     }
 
-    // public function toZoomTimeFormat(string $dateTime)
-    // {
-    //     try {
-    //         // $date = new \DateTime($dateTime);
+    public function toZoomTimeFormat(string $dateTime)
+    {
+        try {
+            $date = new \DateTime($dateTime);
 
-    //         // return $date->format('Y-m-d\TH:i:s');
-    //     } catch (\Exception $e) {
-    //         Log::error('ZoomJWT->toZoomTimeFormat : '.$e->getMessage());
+            return $date->format('Y-m-d\TH:i:s');
+        } catch (\Exception $e) {
+            Log::error('ZoomJWT->toZoomTimeFormat : '.$e->getMessage());
 
-    //         return '';
-    //     }
-    // }
+            return '';
+        }
+    }
 
     public function create($data)
     {
+        
         $path = 'users/me/meetings';
         $url = $this->retrieveZoomUrl();
 
         $body = [
             'headers' => $this->headers,
             'body'    => json_encode([
-                'topic'      => $data['topic'],
                 'type'       => self::MEETING_TYPE_SCHEDULE,
-                'start_time' => 'dth',
+                'start_time' => $this->toZoomTimeFormat($data['start_time']),
                 'duration'   => 180,
                 'agenda'     => (! empty($data['agenda'])) ? $data['agenda'] : null,
                 'timezone'     => '',
