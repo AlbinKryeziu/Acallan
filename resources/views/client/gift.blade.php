@@ -1,23 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        @include('admin/asset')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Client Dashboard') }}
-        </h2>
-        <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
-                Doctor
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/event') }}">
-                Event
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
-                Gift
-            </x-jet-nav-link>
-        </div>
-    </x-slot>
+    @include('client/assets/header')
     @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
@@ -25,18 +7,18 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>Gift <b>Table</b></h4>
+                            <h4>@lang('gift') <b>@lang('table')</b></h4>
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Gift</th>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th>Doctor</th>
-                                    <th>Client</th>
+                                    <th>@lang('gift')</th>
+                                    <th>@lang('description')</th>
+                                    <th>@lang('type')</th>
+                                    <th>@lang('doctor')</th>
+                                    <th>@lang('client')</th>
                                     
                                 </tr>
                             </thead>

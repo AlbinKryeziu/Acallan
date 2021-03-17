@@ -1,23 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        @include('admin/asset')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Client Dashboard') }}
-        </h2>
-        <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
-                Doctor
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/event') }}">
-                Event
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
-                Gift
-            </x-jet-nav-link>
-        </div>
-    </x-slot>
+    @include('client/assets/header')
     @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
@@ -25,22 +7,22 @@
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>My Events <b>Table</b></h4>
+                            <h4>@lang('event_table') <b>@lang('table')</b></h4>
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Event name</th>
-                                    <th>Doctor Name</th>
-                                     <th>Product</th>
-                                     <th>Article</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Status</th>
+                                    <th>@lang('event_name')</th>
+                                    <th>@lang('doctor_name')</th>
+                                     <th>@lang('product')</th>
+                                     <th>@lang('article')</th>
+                                    <th>@lang('start_date')</th>
+                                    <th>@lang('end_date')</th>
+                                    <th>@lang('status')</th>
                                     <th>Zoom Link</th>
-                                    <th>Action</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>

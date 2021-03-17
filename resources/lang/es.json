@@ -21,5 +21,31 @@
     "how_it_work-title1":"Creando una cuenta",
     "how_it_work-paragraf1":"Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
 
-    "contact_us_title":"Cómo llegar a nosotras"
+    "contact_us_title":"Cómo llegar a nosotras",
+    
+    "table_doctor":"Mis doctores",
+    "event_table":"Mis Eventos",
+    
+    "table":"Mesa",
+    "name":"Nombre",
+    "email":"Correo electrónico",
+    "specialties":"Especialidades",
+    "gift":"Regalo",
+    "event":"Evento",
+    "action":"Acción",
+    "event_name":"Nombre del evento",
+    "doctor_name":"Nombre del doctor",
+    "product":"Producto",
+    "article":"Artículo",
+    "start_date":"Fecha de inicio",
+    "end_date":"Fecha final",
+    "status":"Estado",
+    "description":"Description",
+    "type":"Escribe",
+    "doctor":"Doctora",
+    "client":"Cliente",
+    "welcome_Client":"Bienvenida Cliente"
+    
+    
+    
 }

@@ -22,7 +22,7 @@
     <div class="banner bg-overlay">
         <div class="container content">
             <h1 class="banner-title center"><span class="red-text">Virtual</span> ProMedRep </h1>
-            <p class="banner-sub-title center">{{__('home_banner')}}</p>
+            <p class="banner-sub-title center">@lang('home_banner')</p>
             <div class="buttons flex">
                 <div class="button" style="background-color: #ED1B24;"><a href="{{url('/register')}}" style="color: white;">{{__('register')}}</a></div>
                 <div class="button" style="background-color: white;"><a href="{{url('/login')}}" style="color:#0E1A35;">{{__('login')}}</a></div>

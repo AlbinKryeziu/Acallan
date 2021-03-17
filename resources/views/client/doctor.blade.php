@@ -1,23 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        @include('admin/asset')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Client Dashboard') }}
-        </h2>
-        <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
-                Doctor
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/event') }}">
-                Event
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
-                Gift
-            </x-jet-nav-link>
-        </div>
-    </x-slot>
+    @include('client/assets/header')
  @php
      $i=1;
  @endphp
@@ -29,7 +11,7 @@
                         <div class="table-title">
                             @if($user->doctor_access)
                            
-                            <h4>My Doctors <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">Add Doctor</button></h4>
+                            <h4>@lang('table_doctor') <b>@lang('table')</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">Add Doctor</button></h4>
                             @endif
                             <br />
                         </div>
@@ -37,13 +19,13 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('email')</th>
 
-                                    <th>Specialties</th>
-                                    <th>Gift</th>
-                                    <th>Event</th>
-                                    <th>Action</th>
+                                    <th>@lang('specialties')</th>
+                                    <th>@lang('gift')</th>
+                                    <th>@lang('event')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>

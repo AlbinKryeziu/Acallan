@@ -25,7 +25,34 @@
 
      "how_it_work-paragraf1":"Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
 
-     "contact_us_title":"How To Reach Us"
+     "contact_us_title":"How To Reach Us",
+
+     "table_doctor":"My Doctors",
+     "event_table":"My Events",
+     
+     "table":"Table",
+     "name":"Name",
+     "email":"Email",
+     "specialties":"Specialties",
+     "gift":"Gift",
+     "event":"Event",
+     "action":"Action",
+     "event_name":"Event name",
+     "doctor_name":"Doctor Name",
+     "product":"Product",
+     "article":"Article",
+     "start_date":"Start date",
+     "end_date":"End date",
+     "status":"Status",
+     "description":"Description",
+     "type":"Type",
+     "doctor":"Doctor",
+     "client":"Client",
+     "welcome_Client":"Welcome Client"
+     
+     
+
+
 
     
 }

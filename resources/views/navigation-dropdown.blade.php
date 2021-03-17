@@ -44,10 +44,16 @@
                     </x-jet-nav-link>
                 </div>
                 @endif
+                
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+               
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex float-right">
+                    
+                </div>
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -71,6 +77,7 @@
                             </div>
                         </button>
                         @endif
+                        
                     </x-slot>
 
                     <x-slot name="content">
