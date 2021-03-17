@@ -36,21 +36,18 @@
                                                                 <table class="header-row" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 10px; padding-top: 15px;" valign="top" align="left">Request for appointment</td>
+                                                                            <td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 10px; padding-top: 15px;" valign="top" align="left">Zoom Link</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
                                                                 <div style="font-family: Arial, sans-serif; line-height: 20px; color: #444444; font-size: 13px;">
                                                                     <b style="color: #777777;">Dear: <strong>{{ $data['name'] }} !</strong></b>
                                                                     <br>
-                                                                     Dr <strong>{{ $data['doctor'] }}</strong> has approved your request for an appointment
-                                                                    <br> The meeting will be on <strong>{{ $data['start'] }} / {{ $data['end'] }}</strong>
+                                                                     Dr <strong>{{ $data['doctor'] }}</strong>has generated the zoom link one hour forward
+                                                                    <br> The meeting will be on <strong>{{ $data['start'] }}</strong>
                                                                     <br>
                                                                     <br>
-                                                                <p>Careful! </p> 
-                                                                <br>
-                                                                <p> doctor will generate the zoom link one hour before the appointment, also you will receive an email notification where you will find the zoom link also you have the link in our system</p>
-                                                                  
+                                                                 
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -100,7 +97,7 @@
                                                         <tr>
                                                             <td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
                                                                 <div style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; text-align: center;">
-                                                                    <a href="#" style="color: #ffffff; text-decoration: none; margin: 0px; text-align: center; vertical-align: baseline; border: 4px solid #6fb3e0; padding: 4px 9px; font-size: 15px; line-height: 21px; background-color: #6fb3e0;">&nbsp; Ok &nbsp;</a>
+                                                                    <a href="{{ url($data['join_url']) }}" style="color: #ffffff; text-decoration: none; margin: 0px; text-align: center; vertical-align: baseline; border: 4px solid #6fb3e0; padding: 4px 9px; font-size: 15px; line-height: 21px; background-color: #6fb3e0;">&nbsp;Zoom link &nbsp;</a>
                                                                 </div>
                                                                 <table class="table-space" height="16" style="height: 16px; font-size: 0px; line-height: 0; width: 378px; background-color: #ffffff;" width="378" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0">
                                                                     <tbody>

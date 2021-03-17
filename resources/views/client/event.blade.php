@@ -39,6 +39,7 @@
                                     <th>Start date</th>
                                     <th>End date</th>
                                     <th>Status</th>
+                                    <th>Zoom Link</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -58,6 +59,13 @@
                                     <td><i class="fa fa-check-circle fa-lg" aria-hidden="true" style="color: green;"></i></td>
                                     @elseif($event->status == 2)
                                     <td><i class="fa fa-times-circle fa-lg" aria-hidden="true" style="color: #992208;"></i></td>
+                                    @endif
+                                    @if($event->event->zoom)
+                                        
+                                  
+                                    <td><a href="{{ url($event->event->zoom->join_url) }} " target="_blank" style="color: black;"><i class="fa fa-meetup fa-lg"> </i></a></td>
+                                    @else
+                                    <td>/</td>
                                     @endif
                                     <td><a href="{{ url('/edit/event/request/'.$event->id) }}"><i class="fa fa-pencil" aria-hidden="true" style="color: black"></i>
                                 </tr>

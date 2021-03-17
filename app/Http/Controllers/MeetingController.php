@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ZoomLink;
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ZoomMeeting;
 
 use App\Traits\ZoomMeetingTrait;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MeetingController extends Controller
 {
@@ -27,22 +32,30 @@ class MeetingController extends Controller
 
     public function store(Request $request)
     {
-     
-     $zommdata =  $this->create($request->all());
-     if($zommdata){
-         $creteZoom = ZoomMeeting::create([
-             'start_data'=>Carbon::parse($zommdata['data']['start_time'])->format('Y-m-d H:i'),
-             'duration' =>$zommdata['data']['duration'],
-             'start_url' =>$zommdata['data']['start_url'],
-             'join_url' =>$zommdata['data']['join_url'],
-             'doctor_id' =>Auth::id(),
-             'request_id' => $request->client_id,
-             'event_id' => $request->event_id,
-             
-         ]);
-     }
-    
-     return  back();
+        $zommdata = $this->create($request->all());
+        if ($zommdata) {
+            $creteZoom = ZoomMeeting::create([
+                'start_data' => Carbon::parse($zommdata['data']['start_time'])->format('Y-m-d H:i'),
+                'duration' => $zommdata['data']['duration'],
+                'start_url' => $zommdata['data']['start_url'],
+                'join_url' => $zommdata['data']['join_url'],
+                'doctor_id' => Auth::id(),
+                'request_id' => $request->client_id,
+                'event_id' => $request->event_id,
+            ]);
+            $event = Event::where('id', $request->event_id)->first();
+            $doctor = User::where('id', $event->user_id)->first();
+            $client = User::where('id', $request->client_id)->first();
+            $data = [
+                'name' => $client->name,
+                'doctor' => $doctor->name,
+                'start' => $event->start,
+                'join_url' => $zommdata['data']['join_url'],
+            ];
+            Mail::to($client->email)->send(new ZoomLink($data));
+        }
+
+        return back();
     }
 
     public function update($meeting, Request $request)
