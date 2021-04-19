@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClientDoctor;
+use App\Models\Doctor;
 use App\Models\Follow;
+use App\Models\GiftClient;
 use App\Models\User;
+use App\Models\ZoomMeeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,9 +45,14 @@ class ManagerController extends Controller
     public function profileClient($clientId)
     {
         $user = User::findOrFail($clientId);
-
+        $doctors = ClientDoctor::where('client_id',$user->id)->count();
+        $gifts = GiftClient::where('client_id',$user->id)->count();
+        $metting = ZoomMeeting::where('request_id',$user->id)->count();
         return view('menagers/profile', [
             'user' => $user,
+            'doctors' => $doctors,
+            'gifts' => $gifts,
+            'meeting' => $metting,
         ]);
     }
 }
