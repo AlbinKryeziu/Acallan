@@ -8,6 +8,7 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\PacientController;
 use App\Http\Controllers\MeetingController;
 use App\Models\Event;
@@ -156,3 +157,10 @@ Route::get('/pacient/store/mygift', [PacientController::class, 'myGift']);
 Route::post('createzoom', [ZoomController::class, 'store']);
 
 Route::post('/meetings', [MeetingController::class, 'store']);
+
+
+Route::group(['middleware' => ['manager']], function () {
+   
+    Route::get('/follow.{clientId}', [ManagerController::class, 'follow']);
+
+});
