@@ -15,7 +15,6 @@ use Illuminate\Support\Carbon;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 
-
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,28 +54,34 @@ Route::middleware(['auth:sanctum', 'verified'])
             ]);
         } elseif (Auth::user()->hasRole('doc')) {
             $date = Carbon::today()->toDateTimeString();
-            $event = Event::with(['requestEvent' => function($q){
-            $q->where('status', 1);
-            }])->where('user_id',Auth::id())->whereDate('start',$date)->where('status',1)->get();
-            return view('dashboard',[
-                'event' =>$event,
+            $event = Event::with([
+                'requestEvent' => function ($q) {
+                    $q->where('status', 1);
+                },
+            ])
+                ->where('user_id', Auth::id())
+                ->whereDate('start', $date)
+                ->where('status', 1)
+                ->get();
+            return view('dashboard', [
+                'event' => $event,
             ]);
-        }elseif (Auth::user()->hasRole('client')) {
+        } elseif (Auth::user()->hasRole('client')) {
             return view('client/dashboard');
-        }
-        elseif (Auth::user()->hasRole('manager')) {
-            return $users = User::with('role')
-            ->whereHas('role', function ($q) {
-                $q->where('name', 'Client');
-            })
-            ->get();
-            return view('menagers/index');
+        } elseif (Auth::user()->hasRole('manager')) {
+           $users = User::with('role')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'Client');
+                })
+                ->get();
+            return view('menagers/index',[
+                'users' =>$users,
+            ]);
         }
     })
     ->name('dashboard');
 
 Route::get('/', function () {
-    
     return view('home');
 });
 Route::get('/how-it-works', function () {
@@ -124,34 +129,30 @@ Route::get('/doctor/today/event', [DoctorController::class, 'todayEvent']);
 
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
-Route::get('/client/access/{userId}', [ClientController::class,'storeAccess']);
-Route::post('/client/access/doctor', [ClientController::class,'accessDoctor']);
-Route::get('/client/info/{clientId}', [ClientController::class,'infoClient']);
-Route::get('/client/profile/{clientId}', [ClientController::class,'profileClient']);
-Route::get('/client/evnts/{clientId}', [ClientController::class,'eventClient']);
-Route::get('/client/gift/{clientId}', [ClientController::class,'giftClient']);
-Route::delete('/client/delete/gift/{giftId}', [ClientController::class,'deleteGIft']);
-Route::get('/client/create/events/admin/{clientId}', [ClientController::class,'creatEventAdmin']);
-Route::post('/client/store/events/admin/', [ClientController::class,'storeEventAdmin']);
-Route::get('/admin/request/event/{eventId}', [ClientController::class,'eventRequestAdmin']);
-Route::delete('/delete/events/admin/{eventId}', [ClientController::class,'adminDeleteEvent']);
-Route::get('/edit/event/request/{eventId}', [ClientController::class,'editEventRequest']);
-Route::post('/edit/update/request/{eventId}', [ClientController::class,'updateEventRequest']);
+Route::get('/client/access/{userId}', [ClientController::class, 'storeAccess']);
+Route::post('/client/access/doctor', [ClientController::class, 'accessDoctor']);
+Route::get('/client/info/{clientId}', [ClientController::class, 'infoClient']);
+Route::get('/client/profile/{clientId}', [ClientController::class, 'profileClient']);
+Route::get('/client/evnts/{clientId}', [ClientController::class, 'eventClient']);
+Route::get('/client/gift/{clientId}', [ClientController::class, 'giftClient']);
+Route::delete('/client/delete/gift/{giftId}', [ClientController::class, 'deleteGIft']);
+Route::get('/client/create/events/admin/{clientId}', [ClientController::class, 'creatEventAdmin']);
+Route::post('/client/store/events/admin/', [ClientController::class, 'storeEventAdmin']);
+Route::get('/admin/request/event/{eventId}', [ClientController::class, 'eventRequestAdmin']);
+Route::delete('/delete/events/admin/{eventId}', [ClientController::class, 'adminDeleteEvent']);
+Route::get('/edit/event/request/{eventId}', [ClientController::class, 'editEventRequest']);
+Route::post('/edit/update/request/{eventId}', [ClientController::class, 'updateEventRequest']);
 
+Route::get('/pacient/doctor', [PacientController::class, 'doctor']);
+Route::get('/pacient/store', [PacientController::class, 'store']);
+Route::post('/pacient/add/doctor', [PacientController::class, 'addDoctor']);
+Route::get('/pacient/events/{doctorId}', [PacientController::class, 'eventsByDoctor']);
+Route::post('/pacient/request', [PacientController::class, 'requestEvent']);
+Route::get('/pacient/event', [PacientController::class, 'eventStatus']);
+Route::get('/pacient/store/gift/{doctorId}', [PacientController::class, 'storeGift']);
+Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class, 'addGift']);
+Route::get('/pacient/store/mygift', [PacientController::class, 'myGift']);
 
-Route::get('/pacient/doctor', [PacientController::class,'doctor']);
-Route::get('/pacient/store', [PacientController::class,'store']);
-Route::post('/pacient/add/doctor', [PacientController::class,'addDoctor']);
-Route::get('/pacient/events/{doctorId}', [PacientController::class,'eventsByDoctor']);
-Route::post('/pacient/request', [PacientController::class,'requestEvent']);
-Route::get('/pacient/event', [PacientController::class,'eventStatus']);
-Route::get('/pacient/store/gift/{doctorId}', [PacientController::class,'storeGift']);
-Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class,'addGift']);
-Route::get('/pacient/store/mygift', [PacientController::class,'myGift']);
-
-
-Route::post('createzoom', [ZoomController::class , 'store']);
+Route::post('createzoom', [ZoomController::class, 'store']);
 
 Route::post('/meetings', [MeetingController::class, 'store']);
-
-
