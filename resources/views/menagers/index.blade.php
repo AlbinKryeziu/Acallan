@@ -1,15 +1,11 @@
 <x-app-layout>
-    @include('menagers/includes/header')
- @php
-     $i=1;
- @endphp
+    @include('menagers/includes/header') @php $i=1; @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <div class="table">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
@@ -22,25 +18,25 @@
                                     <th>#</th>
                                     <th>@lang('name')</th>
                                     <th>@lang('email')</th>
-                                    <th>Phone</th>
-                                    <th>Follow Status</th>
-                                  
+                                    <th>Profile</th>
+                                    <th>Follow</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ( $users as $user)
-                                   <tr>
-                                       <td>{{ $loop->iteration }}</td>
-                                       <td>{{ $user->name }}</td>
-                                       <td>{{ $user->email }}</td>
-                                       <td><a href="tel:{{ $user->phone }}">{{$user->phone }}</a></td>
-                                   </tr> 
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                        <i class="fa fa-user-times fa-lg" aria-hidden="true"></i>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 @endforeach
-                              
                             </tbody>
                         </table>
-                       
-                       
                     </div>
                 </div>
             </div>
