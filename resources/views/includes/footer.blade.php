@@ -9,9 +9,9 @@
         <div class="column column-2">
             <h4>SITEMAP</h4>
             <br>
-            <h6>Home</h6>
-            <h6>About Us</h6>
-            <h6>Contact Us</h6>
+            <a href="" style="color: black"><h6>Home</h6></a>
+            <a href="" style="color: black"><h6>About Us</h6></a>
+            <a href="" style="color: black"><h6>Contact Us</h6></a>
         </div>
         <div class="column column-3">
             <h4>PLATFORM</h4>

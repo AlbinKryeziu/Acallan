@@ -8,6 +8,7 @@ use App\Mail\SendMail;
 
 class SendEmailController extends Controller
 {
+    
     function index()
     {
         return view('contact-us');

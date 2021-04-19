@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Mail;
 
 class MeetingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     use ZoomMeetingTrait;
 
     const MEETING_TYPE_INSTANT = 1;

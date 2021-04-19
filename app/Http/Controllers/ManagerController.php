@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ManagerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function follow($clientId)
     {
         $follow = Auth::user()

@@ -70,13 +70,13 @@ Route::middleware(['auth:sanctum', 'verified'])
         } elseif (Auth::user()->hasRole('client')) {
             return view('client/dashboard');
         } elseif (Auth::user()->hasRole('manager')) {
-           $users = User::with('role')
+            $users = User::with('role')
                 ->whereHas('role', function ($q) {
                     $q->where('name', 'Client');
                 })
                 ->get();
-            return view('menagers/index',[
-                'users' =>$users,
+            return view('menagers/index', [
+                'users' => $users,
             ]);
         }
     })
@@ -158,12 +158,9 @@ Route::post('createzoom', [ZoomController::class, 'store']);
 
 Route::post('/meetings', [MeetingController::class, 'store']);
 
-
 Route::group(['middleware' => ['manager']], function () {
-   
     Route::post('follow/{clientId}', [ManagerController::class, 'follow']);
     Route::post('canelRequest/{clientId}', [ManagerController::class, 'canelRequest']);
     Route::post('unfollow/{clientId}', [ManagerController::class, 'unFollow']);
     Route::get('profile/{clientId}', [ManagerController::class, 'profileClient']);
-
 });
