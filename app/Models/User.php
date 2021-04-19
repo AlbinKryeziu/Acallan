@@ -11,7 +11,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
-
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -25,24 +24,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-   
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
     /**
      * The attributes that should be cast to native types.
@@ -59,11 +48,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    
+    protected $appends = ['profile_photo_url'];
 
     public function role()
     {
@@ -71,43 +56,61 @@ class User extends Authenticatable
     }
 
     public function hasRole($role)
-    {        
-        return $result = $this->role[0]->slug == $role;;
+    {
+        return $result = $this->role[0]->slug == $role;
     }
-    
+
     public static function getUsersByRole($role)
     {
-        return User::all()->filter->hasRole($role)->values();;
+        return User::all()
+            ->filter->hasRole($role)
+            ->values();
     }
 
-    public function isAdmin() {
-
-        return $this->hasRole('admin'); 
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
     }
 
-    public function isDoctor() {
-
-        return $this->hasRole('doc'); 
+    public function isDoctor()
+    {
+        return $this->hasRole('doc');
     }
 
-    public function isClient() {
-
-        return $this->hasRole('client'); 
+    public function isClient()
+    {
+        return $this->hasRole('client');
     }
-    public function isManager() {
-
-        return $this->hasRole('manager'); 
+    public function isManager()
+    {
+        return $this->hasRole('manager');
     }
-    public function doctor(){
+    public function doctor()
+    {
         return $this->hasOne(Doctor::class);
     }
 
-    public function event(){
-        return $this->hasMany(Event::class , 'user_id' , 'id');
+    public function event()
+    {
+        return $this->hasMany(Event::class, 'user_id', 'id');
     }
-    public function acces(){
-        return $this->hasMany(Specialty::class,'doctor_access','id');
+    public function acces()
+    {
+        return $this->hasMany(Specialty::class, 'doctor_access', 'id');
     }
 
+    public function follow()
+    {
+        return $this->hasMany(Follow::class, 'menager_id', 'id');
+    }
+    public function followers()
+    {
+        return $this->hasMany(Follow::class, 'client_id', 'id');
+    }
+    public function isFollowing($userId)
+    {
+        return (bool) $this->follow()
+            ->where(['client_id' => $userId, 'stauts' => Follow::Request])
+            ->first(['id']);
+    }
 }
-
