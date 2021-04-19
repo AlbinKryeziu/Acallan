@@ -110,19 +110,19 @@ class User extends Authenticatable
     public function isFollowing($userId)
     {
         return (bool) $this->follow()
-            ->where(['client_id' => $userId, 'stauts' => Follow::Accepted])
+            ->where(['client_id' => $userId, 'status' => Follow::Accepted])
             ->first(['id']);
     }
     public function isRequest($userId)
     {
         return (bool) $this->follow()
-            ->where(['client_id' => $userId, 'stauts' => Follow::Request])
+            ->where(['client_id' => $userId, 'status' => Follow::Request])
             ->first(['id']);
     }
     public function isRejected($userId)
     {
         return (bool) $this->follow()
-            ->where(['client_id' => $userId, 'stauts' => Follow::Rejected])
+            ->where(['client_id' => $userId, 'status' => Follow::Rejected])
             ->first(['id']);
     }
 }

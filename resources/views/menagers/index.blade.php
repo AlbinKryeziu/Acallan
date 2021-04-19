@@ -18,6 +18,7 @@
                                     <th>#</th>
                                     <th>@lang('name')</th>
                                     <th>@lang('email')</th>
+                                    <th>Phone</th>
                                     <th>Profile</th>
                                     <th>Follow</th>
                                 </tr>
@@ -28,11 +29,43 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>
-                                        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
-                                        <i class="fa fa-user-times fa-lg" aria-hidden="true"></i>
-                                    </td>
                                     <td></td>
+                                    <td>
+                                        @if(Auth::user()->isFollowing($user->id))
+                                        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                        @else
+                                        <i class="fa fa-user-times fa-lg" aria-hidden="true"></i>
+                                        @endif
+                                    </td>
+                                    @if(Auth::user()->isFollowing($user->id))
+                                    <td>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm col-6">Unfollow</button>
+                                        </form>
+                                    </td>
+                                    @elseif(Auth::user()->isRequest($user->id))
+                                    <td>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-info btn-sm col-6">Canel Request</button>
+                                        </form>
+                                    </td>
+                                    @elseif(Auth::user()->isRejected($user->id))
+                                    <td>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm col-6">Rejected</button>
+                                        </form>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <form action="{{ url('follow/'.$user->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary btn-sm col-6">Follow</button>
+                                        </form>
+                                    </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

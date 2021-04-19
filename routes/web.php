@@ -161,6 +161,6 @@ Route::post('/meetings', [MeetingController::class, 'store']);
 
 Route::group(['middleware' => ['manager']], function () {
    
-    Route::get('/follow.{clientId}', [ManagerController::class, 'follow']);
+    Route::post('follow/{clientId}', [ManagerController::class, 'follow']);
 
 });
