@@ -32,21 +32,21 @@
                                     <td></td>
                                     <td>
                                         @if(Auth::user()->isFollowing($user->id))
-                                        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                        <a href="" style="color: black"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                         @else
                                         <i class="fa fa-user-times fa-lg" aria-hidden="true"></i>
                                         @endif
                                     </td>
                                     @if(Auth::user()->isFollowing($user->id))
                                     <td>
-                                        <form action="" method="POST">
+                                        <form action="{{ url('unfollow/'.$user->id) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-success btn-sm col-6">Unfollow</button>
+                                            <button type="submit" class="btn btn-dark btn-sm col-6">Unfollow</button>
                                         </form>
                                     </td>
                                     @elseif(Auth::user()->isRequest($user->id))
                                     <td>
-                                        <form action="" method="POST">
+                                        <form action="{{ url('canelRequest/'.$user->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-info btn-sm col-6">Canel Request</button>
                                         </form>
@@ -55,7 +55,8 @@
                                     <td>
                                         <form action="" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm col-6">Rejected</button>
+
+                                            <button type="button" class="btn btn-danger btn-sm col-6">Rejected</button>
                                         </form>
                                     </td>
                                     @else
