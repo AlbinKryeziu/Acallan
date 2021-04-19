@@ -45,9 +45,9 @@ class ManagerController extends Controller
     public function profileClient($clientId)
     {
         $user = User::findOrFail($clientId);
-        $doctors = ClientDoctor::where('client_id',$user->id)->count();
-        $gifts = GiftClient::where('client_id',$user->id)->count();
-        $metting = ZoomMeeting::where('request_id',$user->id)->count();
+        $doctors = ClientDoctor::where('client_id', $user->id)->count();
+        $gifts = GiftClient::where('client_id', $user->id)->count();
+        $metting = ZoomMeeting::where('request_id', $user->id)->count();
         return view('menagers/profile', [
             'user' => $user,
             'doctors' => $doctors,

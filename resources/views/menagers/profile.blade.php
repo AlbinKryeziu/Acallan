@@ -1,14 +1,14 @@
 <x-app-layout>
     @include('menagers/includes/header')
 
-
-<style>.my-card
-    {
-        position:absolute;
-        left:40%;
-        top:-20px;
-        border-radius:50%;
-    }</style>
+    <style>
+        .my-card {
+            position: absolute;
+            left: 40%;
+            top: -20px;
+            border-radius: 50%;
+        }
+    </style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
@@ -76,30 +76,29 @@
                                 </div>
                                 <div class="jumbotron">
                                     <div class="row w-100">
-                                            <div class="col-md-4">
-                                                <div class="card border-info mx-sm-1 p-3">
-                                                    <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-user-md" aria-hidden="true"></span></div>
-                                                    <div class="text-info text-center mt-8"><h4>Doctors</h4></div>
-                                                    <div class="text-info text-center mt-3"><h3>{{ $doctors }}</h3></div>
-                                                </div>
+                                        <div class="col-md-4">
+                                            <div class="card border-info mx-sm-1 p-3">
+                                                <div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-user-md" aria-hidden="true"></span></div>
+                                                <div class="text-info text-center mt-8"><h4>Doctors</h4></div>
+                                                <div class="text-info text-center mt-3"><h3>{{ $doctors }}</h3></div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="card border-success mx-sm-1 p-3">
-                                                    <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-gift" aria-hidden="true"></span></div>
-                                                    <div class="text-success text-center mt-8"><h4>Gifts</h4></div>
-                                                    <div class="text-success text-center mt-3"><h3>{{ $gifts }}</h3></div>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card border-success mx-sm-1 p-3">
+                                                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-gift" aria-hidden="true"></span></div>
+                                                <div class="text-success text-center mt-8"><h4>Gifts</h4></div>
+                                                <div class="text-success text-center mt-3"><h3>{{ $gifts }}</h3></div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="card border-danger mx-sm-1 p-3">
-                                                    <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-window-restore" aria-hidden="true"></span></div>
-                                                    <div class="text-danger text-center mt-8"><h4>Meeting</h4></div>
-                                                    <div class="text-danger text-center mt-3"><h3>{{ $meeting }}</h3></div>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card border-danger mx-sm-1 p-3">
+                                                <div class="card border-danger shadow text-danger p-3 my-card"><span class="fa fa-window-restore" aria-hidden="true"></span></div>
+                                                <div class="text-danger text-center mt-8"><h4>Meeting</h4></div>
+                                                <div class="text-danger text-center mt-3"><h3>{{ $meeting }}</h3></div>
                                             </div>
-                                            
-                                         </div>
+                                        </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>

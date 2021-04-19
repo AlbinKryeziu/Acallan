@@ -12,7 +12,8 @@ class FullCalendarController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Event::where('user_id',Auth::id())->whereDate('start', '>=', $request->start)
+            $data = Event::where('user_id', Auth::id())
+                ->whereDate('start', '>=', $request->start)
                 ->whereDate('end', '<=', $request->end)
                 ->get(['id', 'title', 'start', 'end']);
 
@@ -20,15 +21,10 @@ class FullCalendarController extends Controller
         }
     }
 
-    
     public function create(Request $request)
     {
-        $insertArr = ['title' => $request->title, 
-                      'start' => $request->start, 
-                      'end' => $request->end,
-                      'user_id' => Auth::id(),
-                    ];
-                      
+        $insertArr = ['title' => $request->title, 'start' => $request->start, 'end' => $request->end, 'user_id' => Auth::id()];
+
         $event = Event::insert($insertArr);
         return response()->json($event);
     }
@@ -36,12 +32,7 @@ class FullCalendarController extends Controller
     public function update(Request $request)
     {
         $where = ['id' => $request->id];
-        $updateArr = ['title' => $request->title, 
-                      'start' => $request->start, 
-                      'end' => $request->end,
-                      'user_id' => Auth::id(),
-                    
-                    ];
+        $updateArr = ['title' => $request->title, 'start' => $request->start, 'end' => $request->end, 'user_id' => Auth::id()];
         $data = Event::where($where)->update($updateArr);
 
         return response()->json($data);

@@ -231,24 +231,25 @@ class ClientController extends Controller
                 ->with('success', 'The event was successfully deleted');
         }
     }
-    public function editEventRequest($eventId){
-        
-         $event = EventRequest::with('event')->findOrFail($eventId);
-         return view('client/edit-event',[
-             'event' =>$event,
-         ]);
+    public function editEventRequest($eventId)
+    {
+        $event = EventRequest::with('event')->findOrFail($eventId);
+        return view('client/edit-event', [
+            'event' => $event,
+        ]);
     }
 
-    public function updateEventRequest(Request $request,$eventId){
-
-        $update = EventRequest::where('id',$eventId)->update([
-            'product'=>$request->product,
-            'article'=>$request->article,
-
+    public function updateEventRequest(Request $request, $eventId)
+    {
+        $update = EventRequest::where('id', $eventId)->update([
+            'product' => $request->product,
+            'article' => $request->article,
         ]);
 
-        if($update){
-            return redirect()->back()->with('success','Event request has been successfully edited');
+        if ($update) {
+            return redirect()
+                ->back()
+                ->with('success', 'Event request has been successfully edited');
         }
     }
 }

@@ -56,8 +56,7 @@ class DoctorController extends Controller
 
     public function addDoctor(DoctorRequest $request)
     {
-        
-        $id = IdGenerator::generate(['table' => 'doctors', 'field'=>'id_doctor','length' => 10, 'prefix' =>'IDD-']);
+        $id = IdGenerator::generate(['table' => 'doctors', 'field' => 'id_doctor', 'length' => 10, 'prefix' => 'IDD-']);
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
         $password = substr($random, 0, 10);
 
@@ -208,7 +207,7 @@ class DoctorController extends Controller
         $event = Event::where('user_id', Auth::id())
             ->whereIn('id', $acceptedRequest)
             ->get();
-         $user = User::findOrFail($clientId);
+        $user = User::findOrFail($clientId);
         return view('doctor/event-with-client', [
             'event' => $event,
             'user' => $user,

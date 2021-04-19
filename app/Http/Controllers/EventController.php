@@ -42,12 +42,12 @@ class EventController extends Controller
             'status' => EventRequest::Accepted,
         ]);
         if ($event) {
-            $updateStatusToEvent = Event::where('id',$eventId)->update([
+            $updateStatusToEvent = Event::where('id', $eventId)->update([
                 'status' => EventRequest::Accepted,
             ]);
             $eventRequest = EventRequest::where('id', $requestId)->first();
             $doctor = Event::where('id', $eventId)->first();
-        
+
             $data = [
                 'name' => $eventRequest->requestClient->name,
                 'doctor' => $doctor->user->name,
@@ -118,11 +118,11 @@ class EventController extends Controller
     public function delete($eventId)
     {
         $event = Event::find($eventId);
-     
+
         $event->delete();
         if ($event) {
-            $requestEvent = EventRequest::where('event_id',$eventId)->delete();
-            $zoom = ZoomMeeting::where('event_id',$eventId)->delete();
+            $requestEvent = EventRequest::where('event_id', $eventId)->delete();
+            $zoom = ZoomMeeting::where('event_id', $eventId)->delete();
             return redirect()
                 ->back()
                 ->with('success', 'The event has been successfully deleted');

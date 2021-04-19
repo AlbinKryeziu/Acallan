@@ -18,7 +18,7 @@ class PacientController extends Controller
     public function doctor()
     {
         $doctorId = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
-        $user =User::findOrFail(Auth::id());
+        $user = User::findOrFail(Auth::id());
         $doctors = User::with('doctor')
             ->whereHas('role', function ($q) {
                 $q->where('name', 'Doctor');
@@ -34,16 +34,15 @@ class PacientController extends Controller
     public function store()
     {
         $doctorID = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
-       
+
         $accesUser = User::where('id', Auth::id())
             ->pluck('doctor_access')
             ->toArray();
-            
+
         $doctor = Doctor::with('user')
             ->whereIn('specialty_id', $accesUser[0][0])
             ->whereNotIn('user_id', $doctorID)
             ->get();
-            
 
         return view('client/add-doctor', [
             'doctor' => $doctor,
@@ -120,7 +119,6 @@ class PacientController extends Controller
 
     public function addGift(GiftRequest $request, $doctorId)
     {
-  
         GiftClient::create([
             'links' => $request->links,
             'description' => $request->description,
