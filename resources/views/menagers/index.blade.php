@@ -1,5 +1,5 @@
 <x-app-layout>
-    @include('menagers/includes/header') @php $i=1; @endphp
+    @include('menagers/includes/header') 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
@@ -32,7 +32,7 @@
                                     <td></td>
                                     <td>
                                         @if(Auth::user()->isFollowing($user->id))
-                                        <a href="" style="color: black"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                                        <a href="{{ url('profile/'.$user->id) }}" style="color: black"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
                                         @else
                                         <i class="fa fa-user-times fa-lg" aria-hidden="true"></i>
                                         @endif
@@ -48,7 +48,7 @@
                                     <td>
                                         <form action="{{ url('canelRequest/'.$user->id) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-info btn-sm col-6">Canel Request</button>
+                                            <button type="submit" class="btn btn-info btn-sm ">Canel Request</button>
                                         </form>
                                     </td>
                                     @elseif(Auth::user()->isRejected($user->id))

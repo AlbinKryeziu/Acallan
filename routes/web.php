@@ -164,5 +164,6 @@ Route::group(['middleware' => ['manager']], function () {
     Route::post('follow/{clientId}', [ManagerController::class, 'follow']);
     Route::post('canelRequest/{clientId}', [ManagerController::class, 'canelRequest']);
     Route::post('unfollow/{clientId}', [ManagerController::class, 'unFollow']);
+    Route::get('profile/{clientId}', [ManagerController::class, 'profileClient']);
 
 });
