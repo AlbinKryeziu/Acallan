@@ -83,6 +83,7 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->name('dashboard');
 
 Route::get('/', function () {
+  
     return view('home');
 });
 Route::get('/how-it-works', function () {

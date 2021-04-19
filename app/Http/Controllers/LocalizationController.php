@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 class LocalizationController extends Controller
 {
-    public function handle($request, Closure $next)
-{
-   if(\Session::has('locale'))
-   {
-       \App::setlocale(\Session::get('locale'));
-   }
-   return $next($request);
-}
+    public function index($locale){
+        if(!$locale){
+            App::setlocale('en');
+            session()->put('locale', 'en'); 
+        }
+        App::setlocale($locale);
+        session()->put('locale', $locale);
+        return redirect()->back();
+    }
 }
