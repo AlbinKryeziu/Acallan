@@ -64,6 +64,14 @@ Route::middleware(['auth:sanctum', 'verified'])
         }elseif (Auth::user()->hasRole('client')) {
             return view('client/dashboard');
         }
+        elseif (Auth::user()->hasRole('manager')) {
+            return $users = User::with('role')
+            ->whereHas('role', function ($q) {
+                $q->where('name', 'Client');
+            })
+            ->get();
+            return view('menagers/index');
+        }
     })
     ->name('dashboard');
 

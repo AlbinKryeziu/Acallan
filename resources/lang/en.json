@@ -70,7 +70,13 @@
      "zoom_link":"Zoom link",
      "no_result":"No registered gifts so far",
      "accepted_events":"Accepted Events",
-     "events_with":"Events with"
+     "events_with":"Events with",
+     "today_event":"Today Event",
+     "today_date":"Today date",
+     "home":"Home",
+     "dashboard":"Dashboard",
+     "welcome_doctor":"Welcome Doctor"
+
 
 
 

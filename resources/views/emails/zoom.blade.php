@@ -43,7 +43,7 @@
                                                                 <div style="font-family: Arial, sans-serif; line-height: 20px; color: #444444; font-size: 13px;">
                                                                     <b style="color: #777777;">Dear: <strong>{{ $data['name'] }} !</strong></b>
                                                                     <br>
-                                                                     Dr <strong>{{ $data['doctor'] }}</strong>has generated the zoom link one hour forward
+                                                                     Dr <strong>{{ $data['doctor'] }}</strong> has generated the zoom link one hour forward
                                                                     <br> The meeting will be on <strong>{{ $data['start'] }}</strong>
                                                                     <br>
                                                                     <br>

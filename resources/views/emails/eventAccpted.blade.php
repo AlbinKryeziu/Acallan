@@ -46,9 +46,9 @@
                                                                      Dr <strong>{{ $data['doctor'] }}</strong> has approved your request for an appointment
                                                                     <br> The meeting will be on <strong>{{ $data['start'] }} / {{ $data['end'] }}</strong>
                                                                     <br>
-                                                                    <br>
+                                                                
                                                                 <p>Careful! </p> 
-                                                                <br>
+                                                                
                                                                 <p> doctor will generate the zoom link one hour before the appointment, also you will receive an email notification where you will find the zoom link also you have the link in our system</p>
                                                                   
                                                                 </div>

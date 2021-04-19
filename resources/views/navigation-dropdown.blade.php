@@ -13,12 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/') }}">
-                        Home
+                        @lang('home')
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __(trans('dashboard')) }}
                     </x-jet-nav-link>
                 </div>
                 @if(Auth::user()->isDoctor())
@@ -26,21 +26,21 @@
             
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/events/doctor') }}">
-                        {{ __('Event') }}
+                        {{ __(trans('event')) }}
                     </x-jet-nav-link>
                 </div>
                 @endif
                 @if(Auth::user()->isDoctor())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/client') }}">
-                        {{ __('Client') }}
+                        {{ __(trans('client')) }}
                     </x-jet-nav-link>
                 </div>
                 @endif
                 @if(Auth::user()->isDoctor())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/today/event') }}">
-                        {{ __('Today Event') }}
+                        {{ __(trans('today_event')) }}
                     </x-jet-nav-link>
                 </div>
                 @endif

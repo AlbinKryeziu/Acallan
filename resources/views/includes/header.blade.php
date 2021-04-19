@@ -9,6 +9,7 @@
                 <li><a href="{{url('/about-us')}}">@lang('aboutUs')</a></li>
                 <li><a href="{{url('/how-it-works')}}">@lang('howItWork')</a></li>
                 <li><a href="{{url('/contact-us')}}">@lang('contactUs')</a></li>
+                @guest
                 <li>
                     <div class="dropdown">
                         <button class="dropbtn">LOGIN</button>
@@ -18,6 +19,7 @@
                         </div>
                     </div>
                 </li>
+                @endguest
                 <li><a href="lang/en">En</a></li>
                 <li><a href="lang/es">Es</a></li>
             </ul>

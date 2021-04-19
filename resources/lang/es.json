@@ -67,7 +67,13 @@
      "zoom_link":"Enlace de zoom",
      "no_result":"No hay regalos registrados hasta ahora",
      "accepted_events":"Eventos aceptados",
-     "events_with":"Eventos con"
+     "events_with":"Eventos con",
+     "today_event":"Evento de hoy",
+     "today_date":"Fecha de hoy",
+     "home":"Hogar",
+     "dashboard":"Tablero",
+
+     "welcome_doctor":"Bienvenida Doctora"
     
     
     
