@@ -18,14 +18,20 @@ class ManagerController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        $users = User::with('role')
-        ->whereHas('role', function ($q) {
+    public function index()
+    {
+        $users = User::with('role')->whereHas('role', function ($q) {
             $q->where('name', 'Client');
-        })
-        ->get();
+        });
+        if (request()->has('q')) {
+            $users = User::with('role')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'Client');
+                })
+                ->where('name', 'LIKE', '%' . request()->get('q') . '%');
+        }
         return view('menagers/index', [
-            'users' => $users, 
+            'users' => $users->paginate(30),
         ]);
     }
     public function follow($clientId)

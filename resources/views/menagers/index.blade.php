@@ -9,8 +9,12 @@
                             <br />
                         </div>
                         <table class="table table-hover table-bordered">
+                            <form>
                             <div class="table-title">
-                                <h4>Client <b>Table</b><input type="search" class="form-control rounded float-right col-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
+                                <h4>Client <b>Table</b>
+                                    
+                                <input type="search" class="form-control rounded float-right col-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
+                                    </form>
                                 <br />
                             </div>
                             <thead>
@@ -41,36 +45,30 @@
                                     <td>
                                         <form action="{{ url('unfollow/'.$user->id) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-dark btn-sm col-6">Unfollow</button>
+                                            <button type="submit" class="btn btn-dark btn-sm col-12">Unfollow</button>
                                         </form>
                                     </td>
                                     @elseif(Auth::user()->isRequest($user->id))
                                     <td>
                                         <form action="{{ url('canelRequest/'.$user->id) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-info btn-sm ">Canel Request</button>
-                                        </form>
-                                    </td>
-                                    @elseif(Auth::user()->isRejected($user->id))
-                                    <td>
-                                        <form action="" method="POST">
-                                            @csrf
-
-                                            <button type="button" class="btn btn-danger btn-sm col-6">Rejected</button>
+                                            <button type="submit" class="btn btn-info btn-sm col-12">Canel Request</button>
                                         </form>
                                     </td>
                                     @else
                                     <td>
                                         <form action="{{ url('follow/'.$user->id) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary btn-sm col-6">Follow</button>
+                                            <button type="submit" class="btn btn-primary btn-sm col-12">Follow</button>
                                         </form>
                                     </td>
                                     @endif
                                 </tr>
                                 @endforeach
                             </tbody>
+                            
                         </table>
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>
