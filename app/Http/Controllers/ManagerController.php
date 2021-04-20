@@ -17,6 +17,17 @@ class ManagerController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index(){
+        $users = User::with('role')
+        ->whereHas('role', function ($q) {
+            $q->where('name', 'Client');
+        })
+        ->get();
+        return view('menagers/index', [
+            'users' => $users, 
+        ]);
+    }
     public function follow($clientId)
     {
         $follow = Auth::user()

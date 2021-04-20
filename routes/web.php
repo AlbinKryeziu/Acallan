@@ -31,59 +31,11 @@ use Illuminate\Contracts\Session\Session;
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', function () {
-        if (Auth::user()->hasRole('admin')) {
-            $doctor = User::with('doctor')
-                ->whereHas('role', function ($q) {
-                    $q->where('name', 'Doctor');
-                })
-                ->get();
-            $client = User::with('doctor')
-                ->whereHas('role', function ($q) {
-                    $q->where('name', 'client');
-                })
-                ->get();
-            $doctor = User::with('doctor')
-                ->whereHas('role', function ($q) {
-                    $q->where('name', 'Doctor');
-                })
-                ->get();
-            $event = Event::all();
-            return view('admin/dashboard', [
-                'doctor' => $doctor,
-                'client' => $client,
-                'event' => $event,
-            ]);
-        } elseif (Auth::user()->hasRole('doc')) {
-            $date = Carbon::today()->toDateTimeString();
-            $event = Event::with([
-                'requestEvent' => function ($q) {
-                    $q->where('status', 1);
-                },
-            ])
-                ->where('user_id', Auth::id())
-                ->whereDate('start', $date)
-                ->where('status', 1)
-                ->get();
-            return view('dashboard', [
-                'event' => $event,
-            ]);
-        } elseif (Auth::user()->hasRole('client')) {
-            return view('client/dashboard');
-        } elseif (Auth::user()->hasRole('manager')) {
-            $users = User::with('role')
-                ->whereHas('role', function ($q) {
-                    $q->where('name', 'Client');
-                })
-                ->get();
-            return view('menagers/index', [
-                'users' => $users,
-            ]);
-        }
+        return view('dashboard');
     })
     ->name('dashboard');
-
+Route::get('redirects',[HomeController::class, 'redirects']);
 Route::get('/', function () {
-  
     return view('home');
 });
 Route::get('/how-it-works', function () {
@@ -112,7 +64,7 @@ Route::post('/events/request/accept', [EventController::class, 'aceptEvent']);
 Route::post('/events/request/rejected', [EventController::class, 'rejectetEevnt']);
 
 Route::get('/user/profile/{id}', [ProfileController::class, 'index']);
-Route::get('/dashboard/user', [ProfileController::class, 'adminpanel']);
+Route::get('admin/dashboard', [ProfileController::class, 'adminpanel']);
 
 Route::get('/formular/doctor', [DoctorController::class, 'formular']);
 Route::post('/add/doctor', [DoctorController::class, 'addDoctor']);
@@ -164,4 +116,5 @@ Route::group(['middleware' => ['manager']], function () {
     Route::post('canelRequest/{clientId}', [ManagerController::class, 'canelRequest']);
     Route::post('unfollow/{clientId}', [ManagerController::class, 'unFollow']);
     Route::get('profile/{clientId}', [ManagerController::class, 'profileClient']);
+    Route::get('employees', [ManagerController::class, 'index']);
 });
