@@ -15,6 +15,17 @@
                             @endif
                             <br />
                         </div>
+                        @if ($message = Session::get('warning'))
+                        <div class="alert alert-warning alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @endif @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @endif
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -41,7 +52,7 @@
                                     <td><a href="{{ url('/pacient/store/gift/'.$doctor->id) }}"><i class="fa fa-gift" aria-hidden="true" style="color: black"></i></a></td>
                                     <td><a href="{{ url('/pacient/events/'.$doctor->id) }}"><i class="fa fa-calendar" aria-hidden="true" style="color: black"></a></i></td>
                                     <td>
-                                        <form action="" method="POST">
+                                        <form action="{{ url('/pacient/delete/doctor/'.$doctor->id) }}" method="POST">
                                         
                                             @csrf @method('DELETE')
                                             <button type="submit" title="delete" style="border: none; background-color: transparent; color: #ed1b24;">

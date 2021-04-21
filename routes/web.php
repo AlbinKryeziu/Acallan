@@ -107,6 +107,7 @@ Route::get('/pacient/event', [PacientController::class, 'eventStatus']);
 Route::get('/pacient/store/gift/{doctorId}', [PacientController::class, 'storeGift']);
 Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class, 'addGift']);
 Route::get('/pacient/store/mygift', [PacientController::class, 'myGift']);
+Route::delete('/pacient/delete/doctor/{doctorId}', [PacientController::class, 'deleteDoctor']);
 
 Route::post('createzoom', [ZoomController::class, 'store']);
 

@@ -9,6 +9,8 @@ use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\GiftClient;
 use App\Models\User;
+use Carbon\Carbon;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -141,5 +143,19 @@ class PacientController extends Controller
         return view('client/gift', [
             'gift' => $gift,
         ]);
+    }
+    public function deleteDoctor($doctorId){
+        
+        $checkEventRequest = EventRequest::where('request_id',Auth::id())->whereIn('status',[0,1])->pluck('event_id');
+        $checkEvent = Event::whereIn('id',$checkEventRequest)->where('user_id',$doctorId)->first();
+        $checkDate = Carbon::parse($checkEvent->start)->format('d-m-Y');
+      if($checkDate == Carbon::now()->format('d-m-Y') || $checkDate >= Carbon::now()->format('d-m-Y')){
+         return  back()->with('warning','Attention you have or are waiting for confirmation appointment from the doctor, you can not delete the doctor now. Try later!');
+      }
+        $doctor = ClientDoctor::where('client_id',Auth::id())->where('doctor_id',$doctorId)->delete();
+        if($doctor){
+            return  back()->with('success','The doctor has been successfully deleted!');
+        }
+
     }
 }

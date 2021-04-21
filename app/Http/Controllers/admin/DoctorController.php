@@ -241,6 +241,7 @@ class DoctorController extends Controller
         $doctor = Doctor::where('user_id',Auth::id())->update([
             'work_address' => $request->work_address,
             'remark' => $request->remark,
+            'phone' => $request->phone,
         ]);
         $user = User::where('id',Auth::id())->update([
             'phone' => $request->phone,

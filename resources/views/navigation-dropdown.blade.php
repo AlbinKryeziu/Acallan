@@ -55,6 +55,19 @@
                     </x-jet-nav-link>
                 </div>
                 @endif
+                @if(Auth::user()->isClient())
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
+                       @lang('doctor')
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ url('/pacient/event') }}">
+                       @lang('event')
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
+                     @lang('gift')
+                    </x-jet-nav-link>
+                </div>
+                @endif
                 
             </div>
 
@@ -219,6 +232,23 @@
             :active="request()->routeIs('profile.show')">
             {{ __(trans('Follow Accepted')) }}
             </x-jet-responsive-nav-link>   
+            @endif
+            @if(Auth::user()->isClient())
+            <x-jet-responsive-nav-link href="{{ url('/pacient/doctor') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('doctor')) }}
+            </x-jet-responsive-nav-link>   
+            <x-jet-responsive-nav-link href="{{ url('/pacient/event') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('event')) }}
+            </x-jet-responsive-nav-link>  
+            <x-jet-responsive-nav-link href="{{ url('/pacient/store/mygift') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('gift')) }}
+            </x-jet-responsive-nav-link>   
+
+
+            
             @endif
 
 
