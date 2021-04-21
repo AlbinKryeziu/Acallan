@@ -11,7 +11,7 @@
                         <table class="table table-hover table-bordered">
                             <form>
                             <div class="table-title">
-                                <h4>@lang('clients') <b>@lang('table')</b>
+                                <h4>@lang('followers') <b>@lang('table')</b>
                                     
                                 {{-- <input type="search" class="form-control rounded float-right col-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4> --}}
                                     </form>

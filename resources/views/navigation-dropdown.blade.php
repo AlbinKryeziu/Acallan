@@ -67,7 +67,7 @@
                      @lang('gifts')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/followers') }}">
-                        @lang('gifts')
+                        @lang('followers')
                        </x-jet-nav-link>
 
                    
@@ -252,7 +252,12 @@
             :active="request()->routeIs('profile.show')">
             {{ __(trans('gifts')) }}
             </x-jet-responsive-nav-link>   
+            <x-jet-responsive-nav-link href="{{ url('/followers') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('followers')) }}
+            </x-jet-responsive-nav-link>  
 
+            
 
             
             @endif
