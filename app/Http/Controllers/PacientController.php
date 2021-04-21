@@ -125,37 +125,49 @@ class PacientController extends Controller
 
     public function addGift(GiftRequest $request, $doctorId)
     {
-        GiftClient::create([
+       $gift = GiftClient::create([
             'links' => $request->links,
             'description' => $request->description,
             'doctor_id' => $doctorId,
             'client_id' => Auth::id(),
             'type' => $request->type,
         ]);
-        return redirect()
+        if($gift){
+            return redirect()
             ->back()
             ->with('success', 'The gift was successfully sent');
+        }
+       
     }
 
     public function myGift()
     {
-        $gift = GiftClient::with('doctor', 'client')->get();
+        $gifts = GiftClient::with('doctor', 'client')->latest();
+        if (request()->has('q')) {
+            $gifts = GiftClient::with('doctor', 'client')->latest()
+                ->where('description', 'LIKE', '%' . request()->get('q') . '%');
+        }
         return view('client/gift', [
-            'gift' => $gift,
+            'gifts' => $gifts->paginate(15),
         ]);
     }
-    public function deleteDoctor($doctorId){
-        
-        $checkEventRequest = EventRequest::where('request_id',Auth::id())->whereIn('status',[0,1])->pluck('event_id');
-        $checkEvent = Event::whereIn('id',$checkEventRequest)->where('user_id',$doctorId)->first();
+    public function deleteDoctor($doctorId)
+    {
+        $checkEventRequest = EventRequest::where('request_id', Auth::id())
+            ->whereIn('status', [0, 1])
+            ->pluck('event_id');
+        $checkEvent = Event::whereIn('id', $checkEventRequest)
+            ->where('user_id', $doctorId)
+            ->first();
         $checkDate = Carbon::parse($checkEvent->start)->format('d-m-Y');
-      if($checkDate == Carbon::now()->format('d-m-Y') || $checkDate >= Carbon::now()->format('d-m-Y')){
-         return  back()->with('warning','Attention you have or are waiting for confirmation appointment from the doctor, you can not delete the doctor now. Try later!');
-      }
-        $doctor = ClientDoctor::where('client_id',Auth::id())->where('doctor_id',$doctorId)->delete();
-        if($doctor){
-            return  back()->with('success','The doctor has been successfully deleted!');
+        if ($checkDate == Carbon::now()->format('d-m-Y') || $checkDate >= Carbon::now()->format('d-m-Y')) {
+            return back()->with('warning', 'Attention you have or are waiting for confirmation appointment from the doctor, you can not delete the doctor now. Try later!');
         }
-
+        $doctor = ClientDoctor::where('client_id', Auth::id())
+            ->where('doctor_id', $doctorId)
+            ->delete();
+        if ($doctor) {
+            return back()->with('success', 'The doctor has been successfully deleted!');
+        }
     }
 }

@@ -58,13 +58,13 @@
                 @if(Auth::user()->isClient())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
-                       @lang('doctor')
+                       @lang('doctors')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/pacient/event') }}">
-                       @lang('event')
+                       @lang('events')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
-                     @lang('gift')
+                     @lang('gifts')
                     </x-jet-nav-link>
                 </div>
                 @endif
@@ -236,15 +236,15 @@
             @if(Auth::user()->isClient())
             <x-jet-responsive-nav-link href="{{ url('/pacient/doctor') }}"
             :active="request()->routeIs('profile.show')">
-            {{ __(trans('doctor')) }}
+            {{ __(trans('doctors')) }}
             </x-jet-responsive-nav-link>   
             <x-jet-responsive-nav-link href="{{ url('/pacient/event') }}"
             :active="request()->routeIs('profile.show')">
-            {{ __(trans('event')) }}
+            {{ __(trans('events')) }}
             </x-jet-responsive-nav-link>  
             <x-jet-responsive-nav-link href="{{ url('/pacient/store/mygift') }}"
             :active="request()->routeIs('profile.show')">
-            {{ __(trans('gift')) }}
+            {{ __(trans('gifts')) }}
             </x-jet-responsive-nav-link>   
 
 

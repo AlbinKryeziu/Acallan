@@ -6,12 +6,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
                             @if($user->doctor_access)
-                           
-                            <h4>@lang('table_doctor') <b>@lang('table')</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/pacient/store') }}'">@lang('add_doctor')</button></h4>
+                            <div class="float-right">
+                                <button type="button" class="btn btn-info btn-sm float-righ" onclick="window.location='{{ url('/pacient/store') }}'">@lang('add_doctor')</button>
+                            </div>
+                            
+                            <h4>@lang('table_doctor') <b>@lang('table')</b></h4>
+                        
                             @endif
                             <br />
                         </div>
