@@ -7,6 +7,7 @@ use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
 use App\Models\EventRequest;
+use App\Models\Follow;
 use App\Models\GiftClient;
 use App\Models\User;
 use Carbon\Carbon;
@@ -23,20 +24,23 @@ class PacientController extends Controller
     }
     public function doctor()
     {
-        $doctorId = ClientDoctor::where('client_id', Auth::id())->latest()->pluck('doctor_id');
+        $doctorId = ClientDoctor::where('client_id', Auth::id())
+            ->latest()
+            ->pluck('doctor_id');
         $user = User::findOrFail(Auth::id());
         $doctors = User::with('doctor')
             ->whereHas('role', function ($q) {
                 $q->where('name', 'Doctor');
             })
             ->whereIn('id', $doctorId);
-            if (request()->has('q')) {
-                $doctors = User::with('doctor')
+        if (request()->has('q')) {
+            $doctors = User::with('doctor')
                 ->whereHas('role', function ($q) {
                     $q->where('name', 'Doctor');
                 })
-                ->whereIn('id', $doctorId)->where('name', 'LIKE', '%' . request()->get('q') . '%');
-            }
+                ->whereIn('id', $doctorId)
+                ->where('name', 'LIKE', '%' . request()->get('q') . '%');
+        }
         return view('client/doctor', [
             'doctors' => $doctors->paginate(15),
             'user' => $user,
@@ -115,9 +119,14 @@ class PacientController extends Controller
 
     public function eventStatus()
     {
-        $events = EventRequest::with('event')->where('request_id', Auth::id())->latest();
+        $events = EventRequest::with('event')
+            ->where('request_id', Auth::id())
+            ->latest();
         if (request()->has('q')) {
-            $events = EventRequest::with('event')->where('request_id', Auth::id())->where('product', 'LIKE', '%' . request()->get('q') . '%')->latest();
+            $events = EventRequest::with('event')
+                ->where('request_id', Auth::id())
+                ->where('product', 'LIKE', '%' . request()->get('q') . '%')
+                ->latest();
         }
         return view('client/event', [
             'events' => $events->paginate(15),
@@ -134,26 +143,26 @@ class PacientController extends Controller
 
     public function addGift(GiftRequest $request, $doctorId)
     {
-       $gift = GiftClient::create([
+        $gift = GiftClient::create([
             'links' => $request->links,
             'description' => $request->description,
             'doctor_id' => $doctorId,
             'client_id' => Auth::id(),
             'type' => $request->type,
         ]);
-        if($gift){
+        if ($gift) {
             return redirect()
-            ->back()
-            ->with('success', 'The gift was successfully sent');
+                ->back()
+                ->with('success', 'The gift was successfully sent');
         }
-       
     }
 
     public function myGift()
     {
         $gifts = GiftClient::with('doctor', 'client')->latest();
         if (request()->has('q')) {
-            $gifts = GiftClient::with('doctor', 'client')->latest()
+            $gifts = GiftClient::with('doctor', 'client')
+                ->latest()
                 ->where('description', 'LIKE', '%' . request()->get('q') . '%');
         }
         return view('client/gift', [
@@ -177,6 +186,37 @@ class PacientController extends Controller
             ->delete();
         if ($doctor) {
             return back()->with('success', 'The doctor has been successfully deleted!');
+        }
+    }
+
+    public function followers()
+    {
+        $followers = Follow::where('client_id', Auth::id())
+            ->whereIn('status', [Follow::Request, Follow::Accepted])
+            ->get();
+        return view('client.followers', [
+            'followers' => $followers,
+        ]);
+    }
+
+    public function acceptMenager($managerId)
+    {
+        $acept = Follow::where('client_id', Auth::id())
+            ->where('menager_id', $managerId)
+            ->update([
+                'status' => Follow::Accepted,
+            ]);
+
+        return back();
+    }
+
+    public function deleteFollow($managerId)
+    {
+        $delete = Follow::where('client_id', Auth::id())
+            ->where('menager_id', $managerId)
+            ->delete();
+        if ($delete) {
+            return back();
         }
     }
 }

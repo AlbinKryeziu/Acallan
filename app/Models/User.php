@@ -125,4 +125,5 @@ class User extends Authenticatable
             ->where(['client_id' => $userId, 'status' => Follow::Rejected])
             ->first(['id']);
     }
+   
 }

@@ -1,6 +1,6 @@
 <x-app-layout>
     @include('client/assets/header')
-    @php $i=1; @endphp
+ 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
@@ -34,7 +34,7 @@
                             <tbody>
                                 @foreach($events as $key => $event)
                                 <tr>
-                                    <td>@php echo $i++ @endphp</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $event->event->title }}</td>
                                     <td>{{ $event->event->user->name }}</td>
                                     <td>{{ $event->product}}</td>

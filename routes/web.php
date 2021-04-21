@@ -108,7 +108,9 @@ Route::get('/pacient/store/gift/{doctorId}', [PacientController::class, 'storeGi
 Route::post('/pacient/store/addgift/{doctorId}', [PacientController::class, 'addGift']);
 Route::get('/pacient/store/mygift', [PacientController::class, 'myGift']);
 Route::delete('/pacient/delete/doctor/{doctorId}', [PacientController::class, 'deleteDoctor']);
-
+Route::get('/followers', [PacientController::class, 'followers']);
+Route::post('followers/client/{menagerId}', [PacientController::class, 'acceptMenager']);
+Route::post('followers/delete/{menagerId}', [PacientController::class, 'deleteFollow']);
 Route::post('createzoom', [ZoomController::class, 'store']);
 
 Route::post('/meetings', [MeetingController::class, 'store']);

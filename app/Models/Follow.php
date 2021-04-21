@@ -22,4 +22,9 @@ class Follow extends Model
     public function following(){
         return $this->belongsTo(User::class,'client_id','id');
     }
+
+    public function follow(){
+        return $this->belongsTo(User::class,'menager_id','id');
+    }
+  
 }

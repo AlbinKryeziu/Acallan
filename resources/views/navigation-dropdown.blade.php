@@ -24,7 +24,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('follow/accepted') }}" :active="request()->routeIs('dashboard')">
-                        {{ __(trans('Follow Accepted')) }}
+                        {{ __(trans('accepted1')) }}
                     </x-jet-nav-link>
                 </div>
                     
@@ -66,6 +66,12 @@
                     <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
                      @lang('gifts')
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ url('/followers') }}">
+                        @lang('gifts')
+                       </x-jet-nav-link>
+
+                   
+
                 </div>
                 @endif
                 
