@@ -18,4 +18,10 @@ class ZoomMeeting extends Model
         'request_id',
         
     ];
+    public function doctor(){
+        return $this->belongsTo(User::class,'doctor_id','id');
+    }
+    public function event(){
+        return $this->belongsTo(Event::class,'event_id','id');
+    }
 }

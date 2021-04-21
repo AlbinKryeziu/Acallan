@@ -117,4 +117,8 @@ Route::group(['middleware' => ['manager']], function () {
     Route::post('unfollow/{clientId}', [ManagerController::class, 'unFollow']);
     Route::get('profile/{clientId}', [ManagerController::class, 'profileClient']);
     Route::get('employees', [ManagerController::class, 'index']);
+    Route::get('follow/accepted', [ManagerController::class, 'followAccepted']);
+    Route::get('doctors/{clientId}', [ManagerController::class, 'doctorClients']);
+    Route::get('gift/{clientId}', [ManagerController::class, 'giftCient']);
+    Route::get('meeting/{clientId}', [ManagerController::class, 'meetingClient']);
 });

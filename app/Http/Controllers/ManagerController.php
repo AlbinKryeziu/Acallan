@@ -34,6 +34,12 @@ class ManagerController extends Controller
             'users' => $users->paginate(30),
         ]);
     }
+    public function followAccepted(){
+        $users = Follow::where('menager_id',Auth::id())->where('status',Follow::Accepted);
+        return view('menagers.followers',[
+            'users' => $users->paginate(30),
+        ]);
+    }
     public function follow($clientId)
     {
         $follow = Auth::user()
@@ -76,4 +82,41 @@ class ManagerController extends Controller
             'meeting' => $metting,
         ]);
     }
+
+    public function doctorClients($clientId){
+        $doctorId = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
+        $doctors = User::with('doctor')
+            ->whereHas('role', function ($q) {
+                $q->where('name', 'Doctor');
+            })
+            ->whereIn('id', $doctorId);
+           if(request()->has('q')){
+            $doctors = User::with('doctor')
+            ->whereHas('role', function ($q) {
+                $q->where('name', 'Doctor');
+            })
+            ->whereIn('id', $doctorId)->where('name', 'LIKE', '%' . request()->get('q') . '%');
+           }
+            return view('menagers.doctor',[
+                'doctors' =>$doctors->paginate(15),
+            ]);
+
+    }
+    public function giftCient($clientId){
+          $gifts = GiftClient::latest()->where('client_id', $clientId);
+          if(request()->has('q')){
+            $gifts = GiftClient::latest()->where('client_id', $clientId)->where('description', 'LIKE', '%' . request()->get('q') . '%');
+           }
+        return view('menagers.gift',[
+            'gifts' =>$gifts->paginate(15),
+        ]);
+    }
+    public function meetingClient($clientId){
+        $meetings = ZoomMeeting::where('request_id',$clientId);
+
+        return view('menagers.meeting',[
+            'meetings' => $meetings->paginate(10),
+        ]);
+    }
+
 }

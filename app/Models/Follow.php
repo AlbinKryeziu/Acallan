@@ -18,4 +18,8 @@ class Follow extends Model
         'client_id',
         'status',
     ];
+
+    public function following(){
+        return $this->belongsTo(User::class,'client_id','id');
+    }
 }

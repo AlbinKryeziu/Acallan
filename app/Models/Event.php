@@ -27,4 +27,7 @@ class Event extends Model
   public function zoom(){
     return $this->hasOne(ZoomMeeting::class,'event_id', 'id');
   }
+  public function requestAccepted(){
+    return $this->hasOne(EventRequest::class,'event_id', 'id')->where('status',1);
+  }
 } 

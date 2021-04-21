@@ -79,21 +79,38 @@
                                         <div class="col-md-4">
                                             <div class="card border-info mx-sm-1 p-3">
                                                 <div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-user-md" aria-hidden="true"></span></div>
+                                                @if($doctors)
+                                                <a href="{{ url('doctors/'.$user->id) }}"><div class="text-info text-center mt-8"><h4>Doctors</h4></div></a>
+                                                @else
                                                 <div class="text-info text-center mt-8"><h4>Doctors</h4></div>
+                                                @endif
                                                 <div class="text-info text-center mt-3"><h3>{{ $doctors }}</h3></div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="card border-success mx-sm-1 p-3">
                                                 <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-gift" aria-hidden="true"></span></div>
+                                                @if($gifts)
+                                                    
+                                               
+                                                <a href="{{ url('gift/'.$user->id) }}"><div class="text-success text-center mt-8"><h4>Gifts</h4></div></a>
+                                                @else
                                                 <div class="text-success text-center mt-8"><h4>Gifts</h4></div>
+                                                @endif
                                                 <div class="text-success text-center mt-3"><h3>{{ $gifts }}</h3></div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="card border-danger mx-sm-1 p-3">
                                                 <div class="card border-danger shadow text-danger p-3 my-card"><span class="fa fa-window-restore" aria-hidden="true"></span></div>
+                                                @if($meeting)
+                                                    
+                                           
+                                                <a href="{{ url('meeting/'.$user->id) }}"><div class="text-danger text-center mt-8"><h4>Meeting</h4></div></a>
+                                                @else
                                                 <div class="text-danger text-center mt-8"><h4>Meeting</h4></div>
+                                                @endif
+
                                                 <div class="text-danger text-center mt-3"><h3>{{ $meeting }}</h3></div>
                                             </div>
                                         </div>

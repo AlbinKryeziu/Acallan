@@ -42,11 +42,11 @@
             <div class="shadow p-3 bg-white rounded flex my-auto mb-0">
                 <ul class="mx-auto">
                     <li class="flex text-sm m-4 float-left"><img src="images/icons/location.svg" alt="" width="15px"
-                            class="mr-4"> West Palm Beach, FL</li>
+                            class="mr-4">Mexico,D.F
+                        </li>
                     <li class="flex text-sm m-4 float-left"><img src="images/icons/envelope.svg" alt="" width="15px"
-                            class="mr-4"> email@domain.com</li>
-                    <li class="flex text-sm m-4 float-left"><img src="images/icons/phone.svg" alt="" width="15px"
-                            class="mr-4"> +1 458 7412</li>
+                            class="mr-4">rahulkashyap@promedrep.com</li>
+                    
                 </ul>
             </div>
 
@@ -76,7 +76,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_name">Firstname *</label>
+                                        <label for="form_name">Your Name</label>
                                         <input id="form_name" type="text" name="name" class="form-control"
                                             placeholder="Please enter your firstname *" required="required"
                                             data-error="Firstname is required.">
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_lastname">Lastname *</label>
+                                        <label for="form_lastname">Email Address</label>
                                         <input id="form_lastname" type="text" name="surname" class="form-control"
                                             placeholder="Please enter your lastname *" required="required"
                                             data-error="Lastname is required.">
@@ -96,7 +96,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_email">Email *</label>
+                                        <label for="form_email">Phone Number</label>
                                         <input id="form_email" type="email" name="email" class="form-control"
                                             placeholder="Please enter your email *" required="required"
                                             data-error="Valid email is required.">
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_need">Please specify your need *</label>
+                                        <label for="form_need">Please specify your need </label>
                                         <select id="form_need" name="need" class="form-control" required="required"
                                             data-error="Please specify your need.">
                                             <option value=""></option>
@@ -122,7 +122,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="form_message">Message *</label>
+                                        <label for="form_message">Write Message</label>
                                         <textarea id="form_message" name="message" class="form-control"
                                             placeholder="Message for me *" rows="4" required="required"
                                             data-error="Please, leave us a message."></textarea>
@@ -138,12 +138,12 @@
                 </div>
                 <div class="map rounded col-xs-6">
                     <iframe class="col-xs-6"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11987.641451913702!2d-80.06008886860934!3d26.71413606676502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d8d5ccb595adc1%3A0x15efc7b51fe16bde!2sWest%20Palm%20Beach%2C%20FL%2C%20USA!5e0!3m2!1sen!2s!4v1608739375881!5m2!1sen!2s"
+                        src="https://maps.google.com/maps?q=Mexico,D.F&t=&z=13&ie=UTF8&iwloc=&output=embed"
                         width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""
                         aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
-        </div>
+       
     </div>
 
     @include('includes/footer')
