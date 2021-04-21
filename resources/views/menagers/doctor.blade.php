@@ -22,9 +22,9 @@
                                     <th>#</th>
                                     <th>@lang('name')</th>
                                     <th>@lang('email')</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Remark</th>
+                                    <th>@lang('phone')</th>
+                                    <th>@lang('address')</th>
+                                    <th>@lang('remark')</th>
                                 </tr>
                             </thead>
                             <tbody>

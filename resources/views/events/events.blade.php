@@ -10,26 +10,25 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl p-4">
-                <div class="table">
-                    <div class="">
+
+
+
+                <div class="table table-responsive">
+                    <div class="table-wrapper">
                         <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <h4>@lang('events') <b>@lang('table')</b></h4>
-                                    <br />
-                                </div>
-                            </div>
+                            <br />
                         </div>
-                        {{-- <form method="POST" action="{{ url('/meetings') }}">
-                            @csrf
-                            <input type="date" name="start_time">
-                            <input type="text" name="agenda">
-                            <input type="text" name="topic">
-                            <input type="text" name="duration">
-                            <button type="submit">`Save</button>
-                        </form> --}}
-                        @if($events->count() >= 1)
                         <table class="table table-hover table-bordered">
+                            <form>
+                            <div class="table-title">
+                                <h4>@lang('events') <b>@lang('table')</b>
+                                    
+                                <input type="search" class="form-control rounded float-right col-sm-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
+                                    </form>
+                                <br />
+                                <br>
+                            </div>
+                            @if($events->count() >= 1)
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -67,13 +66,15 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $events->links() }} @else
-                        <div class="alert alert-secondary" role="alert">
-                            No events recorded so far
-                        </div>
-                        @endif
+                     {{ $events->links() }}
                     </div>
+                    @else
+                   <div class="alert alert-secondary" role="alert" style="text-align: center">
+                    @lang('no_result')
+                 </div>
+                        @endif
                 </div>
+               
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Full Name</h6>
+                                                <h6 class="mb-0">@lang('full_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $user->name }}
@@ -39,7 +39,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
+                                                <h6 class="mb-0">@lang('email')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $user->email }}
@@ -48,7 +48,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
+                                                <h6 class="mb-0">@lang('phone')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $user->phone }}
@@ -57,7 +57,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Address</h6>
+                                                <h6 class="mb-0">@lang('address')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $user->address }}
@@ -66,7 +66,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">State</h6>
+                                                <h6 class="mb-0">@lang('state')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $user->state }}
@@ -80,9 +80,9 @@
                                             <div class="card border-info mx-sm-1 p-3">
                                                 <div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-user-md" aria-hidden="true"></span></div>
                                                 @if($doctors)
-                                                <a href="{{ url('doctors/'.$user->id) }}"><div class="text-info text-center mt-8"><h4>Doctors</h4></div></a>
+                                                <a href="{{ url('doctors/'.$user->id) }}"><div class="text-info text-center mt-8"><h4>@lang('doctors')</h4></div></a>
                                                 @else
-                                                <div class="text-info text-center mt-8"><h4>Doctors</h4></div>
+                                                <div class="text-info text-center mt-8"><h4>@lang('doctors')</h4></div>
                                                 @endif
                                                 <div class="text-info text-center mt-3"><h3>{{ $doctors }}</h3></div>
                                             </div>
@@ -93,9 +93,9 @@
                                                 @if($gifts)
                                                     
                                                
-                                                <a href="{{ url('gift/'.$user->id) }}"><div class="text-success text-center mt-8"><h4>Gifts</h4></div></a>
+                                                <a href="{{ url('gift/'.$user->id) }}"><div class="text-success text-center mt-8"><h4>@lang('gifts')</h4></div></a>
                                                 @else
-                                                <div class="text-success text-center mt-8"><h4>Gifts</h4></div>
+                                                <div class="text-success text-center mt-8"><h4>@lang('gifts')</h4></div>
                                                 @endif
                                                 <div class="text-success text-center mt-3"><h3>{{ $gifts }}</h3></div>
                                             </div>
@@ -106,9 +106,9 @@
                                                 @if($meeting)
                                                     
                                            
-                                                <a href="{{ url('meeting/'.$user->id) }}"><div class="text-danger text-center mt-8"><h4>Meeting</h4></div></a>
+                                                <a href="{{ url('meeting/'.$user->id) }}"><div class="text-danger text-center mt-8"><h4>@lang('meeting')</h4></div></a>
                                                 @else
-                                                <div class="text-danger text-center mt-8"><h4>Meeting</h4></div>
+                                                <div class="text-danger text-center mt-8"><h4>@lang('meeting')</h4></div>
                                                 @endif
 
                                                 <div class="text-danger text-center mt-3"><h3>{{ $meeting }}</h3></div>

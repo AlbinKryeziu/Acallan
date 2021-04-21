@@ -3,7 +3,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
                             <br />
@@ -25,7 +25,7 @@
                                     <th>@lang('description')</th>
                                     <th>@lang('type')</th>
                                     <th>@lang('doctor')</th>
-                                    <th>Date</th>
+                                    <th>@lang('date')</th>
                                 </tr>
                             </thead>
                             <tbody>

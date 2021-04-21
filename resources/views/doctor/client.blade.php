@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if($client->count() >= 1)
+                        @if($client->count())
 
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -50,9 +50,9 @@
                             </tbody>
                         </table>
                         @else
-                        <div class="alert alert-secondary" role="alert">
-                            No registered clients so far
-                        </div>
+                        <div class="alert alert-secondary" role="alert" style="text-align: center">
+                            @lang('no_result')
+                         </div>
                         @endif
                     </div>
                 </div>

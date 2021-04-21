@@ -3,7 +3,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
                             <br />
@@ -11,20 +11,23 @@
                         <table class="table table-hover table-bordered">
                             <form>
                             <div class="table-title">
-                                <h4>Follow Accepted <b>Table</b>
+                                <h4>@lang('accepted')<b> @lang('table')</b>
                                     
-                                <input type="search" class="form-control rounded float-right col-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
+                                    
+                                    
+                                <input type="search" class="form-control rounded float-right col-sm-6 p-1" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
                                     </form>
                                 <br />
+                                <br>
                             </div>
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('name')</th>
                                     <th>@lang('email')</th>
-                                    <th>Phone</th>
-                                    <th>Profile</th>
-                                    <th>Follow</th>
+                                    <th>@lang('phone')</th>
+                                    <th>@lang('profile')</th>
+                                    <th>@lang('follow')</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'verified'])
         return view('dashboard');
     })
     ->name('dashboard');
-Route::get('redirects',[HomeController::class, 'redirects']);
+Route::get('panel',[HomeController::class, 'redirects']);
 Route::get('/', function () {
     return view('home');
 });

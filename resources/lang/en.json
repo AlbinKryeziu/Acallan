@@ -49,6 +49,7 @@
      "description":"Description",
      "type":"Type",
      "doctor":"Doctor",
+     "doctors":"Doctors",
      "client":"Client",
      "clients":"Clients",
      "welcome_Client":"Welcome Client",
@@ -68,14 +69,24 @@
      "request_event":"Request Event",
      "generate_zoom":"Generate Zoom",
      "zoom_link":"Zoom link",
-     "no_result":"No registered gifts so far",
+     "no_result":"No result!",
      "accepted_events":"Accepted Events",
      "events_with":"Events with",
-     "today_event":"Today Event",
+     "today_event":"Today Events",
      "today_date":"Today date",
      "home":"Home",
      "dashboard":"Dashboard",
-     "welcome_doctor":"Welcome Doctor"
+     "welcome_doctor":"Welcome Doctor",
+     "address":"Address",
+     "profile":"Profile",
+     "follow":"Follow",
+     "date":"Date",
+     "accepted":"Follow Accepted",
+     "gifts":"Gifts",
+     "meeting":"Meeting",
+     "state":"State",
+     "menager":"Welcome Menager"
+
 
 
 

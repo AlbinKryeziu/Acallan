@@ -32,22 +32,23 @@
                 
 
                 @if(Auth::user()->isDoctor())
-                    
-            
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ url('panel') }}">
+                        {{ __(trans('dashboard')) }}
+                    </x-jet-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/events/doctor') }}">
-                        {{ __(trans('event')) }}
+                        {{ __(trans('events')) }}
                     </x-jet-nav-link>
                 </div>
-                @endif
-                @if(Auth::user()->isDoctor())
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/client') }}">
-                        {{ __(trans('client')) }}
+                        {{ __(trans('clients')) }}
                     </x-jet-nav-link>
                 </div>
-                @endif
-                @if(Auth::user()->isDoctor())
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/today/event') }}">
                         {{ __(trans('today_event')) }}
@@ -171,9 +172,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('') }}
-            </x-jet-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
@@ -191,7 +190,39 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <!-- Account Management -->
+                @if(Auth::user()->isDoctor())
+                <x-jet-responsive-nav-link href="{{ url('panel') }}"
+                :active="request()->routeIs('profile.show')">
+                {{ __(trans('dashboard')) }}
+            </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{  url('/events/doctor')  }}"
+                :active="request()->routeIs('profile.show')">
+                {{ __(trans('events')) }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ url('/doctor/client') }}"
+                :active="request()->routeIs('profile.show')">
+                {{ __(trans('clients')) }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ url('/doctor/today/event') }}"
+                :active="request()->routeIs('profile.show')">
+                {{ __(trans('today_event')) }}
+            </x-jet-responsive-nav-link>
+            
+            @endif
+            {{-- afaefae --}}
+            @if(Auth::user()->isManager())
+            <x-jet-responsive-nav-link href="{{ url('employees') }}"
+                :active="request()->routeIs('profile.show')">
+                {{ __(trans('Clients')) }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ url('follow/accepted') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('Follow Accepted')) }}
+            </x-jet-responsive-nav-link>   
+            @endif
+
+
+         
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                     :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}

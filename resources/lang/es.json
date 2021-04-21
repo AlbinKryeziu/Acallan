@@ -45,6 +45,7 @@
     "description":"Description",
     "type":"Escribe",
     "doctor":"Doctora",
+    "doctors":"Doctoras",
     "client":"Cliente",
     "clients":"Clientas",
 
@@ -73,7 +74,16 @@
      "home":"Hogar",
      "dashboard":"Tablero",
 
-     "welcome_doctor":"Bienvenida Doctora"
+     "welcome_doctor":"Bienvenida Doctora",
+     "address":"Dirección",
+     "profile":"Perfil",
+     "follow":"Seguir",
+     "date":"Fecha",
+     "accepted":"Seguir Aceptado",
+     "gifts":"Regalos",
+     "meeting":"Reunión",
+     "state":"Expresar",
+     "menager":"Bienvenido gerente"
     
     
     
