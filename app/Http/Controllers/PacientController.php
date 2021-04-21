@@ -23,16 +23,22 @@ class PacientController extends Controller
     }
     public function doctor()
     {
-        $doctorId = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
+        $doctorId = ClientDoctor::where('client_id', Auth::id())->latest()->pluck('doctor_id');
         $user = User::findOrFail(Auth::id());
         $doctors = User::with('doctor')
             ->whereHas('role', function ($q) {
                 $q->where('name', 'Doctor');
             })
             ->whereIn('id', $doctorId);
-
+            if (request()->has('q')) {
+                $doctors = User::with('doctor')
+                ->whereHas('role', function ($q) {
+                    $q->where('name', 'Doctor');
+                })
+                ->whereIn('id', $doctorId)->where('name', 'LIKE', '%' . request()->get('q') . '%');
+            }
         return view('client/doctor', [
-            'doctors' => $doctors->paginate(10),
+            'doctors' => $doctors->paginate(15),
             'user' => $user,
         ]);
     }
@@ -109,9 +115,12 @@ class PacientController extends Controller
 
     public function eventStatus()
     {
-        $events = EventRequest::with('event')->where('request_id', Auth::id());
+        $events = EventRequest::with('event')->where('request_id', Auth::id())->latest();
+        if (request()->has('q')) {
+            $events = EventRequest::with('event')->where('request_id', Auth::id())->where('product', 'LIKE', '%' . request()->get('q') . '%')->latest();
+        }
         return view('client/event', [
-            'events' => $events->paginate(10),
+            'events' => $events->paginate(15),
         ]);
     }
 

@@ -7,9 +7,15 @@
                 <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>@lang('event_table') <b>@lang('table')</b></h4>
+                            <form>
+                            <h4>@lang('event_table') <b>@lang('table')</b><input type="search" class="form-control rounded float-right col-sm-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" /></h4>
+                            </form>
+                            <br>
                             <br />
                         </div>
+                        @if($events->count())
+                            
+                     
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -65,5 +71,12 @@
             </div>
           
         </div>
+        @else
+        <tr class="border border-warning">
+            <td colspan="border border-warning"><div class="alert alert-secondary" role="alert" style="text-align: center">
+             @lang('no_result')
+              </div></td>
+        </tr>
+        @endif
     </div>
 </x-app-layout>

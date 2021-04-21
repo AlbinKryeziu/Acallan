@@ -13,11 +13,14 @@
                             <div class="float-right">
                                 <button type="button" class="btn btn-info btn-sm float-righ" onclick="window.location='{{ url('/pacient/store') }}'">@lang('add_doctor')</button>
                             </div>
-                            
                             <h4>@lang('table_doctor') <b>@lang('table')</b></h4>
-                        
                             @endif
                             <br />
+                            <form>
+                            <input type="search" class="form-control rounded float-right col-sm-6 " name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            </form>
+                            <br>
+                            <br>
                         </div>
                         @if ($message = Session::get('warning'))
                         <div class="alert alert-warning alert-block">
@@ -30,6 +33,9 @@
                             <strong>{{ $message }}</strong>
                         </div>
                         @endif
+                        @if($doctors->count())
+                            
+                      
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -71,6 +77,13 @@
                         {{ $doctors->links() }}
                        
                     </div>
+                    @else
+                    <tr class="border border-warning">
+                        <td colspan="border border-warning"><div class="alert alert-secondary" role="alert" style="text-align: center">
+                         @lang('no_result')
+                          </div></td>
+                    </tr>
+                    @endif
                 </div>
             </div>
         </div>
