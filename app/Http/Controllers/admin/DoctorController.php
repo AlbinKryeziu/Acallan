@@ -229,4 +229,27 @@ class DoctorController extends Controller
             'event' => $event,
         ]);
     }
+    public function changeDetailsDoctor(){
+        return view('doctor/details');
+    }
+    public function updateDetailsDoctor(Request $request){
+        $request->validate([
+            'work_address' => 'required',
+            'phone' => 'required|numeric',
+            'remark' => 'required',
+        ]);
+        $doctor = Doctor::where('user_id',Auth::id())->update([
+            'work_address' => $request->work_address,
+            'remark' => $request->remark,
+        ]);
+        $user = User::where('id',Auth::id())->update([
+            'phone' => $request->phone,
+        ]);
+        if($doctor && $user){
+            return back()->with('success','The changes were successfully saved!');
+        }else{
+            return back()->with('warning','Something was wrong!');
+        }
+
+    }
 }

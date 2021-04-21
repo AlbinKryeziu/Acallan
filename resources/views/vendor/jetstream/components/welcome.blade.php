@@ -5,6 +5,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" />
@@ -26,7 +27,14 @@
         </div>
     </div>
     @if (auth()->user()->hasRole('doc'))
+    <div class="float-right">
+        <a href="{{ url('details') }}" style="color: black"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg></a>
+    
+    </div>
     <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-3">
+        
         <div class="p-4">
             <div class="flex items-center">
                 <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Clients</div>
@@ -35,8 +43,8 @@
             <div class="ml-6">
                 <div class="mt-2 text-sm text-gray-500">
                     <ul>
-                        @foreach (App\Models\User::getUsersByRole('client') as $client)
-                        <li class="flex text-sm mt-4"><img src="images/icons/user.svg" alt="" width="15px" class="mr-4" /><a href="{{url('user/profile/'.$client->id)}}">{{$client->name}}</a></li>
+                        @foreach (App\Models\ClientDoctor::with('client')->where('doctor_id', Auth::id()); as $client)
+                        <li class="flex text-sm mt-4"><img src="images/icons/user.svg" alt="" width="15px" class="mr-4" /><a href="{{ url('/doctor/client/event/accepted/'.$client->client_id) }}">{{ $client->client->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -50,14 +58,14 @@
             <div class="ml-6">
                 <div class="mt-2 text-sm text-gray-500">
                     <p style="text-align: justify;">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                        id est laborum.
+                        {{ Auth::user()->doctor->remark}}
                     </p>
                 </div>
             </div>
         </div>
+        
         <div class="p-4">
+            
             <div class="flex items-center">
                 <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Details</div>
             </div>
@@ -65,60 +73,16 @@
             <div class="ml-6">
                 <div class="mt-2 text-sm text-gray-500">
                     <ul>
-                        <li class="flex text-sm mt-4"><img src="images/icons/location.svg" alt="" width="15px" class="mr-4" /> West Palm Beach, FL</li>
-                        <li class="flex text-sm mt-4"><img src="images/icons/focus.svg" alt="" width="15px" class="mr-4" /> Physician</li>
-                        <li class="flex text-sm mt-4"><img src="images/icons/envelope.svg" alt="" width="15px" class="mr-4" /> email@domain.com</li>
-                        <li class="flex text-sm mt-4"><img src="images/icons/phone.svg" alt="" width="15px" class="mr-4" /> +1 458 7412</li>
+                        <li class="flex text-sm mt-4"><img src="images/icons/location.svg" alt="" width="15px" class="mr-4" />{{ Auth::user()->address }}</li>
+                        <li class="flex text-sm mt-4"><img src="images/icons/focus.svg" alt="" width="15px" class="mr-4" />{{ Auth::user()->doctor->specialty->specialty}}</li>
+                        <li class="flex text-sm mt-4"><img src="images/icons/envelope.svg" alt="" width="15px" class="mr-4" />{{ Auth::user()->email }}</li>
+                        <li class="flex text-sm mt-4"><img src="images/icons/phone.svg" alt="" width="15px" class="mr-4" />{{ Auth::user()->phone }}</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-   <form method="POST" action="{{ url('/meetings') }}">
-    @csrf
-<input type="name" class="form-control" name="start_time">
-<input type="name" class="form-control" name="email">
-<button type="submit">Add</button>
-
-   </form>
-    {{-- <div class="max-w-7xl p-4">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th colspan="6" scope="col" style="text-align: center;">Event For Today</th>
-                </tr>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Event Name</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Client Name</th>
-                    <th scope="col">Zoom</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($events as $key => $event)
-                 @php  $date = Carbon\Carbon::parse($event->start)->format('Y-m-d H:i'); 
-                 $carbon = Carbon\Carbon::now(); 
-                 echo $diference =$carbon->diffInHours($date);
-                  @endphp
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{{ $event->title }}</td>
-                    <td colspan="">{{ $event->start}}</td>
-                    <td colspan="">{{ $event->end}}</td>
-                    <td colspan="">{{ $event->requestEvent->first()->requestClient->name}}</td>
-                    @if($diference <= '1')
-                    <td colspan=""><i class="fa fa-eercast" aria-hidden="true"></i></td>
-                    @endif
-                </tr>
-
-                @endforeach
-            </tbody>
-            {{ $events->links() }}
-        </table>
-    </div> --}}
-
+   
     <div class="container py-4">
         <div class="response alert alert-success mt-2" style="display: none;"></div>
         <div id="calendar"></div>

@@ -80,7 +80,8 @@ Route::get('/doctor/client', [DoctorController::class, 'doctorClients']);
 Route::get('/doctor/gift/client/{ClientId}', [DoctorController::class, 'pacientGift']);
 Route::get('/doctor/client/event/accepted/{ClientId}', [DoctorController::class, 'clientEventAccepted']);
 Route::get('/doctor/today/event', [DoctorController::class, 'todayEvent']);
-
+Route::get('details', [DoctorController::class, 'changeDetailsDoctor']);
+Route::post('change/details', [DoctorController::class, 'updateDetailsDoctor']);
 Route::get('/admin/client', [ClientController::class, 'index']);
 Route::delete('/admin/delete/{clientId}', [ClientController::class, 'deleteClient']);
 Route::get('/client/access/{userId}', [ClientController::class, 'storeAccess']);
