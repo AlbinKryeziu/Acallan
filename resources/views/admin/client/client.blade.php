@@ -17,7 +17,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8" style="bottom: -14px;">
-                                    <h4>Clients <b>Table</b></h4>
+                                    <h4>@lang('clients') <b>@lang('table')</b></h4>
                                 </div>
                             </div>
                             <br />
@@ -37,12 +37,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>New Event</th>
-                                    <th>Access </th>
-                                    <th>Details</th>
-                                    <th>Action</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('email')</th>
+                                    <th>@lang('new_event')</th>
+                                    <th>@lang('access') </th>
+                                    <th>@lang('details')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>

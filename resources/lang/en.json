@@ -91,7 +91,12 @@
      "personal_details":"Personal Details",
      "profesional_details":"Profession Details",
      "speciality":"Specialty",
-     "pin":"Pin"
+     "pin":"Pin",
+     "access":"Access",
+     "back":"Go Back",
+     "new_event":"New Event",
+     "details":"Details",
+     "select_doctor":"Select Doctor"
 
 
 

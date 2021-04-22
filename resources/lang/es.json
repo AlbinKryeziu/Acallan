@@ -89,7 +89,12 @@
      "personal_details":"Detalles personales",
      "profesional_details":"Detalles de la profesión",
      "speciality":"Especialidad",
-     "pin":"Alfiler"
+     "pin":"Alfiler",
+     "access":"Acceso",
+     "back":"Regresa",
+     "new_event":"Nuevo evento",
+     "details":"Detalles",
+     "select_doctor":"Seleccionar doctora"
 
     
     

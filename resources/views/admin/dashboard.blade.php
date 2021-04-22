@@ -82,7 +82,7 @@
                       <div class="card-counter primary">
                         <i class="fa fa-code-fork"></i>
                         <span class="count-numbers">{{ $doctor->count()}}</span>
-                        <span class="count-name">Doctor</span>
+                        <span class="count-name">@lang('doctors')</span>
                       </div>
                     </div>
                 
@@ -90,7 +90,7 @@
                       <div class="card-counter danger">
                         <i class="fa fa-ticket"></i>
                         <span class="count-numbers">{{ $client->count()}}</span>
-                        <span class="count-name">Client</span>
+                        <span class="count-name">@lang('clients')</span>
                       </div>
                     </div>
                 
@@ -98,7 +98,7 @@
                       <div class="card-counter success">
                         <i class="fa fa-database"></i>
                         <span class="count-numbers">{{ $event->count() }}</span>
-                        <span class="count-name">event</span>
+                        <span class="count-name">@lang('events')</span>
                       </div>
                     </div>
                 

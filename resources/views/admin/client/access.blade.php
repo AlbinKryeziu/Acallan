@@ -28,7 +28,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Client Name</label>
+                            <label class="col-md-12 control-label" for="name">@lang('client') @lang('name')</label>
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="name" disabled value="" placeholder="{{ $user->name }}" />
                                 <input class="form-control" type="hidden" name="userId" value="{{ $user->id }}" placeholder="" />
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Access:</label>
+                            <label class="col-md-12 control-label" for="name">@lang('access'):</label>
                             <div class="col-md-12">
                                 @foreach($speciality as $key => $speciality) <input type="checkbox" name="speciality[]" value="{{ $speciality->id}}"  @forelse($activeAccess as $key => $a) @if($speciality->id == $a->id) checked @endif @empty checked @endforelse   
                                />
@@ -50,10 +50,10 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="btn-group float-right p-1" role="group" aria-label="Third group">
-                                    <button type="submit" class="btn btn-info float-right">Save</button>
+                                    <button type="submit" class="btn btn-info float-right">@lang('save')</button>
                                 </div>
                                 <div class="btn-group float-right p-1" role="group" aria-label="Third group">
-                                    <a href="{{ URL::previous() }}" class="btn btn-info float-right">Go Back</a>
+                                    <a href="{{ URL::previous() }}" class="btn btn-info float-right">@lang('back')</a>
                                 </div>
                             </div>
                         </div>

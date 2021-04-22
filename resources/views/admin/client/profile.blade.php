@@ -149,7 +149,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Full Name</h6>
+                                                <h6 class="mb-0">@lang('full_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $client->name }}
@@ -158,7 +158,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
+                                                <h6 class="mb-0">@lang('email')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $client->email }}
@@ -167,7 +167,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
+                                                <h6 class="mb-0">@lang('phone')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $client->phone }}
@@ -176,7 +176,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Access</h6>
+                                                <h6 class="mb-0">@lang('access')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 @foreach($acces as $key => $acces)

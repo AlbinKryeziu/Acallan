@@ -29,10 +29,10 @@
 
                         <div class="form-group">
                             <input type="hidden" name="clientId" value="{{ $client->id }}">
-                            <label class="col-md-12 control-label" for="name">Doctor</label>
+                            <label class="col-md-12 control-label" for="name">@lang('doctor')</label>
                             <div class="col-md-12">
                                 <select class="form-control input-md" id="doctor" name="doctorId">
-                                    <option value="">Select Doctor</option>
+                                    <option value="">@lang('select_doctor')</option>
                                     @foreach($doctor as $key => $doctor)
                                     <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Event Name</label>
+                            <label class="col-md-12 control-label" for="name">@lang('event_name')</label>
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="event" placeholder="" />
                                 @error('links')
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Start Date</label>
+                            <label class="col-md-12 control-label" for="name">@lang('start_date')</label>
                             <div class="col-md-12">
                                <input type="datetime-local" name="start" class="form-control">
                                 @error('description')
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">End Date</label>
+                            <label class="col-md-12 control-label" for="name">@lang('end_date')</label>
                             <div class="col-md-12">
                                 <input type="datetime-local" name="end" class="form-control">
                                 @error('description')
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Product</label>
+                            <label class="col-md-12 control-label" for="name">@lang('product')</label>
                             <div class="col-md-12">
                                 <input type="text" name="product" class="form-control">
                                 @error('description')
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 control-label" for="name">Article</label>
+                            <label class="col-md-12 control-label" for="name">@lang('article')</label>
                             <div class="col-md-12">
                                 <input type="text" name="article" class="form-control">
                                 @error('description')
@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 float-right">
-                                <button type="submit" class="btn btn-info float-right">Save</button>
+                                <button type="submit" class="btn btn-info float-right">@lang('save')</button>
                             </div>
                         </div>
                     </fieldset>

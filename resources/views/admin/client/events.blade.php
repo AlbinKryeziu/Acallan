@@ -38,15 +38,15 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Status</th>
-                                    <th>Product</th>
-                                    <th>Article</th>
-                                    <th>Client name</th>
-                                    <th>Doctor name</th>
-                                    <th>Action</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('start_date')</th>
+                                    <th>@lang('end_date')</th>
+                                    <th>@lang('status')</th>
+                                    <th>@lang('product')</th>
+                                    <th>@lang('article')</th>
+                                    <th>@lang('client') @lang('name')</th>
+                                    <th>@lang('doctor') @lang('name')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>

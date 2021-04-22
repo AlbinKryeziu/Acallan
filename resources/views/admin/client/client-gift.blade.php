@@ -27,12 +27,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Client</th>
-                                    <th>Gift</th>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th>Doctor</th>
-                                    <th>Action</th>
+                                    <th>@lang('client')</th>
+                                    <th>@lang('gift')</th>
+                                    <th>@lang('description')</th>
+                                    <th>@lang('type')</th>
+                                    <th>@lang('doctor')</th>
+                                    <th>@lang('action')</th>
                                    
                                 </tr>
                             </thead>
