@@ -5,18 +5,6 @@
             {{ __('Dashboard') }}
         </h2>
         <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctors
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Clients
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Events
-            </x-jet-nav-link>
-        </div>
     </x-slot>
 
     <div class="py-12">

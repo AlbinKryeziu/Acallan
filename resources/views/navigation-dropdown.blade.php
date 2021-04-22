@@ -74,6 +74,21 @@
 
                 </div>
                 @endif
+                @if(Auth::user()->isAdmin())
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ url('/doctor/view') }}">
+                        @lang('doctors')
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ url('/admin/client') }}">
+                        {{ __(trans('clients')) }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ url('/admin/event') }}">
+                        {{ __(trans('events')) }}
+                    </x-jet-nav-link>
+                </div>
+    
+                    
+                @endif
                 
             </div>
 
@@ -261,7 +276,21 @@
 
             
             @endif
+            @if(Auth::user()->isAdmin())
+            <x-jet-responsive-nav-link href="{{ url('/doctor/view') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('doctors')) }}
+            </x-jet-responsive-nav-link> 
+            <x-jet-responsive-nav-link href="{{ url('/admin/client') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('Clients')) }}
+        </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ url('/admin/event') }}"
+            :active="request()->routeIs('profile.show')">
+            {{ __(trans('events')) }}
+            </x-jet-responsive-nav-link>  
 
+            @endif
 
          
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}"

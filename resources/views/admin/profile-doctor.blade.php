@@ -5,18 +5,6 @@
             {{ __('Dashboard') }}
         </h2>
         <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctors
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Clients
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Events
-            </x-jet-nav-link>
-        </div>
     </x-slot>
     @php $i=1; @endphp
     <div class="py-12">
@@ -48,7 +36,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Full Name</h6>
+                                                <h6 class="mb-0">@lang('full_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->name }}
@@ -57,7 +45,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
+                                                <h6 class="mb-0">@lang('email')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->email }}
@@ -66,7 +54,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
+                                                <h6 class="mb-0">@lang('phone')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->phone }}
@@ -75,7 +63,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Work address</h6>
+                                                <h6 class="mb-0">@lang('work_address')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->work_address }}
@@ -84,7 +72,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Remark</h6>
+                                                <h6 class="mb-0">@lang('remark')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 {{ $doctor->doctor->remark }}
@@ -98,9 +86,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Event Name</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
+                                                    <th>@lang('event_name')</th>
+                                                    <th>@lang('start_date')</th>
+                                                    <th>@lang('end_date')</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

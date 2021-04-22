@@ -5,18 +5,6 @@
             {{ __('Dashboard') }}
         </h2>
         <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctors
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Clients
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Events
-            </x-jet-nav-link>
-        </div>
     </x-slot>
 
     <div class="py-12">
@@ -28,10 +16,10 @@
                     <div class="card-box p-7">
                         <div class="row">
                             <div class="col-md-6 ">
-                                <h5 class="card-title">Personal Details</h5>
+                                <h5 class="card-title">@lang('personal_details'):</h5>
                                 <br />
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Full Name:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('full_name'):</label>
                                     <div class="col-lg-6">
                                         <input
                                             type="text"
@@ -48,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Email:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('email'):</label>
                                     <div class="col-lg-6">
                                         <input type="email" class="form-control" id="email" value="{{ $doctor->email }}" name="email" />
                                         @error('email')
@@ -57,17 +45,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Birthday:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('birthday'):</label>
                                     <div class="col-lg-6">
                                         <input type="date" class="form-control" id="myDate" value="{{ $doctor->doctor->birthday }}" name="birthday" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h5 class="card-title">Profession Details</h5>
+                                <h5 class="card-title">@lang('profesional_details')</h5>
                                 <br />
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Specialty:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('speciality'):</label>
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -91,7 +79,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Phone:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('phone'):</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="phone" value="{{ $doctor->doctor->phone }}" id="phone" />
                                         @error('phone')
@@ -100,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Work Address:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('work_address'):</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="work_address" value="{{ $doctor->doctor->work_address }}" id="work_address" />
                                         @error('phone')
@@ -109,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">Remark:</label>
+                                    <label class="col-lg-3 col-form-label">@lang('remark'):</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="remark" value="{{ $doctor->doctor->remark }}" id="remark" />
                                         @error('phone')
@@ -122,7 +110,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 float-right">
-                            <button type="submit" class="btn btn-info float-right"> Change</button>
+                            <button type="submit" class="btn btn-info float-right">@lang('save')</button>
                         </div>
                     </div>
                     <div class="form-group row">

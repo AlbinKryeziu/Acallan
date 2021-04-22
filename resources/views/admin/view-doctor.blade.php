@@ -5,50 +5,38 @@
             {{ __('Dashboard') }}
         </h2>
         <br />
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctors
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Clients
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Events
-            </x-jet-nav-link>
-        </div>
     </x-slot>
     @php $i=1; @endphp
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
-                            <h4>Doctors <b>Table</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
+                            <h4>@lang('doctors') <b>@lang('table')</b><button type="button" class="btn btn-info btn-sm float-right" onclick="window.location='{{ url('/formular/doctor') }}'">Add Doctor</button></h4>
                             <br />
                         </div>
                         <form>
                             @csrf
-                        <div class="input-group rounded col-4 float-right">
-                            <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <span class="input-group-text border-0" id="search-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
+                        
+                            <input type="search" class="form-control rounded float-right col-sm-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        
                         </form>
                         <br>
                         <br>
+                        @if($doctors->count())
+                            
+                    
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ID Doctor</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Specialties</th>
-                                    <th>Action</th>
+                                    <th>ID @lang('doctor')</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('email')</th>
+                                    <th>@lang('specialties')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,6 +73,13 @@
                         </table>
                         {{ $doctors->links() }}
                     </div>
+                    @else
+                    <tr class="border border-warning">
+                        <td colspan="border border-warning"><div class="alert alert-secondary" style="text-align: center;" role="alert">
+                         @lang('no_result')
+                          </div></td>
+                    </tr>
+                    @endif
                 </div>
             </div>
         </div>

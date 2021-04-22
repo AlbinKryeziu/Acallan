@@ -30,6 +30,7 @@
     "name":"Nombre",
     "full_name":"Nombre completo",
     "email":"Correo electrónico",
+    "birthday":"Cumpleaños",
     "specialties":"Especialidades",
     "gift":"Regalo",
     "event":"Evento",
@@ -84,7 +85,12 @@
      "meeting":"Reunión",
      "state":"Expresar",
      "menager":"Bienvenido gerente",
-     "followers":"Seguidoras"
+     "followers":"Seguidoras",
+     "personal_details":"Detalles personales",
+     "profesional_details":"Detalles de la profesión",
+     "speciality":"Especialidad",
+     "pin":"Alfiler"
+
     
     
     

@@ -9,17 +9,7 @@
         </h2>
         <br>
         
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ url('/doctor/view') }}">
-                Doctors
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/client') }}">
-                Clients
-            </x-jet-nav-link>
-            <x-jet-nav-link href="{{ url('/admin/event') }}">
-                Events
-            </x-jet-nav-link>
-        </div>
+       
         <style>
             .card-counter{
     box-shadow: 2px 2px 10px #DADADA;
@@ -85,12 +75,10 @@
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
 
-                
-
-
+              
                 <div class="container">
                     <div class="row">
-                    <div class="col-md-3">  
+                    <div class="col-md-4">  
                       <div class="card-counter primary">
                         <i class="fa fa-code-fork"></i>
                         <span class="count-numbers">{{ $doctor->count()}}</span>
@@ -98,7 +86,7 @@
                       </div>
                     </div>
                 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="card-counter danger">
                         <i class="fa fa-ticket"></i>
                         <span class="count-numbers">{{ $client->count()}}</span>
@@ -106,7 +94,7 @@
                       </div>
                     </div>
                 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="card-counter success">
                         <i class="fa fa-database"></i>
                         <span class="count-numbers">{{ $event->count() }}</span>
@@ -114,13 +102,7 @@
                       </div>
                     </div>
                 
-                    <div class="col-md-3">
-                      <div class="card-counter info">
-                        <i class="fa fa-users"></i>
-                        <span class="count-numbers">35</span>
-                        <span class="count-name">All</span>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
 

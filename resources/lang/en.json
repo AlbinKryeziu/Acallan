@@ -34,6 +34,7 @@
      "name":"Name",
      "full_name":"Full Name",
      "email":"Email",
+     "birthday":"Birthday",
      "specialties":"Specialties",
      "gift":"Gift",
      "event":"Event",
@@ -86,7 +87,11 @@
      "meeting":"Meeting",
      "state":"State",
      "menager":"Welcome Menager",
-     "followers":"Followers"
+     "followers":"Followers",
+     "personal_details":"Personal Details",
+     "profesional_details":"Profession Details",
+     "speciality":"Specialty",
+     "pin":"Pin"
 
 
 
