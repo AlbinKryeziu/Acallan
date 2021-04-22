@@ -35,6 +35,9 @@
                         <br />
 
                         <table class="table table-hover table-bordered">
+                            @if($events->count())
+                                
+                           
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -46,7 +49,7 @@
                                     <th>@lang('article')</th>
                                     <th>@lang('client') @lang('name')</th>
                                     <th>@lang('doctor') @lang('name')</th>
-                                    <th>@lang('action')</th>
+                                    <th>@lang('messages.welcome')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,6 +71,11 @@
                         </table>
                     </div>
                 </div>
+                @else
+                <div class="alert alert-secondary" style="text-align: center;" role="alert">
+                    @lang('no_result')
+                     </div>
+                @endif
             </div>
         </div>
     </div>

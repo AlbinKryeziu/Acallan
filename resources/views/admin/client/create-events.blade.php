@@ -65,7 +65,7 @@
                                 @error('description')
                                 <label class="error" style="color: red;">{{ $message }}</label>
                                 @enderror
-                            </div>
+                        </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name">@lang('product')</label>

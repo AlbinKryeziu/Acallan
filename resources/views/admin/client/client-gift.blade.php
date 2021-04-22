@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-12">
           
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     <div class="table-wrapper">
                         <div class="table-title">
                             <h4>{{ $client->name }} Gifts <b>Table</b></h4>
@@ -24,6 +24,9 @@
                         </div>
                         @endif
                         <table class="table table-hover table-bordered">
+                            @if($gifts->count())
+                                
+                         
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -37,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($gift as $key => $gift)
+                                @foreach($gifts as $key => $gift)
                                 <tr>
                                     <td>@php echo $i++ @endphp</td>
                                     <td>{{ $gift->client->name }}</td>
@@ -59,8 +62,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$gifts->links() }}
                     </div>
                 </div>
+                @else
+                   <div class="alert alert-secondary" style="text-align: center;" role="alert">
+                     @lang('no_result')
+                      </div>
+                @endif
             </div>
         </div>
     </div>

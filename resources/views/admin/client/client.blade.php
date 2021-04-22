@@ -71,11 +71,9 @@
                     </div>
                 </div>
                 @else
-                <tr class="border border-warning">
-                    <td colspan="border border-warning"><div class="alert alert-secondary" style="text-align: center;" role="alert">
-                     @lang('no_result')
-                      </div></td>
-                </tr>
+                <div class="alert alert-secondary" style="text-align: center;" role="alert">
+                    @lang('no_result')
+                     </div>
                 @endif
             </div>
         </div>

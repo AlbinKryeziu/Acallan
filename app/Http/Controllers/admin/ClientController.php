@@ -112,7 +112,9 @@ class ClientController extends Controller
                 })
                 ->where('request_id', $clientId)
                 ->get();
+                
         }
+        
 
         return view('admin/client/events', [
             'events' => $events,
@@ -122,9 +124,9 @@ class ClientController extends Controller
     public function giftClient($clientId)
     {
         $client = User::findOrFail($clientId);
-        $gift = GiftClient::where('client_id', $clientId)->get();
+        $gifts = GiftClient::where('client_id', $clientId);
         return view('admin/client/client-gift', [
-            'gift' => $gift,
+            'gifts' => $gifts->paginate(20),
             'client' => $client,
         ]);
     }
