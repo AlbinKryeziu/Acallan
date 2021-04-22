@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="event_name">Phone</label>
                             <div class="col-md-12">
-                                {{ Auth::user()->phone }}
+                                
                                 <input id="phone" name="phone" type="text" value=" {{ Auth::user()->phone }}" class="form-control input-md" />
                                 @error('phone')
                                 <div class="form-group">
