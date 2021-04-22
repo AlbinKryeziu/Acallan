@@ -84,7 +84,7 @@ class ManagerController extends Controller
     }
 
     public function doctorClients($clientId){
-        $doctorId = ClientDoctor::where('client_id', Auth::id())->pluck('doctor_id');
+        $doctorId = ClientDoctor::where('client_id', $clientId)->pluck('doctor_id');
         $doctors = User::with('doctor')
             ->whereHas('role', function ($q) {
                 $q->where('name', 'Doctor');

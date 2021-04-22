@@ -29,12 +29,13 @@
                             </thead>
                             <tbody>
                                 @foreach ( $doctors as $doctor)
+                               
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
-                                    <td>{{ $doctor->work_address }}</td>
-                                    <td>{{ $doctor->remark }}</td>
+                                    <td>{{ $doctor->phone }}</td>
+                                    <td>{{ $doctor->address }}</td>
                                     <td>
                                     </td>
                                 </tr>
