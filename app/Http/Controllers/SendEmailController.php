@@ -16,21 +16,34 @@ class SendEmailController extends Controller
 
     function send(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required',
         ]);
-
-        $data = [
-            'name' => $request->name,
+        try {
+            \Mail::send(
+                'dynamic_email_template',
+                [
+                    'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'need' => $request->need,
             'message' => $request->message,
-        ];
+            'phone'=>$request->phone
+                    
+                ],
+                function ($message) use ($request) {
+                    $message->from('edits@ajroni.com');
+                    $message->to('support@ajroni.com')->subject('New contact From' . ' ' . $request->name);
+                }
+            );
+        } catch (ModelNotFoundException $e) {
+            return back()->with('error', [$e->getMessage()]);
+        }
+        return back()->with('success', 'Message sent successfully. Thank you for contacting us');
 
-        Mail::to('art.kujtimi@hotmail.com')->send(new SendMail($data));
-        return back()->with('success', 'Thanks for contacting us!');
+        
     }
 }

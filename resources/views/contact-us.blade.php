@@ -86,7 +86,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_lastname">Email Address</label>
-                                        <input id="form_lastname" type="text" name="surname" class="form-control"
+                                        <input id="form_lastname" type="email" name="email" class="form-control"
                                             placeholder="Please enter your lastname *" required="required"
                                             data-error="Lastname is required.">
                                         <div class="help-block with-errors"></div>
@@ -97,7 +97,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Phone Number</label>
-                                        <input id="form_email" type="email" name="email" class="form-control"
+                                        <input id="form_email" type="text" name="phone" class="form-control"
                                             placeholder="Please enter your email *" required="required"
                                             data-error="Valid email is required.">
                                         <div class="help-block with-errors"></div>
