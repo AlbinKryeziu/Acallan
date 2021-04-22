@@ -3,7 +3,7 @@
         <div class="column-1">
             <div class="logo">
                 <img src="images/logo-footer.jpg" alt="">
-                <p style="margin-top:30px;padding-right: 60px;font-size:16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p style="margin-top:30px;padding-right: 60px;font-size:16px;">We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies.</p>
             </div>
         </div>
         <div class="column column-2">

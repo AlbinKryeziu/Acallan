@@ -21,19 +21,18 @@ class ClientController extends Controller
     public function index()
     {
         if (Auth::user()->isAdmin()) {
-            $client = User::whereHas('role', function ($q) {
+            $clients = User::whereHas('role', function ($q) {
                 $q->where('name', 'Client');
-            })->get();
+            });
             if (request()->has('q')) {
-                $client = User::whereHas('role', function ($q) {
+                $clients = User::whereHas('role', function ($q) {
                     $q->where('name', 'Client');
                 })
-                    ->where('name', 'LIKE', '%' . request()->get('q') . '%')
-                    ->get();
+                    ->where('name', 'LIKE', '%' . request()->get('q') . '%');
             }
 
             return view('admin/client/client', [
-                'client' => $client,
+                'clients' => $clients->paginate(20),
             ]);
         }
         return redirect()->back();

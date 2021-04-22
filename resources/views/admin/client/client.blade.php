@@ -11,7 +11,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <div class="table">
+                <div class="table table-responsive">
                     
                     <div class="table-wrapper">
                         <div class="table-title">
@@ -24,15 +24,13 @@
                         </div>
                         <form>
                             @csrf
-                        <div class="input-group rounded col-4 float-right">
-                            <input type="search" class="form-control rounded" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <span class="input-group-text border-0" id="search-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
+                            <input type="search" class="form-control rounded float-right col-sm-6" name="q" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         </form>
                         <br>
                         <br>
+                        @if($clients->count())
+                            
+                        
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -46,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($client as $key => $client)
+                                @foreach($clients as $key => $client)
                                 <tr>
                                     <td>@php echo $i++; @endphp</td>
                                     <td>{{ $client->name }}</td>
@@ -69,8 +67,16 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $clients->links() }}
                     </div>
                 </div>
+                @else
+                <tr class="border border-warning">
+                    <td colspan="border border-warning"><div class="alert alert-secondary" style="text-align: center;" role="alert">
+                     @lang('no_result')
+                      </div></td>
+                </tr>
+                @endif
             </div>
         </div>
     </div>

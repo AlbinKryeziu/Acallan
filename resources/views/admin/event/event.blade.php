@@ -35,17 +35,19 @@
                             </span>
                         </div>
                         </form>
+                        @if($events->count())
+                            
                         
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Event</th>
-                                    <th>Doctor</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Event request</th>
-                                    <th>Action</th>
+                                    <th>@lang('event')</th>
+                                    <th>@lang('doctor')</th>
+                                    <th>@lang('start_date')</th>
+                                    <th>@lang('end_date')</th>
+                                    <th>@lang('event_request')</th>
+                                    <th>@lang('action')</th>
                                     
                                     
                                 </tr>
@@ -77,6 +79,13 @@
                         {{ $events->links() }}
                     </div>
                 </div>
+                @else
+                <tr class="border border-warning">
+                    <td colspan="border border-warning"><div class="alert alert-secondary" style="text-align:center;" role="alert">
+                     @lang('no_result')
+                      </div></td>
+                </tr>
+                @endif
             </div>
         </div>
     </div>
