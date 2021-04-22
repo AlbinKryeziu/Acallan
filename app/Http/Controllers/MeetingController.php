@@ -56,7 +56,7 @@ class MeetingController extends Controller
                 'start' => $event->start,
                 'join_url' => $zommdata['data']['join_url'],
             ];
-            Mail::to($client->email)->send(new ZoomLink($data));
+            // Mail::to($client->email)->send(new ZoomLink($data));
         }
 
         return back();
