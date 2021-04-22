@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2021 at 05:40 PM
+-- Generation Time: Apr 22, 2021 at 05:43 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `acallan`
 --
-CREATE DATABASE IF NOT EXISTS `acallan` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `acallan`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `acallan`;
 -- Table structure for table `cache`
 --
 
-DROP TABLE IF EXISTS `cache`;
 CREATE TABLE `cache` (
   `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -42,7 +39,6 @@ CREATE TABLE `cache` (
 -- Table structure for table `client_doctors`
 --
 
-DROP TABLE IF EXISTS `client_doctors`;
 CREATE TABLE `client_doctors` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `client_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -64,7 +60,6 @@ INSERT INTO `client_doctors` (`id`, `client_id`, `doctor_id`, `created_at`, `upd
 -- Table structure for table `doctors`
 --
 
-DROP TABLE IF EXISTS `doctors`;
 CREATE TABLE `doctors` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -94,7 +89,6 @@ INSERT INTO `doctors` (`id`, `name`, `birthday`, `specialty_id`, `phone`, `work_
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -120,7 +114,6 @@ INSERT INTO `events` (`id`, `title`, `start`, `end`, `user_id`, `event_id`, `cre
 -- Table structure for table `event_requests`
 --
 
-DROP TABLE IF EXISTS `event_requests`;
 CREATE TABLE `event_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `request_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -145,7 +138,6 @@ INSERT INTO `event_requests` (`id`, `request_id`, `event_id`, `created_at`, `upd
 -- Table structure for table `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -162,7 +154,6 @@ CREATE TABLE `failed_jobs` (
 -- Table structure for table `follows`
 --
 
-DROP TABLE IF EXISTS `follows`;
 CREATE TABLE `follows` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `menager_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -185,7 +176,6 @@ INSERT INTO `follows` (`id`, `menager_id`, `client_id`, `status`, `created_at`, 
 -- Table structure for table `gift_clients`
 --
 
-DROP TABLE IF EXISTS `gift_clients`;
 CREATE TABLE `gift_clients` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `links` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -210,7 +200,6 @@ INSERT INTO `gift_clients` (`id`, `links`, `description`, `client_id`, `doctor_i
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -247,7 +236,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -260,7 +248,6 @@ CREATE TABLE `password_resets` (
 -- Table structure for table `permissions`
 --
 
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -275,7 +262,6 @@ CREATE TABLE `permissions` (
 -- Table structure for table `personal_access_tokens`
 --
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -294,7 +280,6 @@ CREATE TABLE `personal_access_tokens` (
 -- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -319,7 +304,6 @@ INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE `sessions` (
   `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -343,7 +327,6 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 -- Table structure for table `specialties`
 --
 
-DROP TABLE IF EXISTS `specialties`;
 CREATE TABLE `specialties` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `specialty` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -367,7 +350,6 @@ INSERT INTO `specialties` (`id`, `specialty`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -381,7 +363,7 @@ CREATE TABLE `users` (
   `profile_photo_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `doctor_access` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '[["17"]]',
+  `doctor_access` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '\'[["17"]]\'' CHECK (json_valid(`doctor_access`)),
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
@@ -403,7 +385,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 -- Table structure for table `users_permissions`
 --
 
-DROP TABLE IF EXISTS `users_permissions`;
 CREATE TABLE `users_permissions` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `permission_id` int(10) UNSIGNED NOT NULL
@@ -415,7 +396,6 @@ CREATE TABLE `users_permissions` (
 -- Table structure for table `users_roles`
 --
 
-DROP TABLE IF EXISTS `users_roles`;
 CREATE TABLE `users_roles` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL
@@ -437,7 +417,6 @@ INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES
 -- Table structure for table `zoom_meetings`
 --
 
-DROP TABLE IF EXISTS `zoom_meetings`;
 CREATE TABLE `zoom_meetings` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `start_data` datetime NOT NULL,
