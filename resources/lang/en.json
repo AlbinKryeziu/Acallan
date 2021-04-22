@@ -1,0 +1,117 @@
+{
+    "register":"Register",
+    "login":"Login",
+    "home":"home",
+    "aboutUs":"About Us",
+    "howItWork":"How It Works",
+    "contactUs":"CONTACT US",
+
+    "home_banner":"Technology helps build cutting edge solutions like ProMedRep",
+    "home_title":"WHO WE ARE",
+    "container_tittle":"We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies.",
+    
+     "about_title":"WHAT",
+     "about_section1":"We are young and dynamic entrepreneurs with a vision to improve client and quality access to enhance pharma marketing strategies.",
+
+     "about_shadow":"Enable healthcare providers to stay connected with pharma industry and manage their interviews virtually",
+
+     "about_shadow1":"Help pharma industry to optimize their efforts and enhance quality promotion of their products remotely with their clients",
+
+     "about_shadow2": "Create value for health care provider and the pharma industry",
+
+     "how_it_work-step1":"Step 1",
+
+     "how_it_work-title1":"Creating an Account",
+
+     "how_it_work-paragraf1":"Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+
+     "contact_us_title":"How To Reach Us",
+
+     "table_doctor":"My Doctors",
+     "event_table":"My Events",
+     
+     "table":"Table",
+     "name":"Name",
+     "full_name":"Full Name",
+     "email":"Email",
+     "birthday":"Birthday",
+     "specialties":"Specialties",
+     "gift":"Gift",
+     "event":"Event",
+     "events":"Events",
+     "action":"Action",
+     "event_name":"Event name",
+     "doctor_name":"Doctor Name",
+     "product":"Product",
+     "article":"Article",
+     "start_date":"Start date",
+     "end_date":"End date",
+     "status":"Status",
+     "description":"Description",
+     "type":"Type",
+     "doctor":"Doctor",
+     "doctors":"Doctors",
+     "client":"Client",
+     "clients":"Clients",
+     "welcome_Client":"Welcome Client",
+     "sent":"Sent",
+     "accepted":"Accepted",
+     "rejected":"Rejected",
+     "sent_gift":"Sent Gift",
+     "type_gift":"Type of gift",
+     "links":"Links",
+     "save":"Save",
+     "phone":"Phone",
+     "work_address":"Work address",
+     "remark":"Remark",
+     "add_doctor":"Add Doctor",
+     "event_history":"Event History",
+     "title":"Title",
+     "request_event":"Request Event",
+     "generate_zoom":"Generate Zoom",
+     "zoom_link":"Zoom link",
+     "no_result":"No result!",
+     "accepted_events":"Accepted Events",
+     "events_with":"Events with",
+     "today_event":"Today Events",
+     "today_date":"Today date",
+     "home":"Home",
+     "dashboard":"Dashboard",
+     "welcome_doctor":"Welcome Doctor",
+     "address":"Address",
+     "profile":"Profile",
+     "follow":"Follow",
+     "date":"Date",
+     "accepted1":"Follow Accepted",
+     "gifts":"Gifts",
+     "meeting":"Meeting",
+     "state":"State",
+     "menager":"Welcome Menager",
+     "followers":"Followers",
+     "personal_details":"Personal Details",
+     "profesional_details":"Profession Details",
+     "speciality":"Specialty",
+     "pin":"Pin",
+     "access":"Access",
+     "back":"Go Back",
+     "new_event":"New Event",
+     "details":"Details",
+     "select_doctor":"Select Doctor",
+     "event_request":"Event requests"
+
+
+
+
+
+
+
+
+
+
+     
+     
+
+
+
+    
+}

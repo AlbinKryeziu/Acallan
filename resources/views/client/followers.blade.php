@@ -41,7 +41,8 @@
                                             @csrf
                                         <button type="submit" class=" btn-primary btn-sm col-12">Accept</button>   
                                         </form>
-                                        <form class="p-1">
+                                        <form class="p-1" action="{{ url('followers/delete/'.$follower->menager_id) }}" method="POST">
+                                            @csrf
                                             <button type="submit" class=" btn-danger btn-sm col-12">Delete</button>
                                         </form>
                                     </td>
@@ -64,10 +65,10 @@
                 </div>
             </div>
             @else
-        <tr class="border border-warning">
-            <td colspan="border border-warning"><div class="alert alert-secondary" role="alert" style="text-align: center">
+        
+          <div class="alert alert-secondary" role="alert" style="text-align: center">
              @lang('no_result')
-              </div></td>
+              </div>
         </tr>
         @endif
         </div>

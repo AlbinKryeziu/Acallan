@@ -30,7 +30,7 @@ class HomeController extends Controller
                 'requestEvent' => function ($q) {
                     $q->where('status', 1);
                 },
-            ])
+        ])
                 ->where('user_id', Auth::id())
                 ->whereDate('start', $date)
                 ->where('status', 1)
@@ -39,7 +39,7 @@ class HomeController extends Controller
                 'event' =>$event
             ]);
         }elseif (Auth::user()->hasRole('client')) {
-            return view('client/dashboard');
+            return redirect()->action([PacientController::class,'doctor']);
         }
         elseif (Auth::user()->hasRole('manager')) {
             return redirect()->action([ManagerController::class, 'index']);
