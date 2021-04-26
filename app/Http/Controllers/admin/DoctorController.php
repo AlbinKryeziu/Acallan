@@ -85,7 +85,7 @@ class DoctorController extends Controller
                 'email' => $request->email,
             ];
 
-            // Mail::to($request->email)->send(new WelcomeMail($data));
+            Mail::to($request->email)->send(new WelcomeMail($data));
         }
 
         return redirect()
