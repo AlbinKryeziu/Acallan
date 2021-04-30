@@ -49,7 +49,7 @@
                                     <th>@lang('article')</th>
                                     <th>@lang('client') @lang('name')</th>
                                     <th>@lang('doctor') @lang('name')</th>
-                                    <th>@lang('messages.welcome')</th>
+                                    <th>@lang('action')</th>
                                 </tr>
                             </thead>
                             <tbody>
