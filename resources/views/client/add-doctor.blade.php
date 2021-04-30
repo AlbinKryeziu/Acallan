@@ -1,4 +1,5 @@
 <x-app-layout>
+ 
     @include('client/assets/header')
 
     <div class="py-12">
