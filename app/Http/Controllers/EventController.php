@@ -73,6 +73,7 @@ class EventController extends Controller
         //         ]);
         //     }
         // }
+        }
         $eventrefuzed = EventRequest::where('event_id', $eventId)
             ->where('status', 0)
             ->get();
