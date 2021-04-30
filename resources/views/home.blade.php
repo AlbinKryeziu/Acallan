@@ -41,7 +41,7 @@
             <p class="center">{{__('container_tittle')}}</p>
             <div class="box-container flex">
                 <div class="shadow-box center shadow-box-1">
-                    <img src="images/meeting-bro.jpg" alt="">
+                    <img src="images/Meeting-bro.jpg" alt="">
                     <h2>Enable healthcare providers to stay connected with pharma industry and manage their interviews virtually </h2>
                 </div>
                 <div class="shadow-box center shadow-box-2">
