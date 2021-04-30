@@ -22,26 +22,26 @@ class SendEmailController extends Controller
             'email' => 'required|email',
             'message' => 'required',
         ]);
-        try {
-            \Mail::send(
-                'dynamic_email_template',
-                [
-                    'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'need' => $request->need,
-            'message' => $request->message,
-            'phone'=>$request->phone
+        // try {
+        //     \Mail::send(
+        //         'dynamic_email_template',
+        //         [
+        //             'name' => $request->name,
+        //     'surname' => $request->surname,
+        //     'email' => $request->email,
+        //     'need' => $request->need,
+        //     'message' => $request->message,
+        //     'phone'=>$request->phone
                     
-                ],
-                function ($message) use ($request) {
-                    $message->from('bini-kryeziu21@hontail.co.uk');
-                    $message->to('albinkryeziu21@gmail.com')->subject('New contact From' . ' ' . $request->name);
-                }
-            );
-        } catch (ModelNotFoundException $e) {
-            return back()->with('error', [$e->getMessage()]);
-        }
+        //         ],
+        //         function ($message) use ($request) {
+        //             $message->from('contact@promedrep.com');
+        //             $message->to('albinkryeziu21@gmail.com')->subject('New contact From' . ' ' . $request->name);
+        //         }
+        //     );
+        // } catch (ModelNotFoundException $e) {
+        //     return back()->with('error', [$e->getMessage()]);
+        // }
         return back()->with('success', 'Message sent successfully. Thank you for contacting us');
 
         

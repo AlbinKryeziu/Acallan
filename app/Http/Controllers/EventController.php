@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EventAccepted;
+use App\Models\Email;
 use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\Role;
@@ -58,8 +59,20 @@ class EventController extends Controller
                 'start' => $doctor->start,
                 'end' => $doctor->end,
             ];
-            Mail::to($eventRequest->requestClient->email)->send(new EventAccepted($data));
-        }
+        //     $eemail = Mail::to($eventRequest->requestClient->email)->send(new EventAccepted($data));
+        //     if ($eemail) {
+        //         $emailDb = new Email();
+        //         $emailDb->type = 'Event Accepted';
+        //         $emailDb->doctor_id = $doctor->user->id;
+        //         $emailDb->doctor_id = $eventRequest->requestClient->id;
+        //         $emailDb->status = 1;
+        //         $emailDb->save();
+        //     } else {
+        //         $emailDb->update([
+        //             'status' => 0,
+        //         ]);
+        //     }
+        // }
         $eventrefuzed = EventRequest::where('event_id', $eventId)
             ->where('status', 0)
             ->get();
