@@ -67,7 +67,7 @@
                                                     id="depart"
                                                 >
                                                     @foreach($specializity as $key => $depart)
-                                                    <option value="{{ $depart->specialty }}">{{ $depart->specialty }}</option>
+                                                    <option value="{{ $depart->id }}">{{ $depart->specialty }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

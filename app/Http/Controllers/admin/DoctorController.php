@@ -137,7 +137,7 @@ class DoctorController extends Controller
             'phone' => $request->phone,
             'work_address' => $request->work_address,
             'remark' => $request->remark,
-            'specialty' => $request->specialty,
+            'specialty_id' => $request->specialty,
         ]);
         if ($updateDoctor) {
             return redirect()
