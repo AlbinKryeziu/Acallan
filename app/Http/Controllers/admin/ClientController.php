@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EventAdminRequest;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
@@ -157,7 +158,7 @@ class ClientController extends Controller
             'doctor' => $doctor,
         ]);
     }
-    public function storeEventAdmin(Request $request)
+    public function storeEventAdmin(EventAdminRequest $request)
     {
         $clientId = $request->clientId;
         $doctorId = $request->doctorId;

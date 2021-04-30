@@ -159,7 +159,7 @@ class PacientController extends Controller
 
     public function myGift()
     {
-        $gifts = GiftClient::with('doctor', 'client')->latest();
+        $gifts = GiftClient::with('doctor', 'client')->where('client_id',Auth::id())->latest();
         if (request()->has('q')) {
             $gifts = GiftClient::with('doctor', 'client')
                 ->latest()
