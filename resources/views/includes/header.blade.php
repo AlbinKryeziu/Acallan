@@ -12,10 +12,10 @@
                 @guest
                 <li>
                     <div class="dropdown">
-                        <button class="dropbtn">LOGIN</button>
+                        <button class="dropbtn">@lang('login')</button>
                         <div class="dropdown-content">
-                            <a href="{{url('/login')}}">LOGIN - DOCTOR</a>
-                            <a href="{{url('/login')}}">LOGIN - CLIENT</a>
+                            <a href="{{url('/login')}}">@lang('login')-@lang('doctor')</a>
+                            <a href="{{url('/login')}}">@lang('login')-@lang('client')</a>
                         </div>
                     </div>
                 </li>
