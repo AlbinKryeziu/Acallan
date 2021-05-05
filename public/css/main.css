@@ -29,8 +29,9 @@ header {
     padding-bottom: 10px;
 }
 
-header .logo img {
-    width: 200px;
+ .logo img {
+    width: 50px;
+ 
 }
 
 .container {
@@ -80,17 +81,17 @@ header .logo img {
     text-align: center;
 }
 
-.menu {
+.collapse {
     margin: auto;
-    margin-right: 0;
+   
 }
 
-.menu ul {
+.collapse ul {
     margin: 0px;
     list-style: none;
 }
 
-.menu ul li {
+.collapse ul li {
     padding-left: 12px;
     padding-right: 12px;
     color: #444;
@@ -102,11 +103,11 @@ header .logo img {
     text-transform: uppercase;
 }
 
-.menu li a {
+.collapse li a {
     color: black;
 }
 
-.menu li a:active {
+.collapse li a:active {
     color: #ed1b24;
 }
 
@@ -255,7 +256,7 @@ footer .column {
 .dropbtn {
     background-color: #ed1b24;
     color: white;
-    padding: 16px;
+    padding: 10px;
     font-size: 16px;
     border: none;
 }
