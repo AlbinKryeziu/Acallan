@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2021 at 05:53 PM
+-- Generation Time: May 05, 2021 at 10:55 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -47,13 +47,6 @@ CREATE TABLE `client_doctors` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `client_doctors`
---
-
-INSERT INTO `client_doctors` (`id`, `client_id`, `doctor_id`, `created_at`, `updated_at`) VALUES
-(28, 93, 95, '2021-04-22 11:31:19', '2021-04-22 11:31:19');
-
 -- --------------------------------------------------------
 
 --
@@ -81,7 +74,24 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `birthday`, `specialty_id`, `phone`, `work_address`, `email`, `remark`, `user_id`, `created_at`, `updated_at`, `id_doctor`, `pin`) VALUES
-(54, 'John', NULL, '17', NULL, 'florida', 'john@company.com', NULL, 95, '2021-04-22 11:29:42', '2021-04-22 11:29:42', 'IDD-000001', '12536');
+(57, 'Albin', '2021-04-09', '21', '+377455432122', 'haefeafaf', 'albinkryeziu2aefae1@gmail.com', 'florida company', 104, '2021-04-30 08:10:28', '2021-04-30 08:14:26', 'IDD-000001', '1234689');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails`
+--
+
+CREATE TABLE `emails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `text` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `doctor_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pacient_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -101,13 +111,6 @@ CREATE TABLE `events` (
   `status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `title`, `start`, `end`, `user_id`, `event_id`, `created_at`, `updated_at`, `status`) VALUES
-(56, 'today event', '2021-04-22 18:30:00', '2021-04-22 22:30:00', 95, NULL, NULL, '2021-04-22 11:40:29', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -124,13 +127,6 @@ CREATE TABLE `event_requests` (
   `product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `article` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `event_requests`
---
-
-INSERT INTO `event_requests` (`id`, `request_id`, `event_id`, `created_at`, `updated_at`, `status`, `product`, `article`) VALUES
-(21, 93, 56, '2021-04-22 11:31:39', '2021-04-22 11:40:29', 1, 'Product', 'Article');
 
 -- --------------------------------------------------------
 
@@ -163,13 +159,6 @@ CREATE TABLE `follows` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `follows`
---
-
-INSERT INTO `follows` (`id`, `menager_id`, `client_id`, `status`, `created_at`, `updated_at`) VALUES
-(20, 94, 93, 1, '2021-04-22 11:43:16', '2021-04-22 11:43:16');
-
 -- --------------------------------------------------------
 
 --
@@ -186,13 +175,6 @@ CREATE TABLE `gift_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `gift_clients`
---
-
-INSERT INTO `gift_clients` (`id`, `links`, `description`, `client_id`, `doctor_id`, `created_at`, `updated_at`, `type`) VALUES
-(17, 'https://www.youtube.com/', 'Gift for you', 93, 95, '2021-04-22 11:39:53', '2021-04-22 11:39:53', 'Physician Sample');
 
 -- --------------------------------------------------------
 
@@ -228,7 +210,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2021_01_11_100607_create_events_table', 15),
 (31, '2021_02_15_154018_create_client_doctors_table', 15),
 (32, '2021_03_02_005203_create_cache_table', 16),
-(33, '2021_04_19_111035_create_follows_table', 16);
+(33, '2021_04_19_111035_create_follows_table', 16),
+(34, '2021_04_29_160013_create_emails_table', 17);
 
 -- --------------------------------------------------------
 
@@ -318,8 +301,10 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('9FPyBx7XvP7BeN4GXHAfmxvye5soIZSEenMWoApS', 93, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUmphdVJMNFNZOW5EWVVXTUFlVEVoMFNZTzNhSm9IVmVETVAwY1ZSWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9mb2xsb3dlcnMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo5MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGJLd0t4TnRSbGJYMC9WVzA3cktkT2VaTzBtSzNvZ2V4U1JqMzJRREJWTkV1QmxtT0NIZ0hLIjt9', 1619098989),
-('EeqdBq5LhMuJCa4VRaH2pw05iyFuH8vpnomVcGYz', 94, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNDk5T0M5c2o0b014TVBZOVFkQTBkMUxDYUxIZjQ1Uk8yQzFmSUh6OSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDEvZW1wbG95ZWVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6OTQ7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRqRTNHYTZIMENtVzhxMDlMaUFYcktPUDlnSWlKYll3VHUvN1JLZlljYWtDZnpZdWVTbi5FSyI7fQ==', 1619098996);
+('EgMKSPKPRlfPD1EGiCQ21qFPPuSuWstLK54hA6Id', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS1pKUVpmYnRkQUZSSjd5NEttRW9YUXd2U0lHZmp5dnpqWE5VRm9CRSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3BhY2llbnQvc3RvcmUiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyNzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2xvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1619776205),
+('hHqI6KcUINDEx4wIY5aKbTiwuADvJUMEuOQwAmg9', 102, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRjR5dkJ0THdSU0NKWEN3a2RHVHRjYWllMTRCa05rV2hyWGNVTEFHdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEwMjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFprUFRSdkxQV3YyTi5Sd3ZteERjY3VxNDYyZGFCQmdVd3NPbmNEUVJFQW1lUGczVlo3UVkuIjt9', 1619774135),
+('UOyryb1dg5FqhhRb2d9L5HcF9oMRFWPutINqqvfY', 104, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUGFCQlN4WnRibFFyNmNXTGFNR1J6RE9EZEVhTXB2dTVTYlhyOEJVViI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wYW5lbCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEwNDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFVqOE0uR0JxS25Mdk5aM3RtZi9PNnU4Q1NFakZlMXMwWFR5TmhXTDdWY1hwWWM4LkNCbDFtIjt9', 1619778027),
+('Z3IVQMP3ZmbjaNhqXYfEyFW402hfZwoYIc5iZ5U1', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiejRJTXU0bGNsOUtUNzdIN0lKVjdiV09HWmJnRnhXNnRFWllmTFhLciI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fX0=', 1619774125);
 
 -- --------------------------------------------------------
 
@@ -375,9 +360,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `doctor_access`, `phone`, `state`, `address`) VALUES
 (42, 'Michael ', 'email@company.com', NULL, '$2y$10$Uj8M.GBqKnLvNZ3tmf/O6u8CSEjFe1s0XTyNhWL7VcXpYc8.CBl1m', NULL, NULL, NULL, NULL, NULL, '2021-02-16 21:55:08', '2021-02-26 23:24:10', '[[\"17\"]]', '13222', 'Florida', 'Florida'),
-(93, 'liam', 'liam@gmail.com', NULL, '$2y$10$bKwKxNtRlbX0/VW07rKdOeZO0mK3ogexSRj32QDBVNEuBlmOCHgHK', NULL, NULL, NULL, NULL, NULL, '2021-04-22 11:22:07', '2021-04-22 11:22:07', '[[\"17\"]]', '13658985', 'America', 'America'),
 (94, 'Dohn', 'dohn@gmail.com', NULL, '$2y$10$jE3Ga6H0CmW8q09LiAXrKOP9gIiJbYwTu/7RKfYcakCfzYueSn.EK', NULL, NULL, NULL, NULL, NULL, '2021-04-22 11:23:14', '2021-04-22 11:23:14', '[[\"17\"]]', NULL, 'America', 'America'),
-(95, 'John', 'john@company.com', NULL, '$2y$10$Uj8M.GBqKnLvNZ3tmf/O6u8CSEjFe1s0XTyNhWL7VcXpYc8.CBl1m', NULL, NULL, NULL, NULL, NULL, '2021-04-22 11:29:42', '2021-04-22 11:29:42', '[[\"17\"]]', '12154849', NULL, 'Florida');
+(103, 'Albin', 'albinkryeziu21@gmail.com', NULL, '$2y$10$rLl38xFQhUrsI4ggAF2HJ.lFrevqorTrjem1TQZyREUNaqIE6a46.', NULL, NULL, NULL, NULL, NULL, '2021-04-30 07:25:46', '2021-04-30 07:25:46', '[[\"17\"]]', NULL, 'America', 'America'),
+(104, 'Albin', 'albinkryeziu2aefae1@gmail.com', NULL, '$2y$10$Uj8M.GBqKnLvNZ3tmf/O6u8CSEjFe1s0XTyNhWL7VcXpYc8.CBl1m', NULL, NULL, NULL, NULL, NULL, '2021-04-30 08:10:28', '2021-04-30 08:10:28', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -407,9 +392,9 @@ CREATE TABLE `users_roles` (
 
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES
 (42, 1),
-(93, 3),
 (94, 4),
-(95, 2);
+(103, 3),
+(104, 2);
 
 -- --------------------------------------------------------
 
@@ -454,6 +439,14 @@ ALTER TABLE `client_doctors`
 ALTER TABLE `doctors`
   ADD PRIMARY KEY (`id`),
   ADD KEY `doctors_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `emails`
+--
+ALTER TABLE `emails`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `emails_doctor_id_index` (`doctor_id`),
+  ADD KEY `emails_pacient_id_index` (`pacient_id`);
 
 --
 -- Indexes for table `events`
@@ -580,7 +573,13 @@ ALTER TABLE `client_doctors`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT for table `emails`
+--
+ALTER TABLE `emails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -616,7 +615,7 @@ ALTER TABLE `gift_clients`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -646,7 +645,7 @@ ALTER TABLE `specialties`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `zoom_meetings`
@@ -670,6 +669,13 @@ ALTER TABLE `client_doctors`
 --
 ALTER TABLE `doctors`
   ADD CONSTRAINT `doctors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `emails`
+--
+ALTER TABLE `emails`
+  ADD CONSTRAINT `emails_doctor_id_foreign` FOREIGN KEY (`doctor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `emails_pacient_id_foreign` FOREIGN KEY (`pacient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `events`
