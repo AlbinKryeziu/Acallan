@@ -19,7 +19,9 @@
 
     <div class="page-banner" style="background-image: url('../images/how-it-works/banner.jpg');">
         <div class="container">
-            <h1 class="banner-title center"><span class="red-text">How</span> It Works </h1>
+            <h1 class="banner-title center"><span
+                    class="red-text">@lang('how_it_works_step_banner_how')</span>@lang('how_it_works_step_banner_it_works')
+            </h1>
         </div>
     </div>
 
@@ -41,13 +43,15 @@
     <div class="section section-2">
         <div class="container content">
             <h1 class="title">Step 2</h1>
-            <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+            {{-- <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p> --}}
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/login.jpg" alt="">
                 <div class="my-auto">
                     <h2>Log In</h2>
-                    <h4>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</h4>
+                    <h4>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque</h4>
                 </div>
             </div>
         </div>
@@ -55,8 +59,9 @@
 
     <div class="section section-3">
         <div class="container content">
-            <h1 class="title">Step 3</h1>
-            <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+            <h1 class="title">@lang('how_it_works_step_3')</h1>
+            {{-- <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p> --}}
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/manage.jpg" alt="">
