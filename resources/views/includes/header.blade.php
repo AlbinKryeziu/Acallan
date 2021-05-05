@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-white fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   <style>
     .carousel-item {
   height: 65vh;
@@ -9,10 +9,11 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
   </style>
   <div class="container">
-    <img src="images/logo.jpg" alt="" style="width: 180px; left:850px">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="images/logo.jpg" alt="" style="width: 250px;">
+    <button class="navbar-toggler  text-danger" type="button" id="nav-toggle-button"  data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">

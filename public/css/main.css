@@ -125,7 +125,9 @@ section {
     padding: 40vh 0;
     background-image: url("../images/banner.jpg");
 }
-
+.header1{
+    padding: 4vh 0;
+}
 .bg-overlay {
     background-size: cover;
     background-position: center;
