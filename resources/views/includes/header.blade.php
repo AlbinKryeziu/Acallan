@@ -40,12 +40,21 @@
                 <a href="{{url('/login')}}">@lang('login')-@lang('client')</a>
             </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="lang/en">En</a>
+     
+
+        <li class="nav-item p-2">
+          <a class="lang de active" data-lang="En" href="lang/en">
+            <img src="{{URL::asset('/images/en.png')}}" alt="En" height="22" width="30">En
+        </a>
+          
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="lang/es">Es</a>
+        <li class="nav-item p-2">
+          <a class="lang de active" data-lang="Es" href="lang/es">
+            <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="22" width="22"> Es
+        </a>
+         
         </li>
+
           </ul>
     </div>
   </div>
