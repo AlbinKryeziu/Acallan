@@ -47,40 +47,58 @@
             <button href="#" role="button" class="btn  px-5" style="background-color: white;"><a href="{{url('/login')}}" style="color:#0E1A35;">{{__('login')}}</a></button>
         </div>
     </div>
-
-    <div class="section section-1">
-        <div class="container content">
-            <h1 class="title">{{__('home_title')}}</h1>
-            <p class="center">{{__('container_tittle')}}</p>
-            <div class="box-container flex">
-                <div class="shadow-box center shadow-box-1">
-                    <img src="images/Meeting-bro.jpg" alt="">
-                    <h2>@lang('shadow_box_1')</h2>
-                </div>
-                <div class="shadow-box center shadow-box-2">
-                    <img src="images/Social strategy-amico.jpg" alt="">
-                    <h2>@lang('shadow_box_2')</h2>
-                </div>
-                <div class="shadow-box center shadow-box-3">
-                    <img src="images/Social strategy-pana.jpg" alt="">
-                    <h2>@lang('shadow_box_3')</h2>
-                </div>
-            </div>
+<div class="container p-4" style="width: 100%">
+    <h1 class="title p-4">{{__('home_title')}}</h1>
+            <p class="center p-4">{{__('container_tittle')}}</p>
+    <div class="card-deck">
+        
+        <div class=" card">
+          <img class="card-img-top" src="images/Meeting-bro.jpg" alt="Card image cap">
+          <div class="card-body">
+           
+            <p class="card-text">@lang('shadow_box_1')</p>
+            
+          </div>
         </div>
-
-        <div class="container content" style="padding-top: 50px;">
-            <p class="center">@lang('shadow_box_title')</p>
-            <div class="box-container flex">
-                <div class="shadow-box center half-width shadow-box-4">
-                    <img class="m-auto" src="images/Online Doctor-rafiki.jpg" alt="">
-                    <h2>@lang('shadow_box_4')</h2>
-                </div>
-                <div class="shadow-box center half-width shadow-box-5">
-                    <img class="m-auto" src="images/Insurance-pana.jpg" alt="">
-                    <h2>@lang('shadow_box_5')</h2>
-                </div>
-            </div>
+        <div class="card">
+          <img class="card-img-top" src="images/Social strategy-amico.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">@lang('shadow_box_2')</p>
+          </div>
         </div>
+        <div class="card">
+          <img class="card-img-top" src="images/Social strategy-pana.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">@lang('shadow_box_3')</p>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="container p-4" style="width: 100%">
+    <p class="center p-4">@lang('shadow_box_title')</p>
+    
+    <div class="card-deck">
+        
+        <div class=" card">
+          <img class="card-img-top" src="images/Online Doctor-rafiki.jpg" alt="Card image cap">
+          <div class="card-body">
+           
+            <p class="card-text">@lang('shadow_box_4')</p>
+            
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="images/Insurance-pana.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">@lang('shadow_box_5')</p>
+          </div>
+        </div>
+        
+      </div>
+</div>
+    
+
+        
     </div>
 
     <div class="banner-scroll bg-overlay" style="background-image: url(images/online-marketing-hIgeoQjS_iE-unsplash.jpg);">
