@@ -17,7 +17,7 @@
                     </x-jet-nav-link>
                 </div>
                 @if(Auth::user()->isManager())
-                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('employees') }}" :active="request()->routeIs('dashboard')">
                         {{ __(trans('Clients')) }}
                     </x-jet-nav-link>
@@ -27,11 +27,8 @@
                         {{ __(trans('accepted1')) }}
                     </x-jet-nav-link>
                 </div>
-                    
-                @endif
-                
 
-                @if(Auth::user()->isDoctor())
+                @endif @if(Auth::user()->isDoctor())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('panel') }}">
                         {{ __(trans('dashboard')) }}
@@ -42,39 +39,34 @@
                         {{ __(trans('events')) }}
                     </x-jet-nav-link>
                 </div>
-               
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/client') }}">
                         {{ __(trans('clients')) }}
                     </x-jet-nav-link>
                 </div>
-               
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/today/event') }}">
                         {{ __(trans('today_event')) }}
                     </x-jet-nav-link>
                 </div>
-                @endif
-                @if(Auth::user()->isClient())
+                @endif @if(Auth::user()->isClient())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/pacient/doctor') }}">
-                       @lang('doctors')
+                        @lang('doctors')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/pacient/event') }}">
-                       @lang('events')
+                        @lang('events')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/pacient/store/mygift') }}">
-                     @lang('gifts')
+                        @lang('gifts')
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ url('/followers') }}">
                         @lang('followers')
-                       </x-jet-nav-link>
-
-                   
-
+                    </x-jet-nav-link>
                 </div>
-                @endif
-                @if(Auth::user()->isAdmin())
+                @endif @if(Auth::user()->isAdmin())
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('/doctor/view') }}">
                         @lang('doctors')
@@ -86,43 +78,30 @@
                         {{ __(trans('events')) }}
                     </x-jet-nav-link>
                 </div>
-    
-                    
+
                 @endif
-                
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-
-               
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex float-right">
-                    
-                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex float-right"></div>
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                        <button
-                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
-                                alt="{{ Auth::user()->name }}" />
+                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </button>
                         @else
-                        <button
-                            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
                             </div>
                         </button>
                         @endif
-                        
                     </x-slot>
 
                     <x-slot name="content">
@@ -178,25 +157,29 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
+                            <x-jet-dropdown-link
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();"
+                            >
                                 {{ __('Logout') }}
                             </x-jet-dropdown-link>
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
+                <x-jet-nav-link href=" {{ url('lang/en') }}"> <img src="{{URL::asset('/images/en.png')}}" alt="En" height="5" width="32" /> En </x-jet-nav-link>
+                <x-jet-nav-link href=" {{ url('lang/es') }}"> <img src="{{URL::asset('/images/es3.png')}}" alt="Es" height="20" width="35" />Es </x-jet-nav-link>
             </div>
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button
+                    @click="open = ! open"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                >
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -205,16 +188,13 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            
-        </div>
+        <div class="pt-2 pb-3 space-y-1"></div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                        alt="{{ Auth::user()->name }}" />
+                    <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                 </div>
 
                 <div class="ml-3">
@@ -225,82 +205,59 @@
 
             <div class="mt-3 space-y-1">
                 @if(Auth::user()->isDoctor())
-                <x-jet-responsive-nav-link href="{{ url('panel') }}"
-                :active="request()->routeIs('profile.show')">
-                {{ __(trans('dashboard')) }}
-            </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{  url('/events/doctor')  }}"
-                :active="request()->routeIs('profile.show')">
-                {{ __(trans('events')) }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ url('/doctor/client') }}"
-                :active="request()->routeIs('profile.show')">
-                {{ __(trans('clients')) }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ url('/doctor/today/event') }}"
-                :active="request()->routeIs('profile.show')">
-                {{ __(trans('today_event')) }}
-            </x-jet-responsive-nav-link>
-            
-            @endif
-            {{-- afaefae --}}
-            @if(Auth::user()->isManager())
-            <x-jet-responsive-nav-link href="{{ url('employees') }}"
-                :active="request()->routeIs('profile.show')">
-                {{ __(trans('Clients')) }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ url('follow/accepted') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('Follow Accepted')) }}
-            </x-jet-responsive-nav-link>   
-            @endif
-            @if(Auth::user()->isClient())
-            <x-jet-responsive-nav-link href="{{ url('/pacient/doctor') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('doctors')) }}
-            </x-jet-responsive-nav-link>   
-            <x-jet-responsive-nav-link href="{{ url('/pacient/event') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('events')) }}
-            </x-jet-responsive-nav-link>  
-            <x-jet-responsive-nav-link href="{{ url('/pacient/store/mygift') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('gifts')) }}
-            </x-jet-responsive-nav-link>   
-            <x-jet-responsive-nav-link href="{{ url('/followers') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('followers')) }}
-            </x-jet-responsive-nav-link>  
+                <x-jet-responsive-nav-link href="{{ url('panel') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('dashboard')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{  url('/events/doctor')  }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('events')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/doctor/client') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('clients')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/doctor/today/event') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('today_event')) }}
+                </x-jet-responsive-nav-link>
 
-            
+                @endif {{-- afaefae --}} @if(Auth::user()->isManager())
+                <x-jet-responsive-nav-link href="{{ url('employees') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('Clients')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('follow/accepted') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('Follow Accepted')) }}
+                </x-jet-responsive-nav-link>
+                @endif @if(Auth::user()->isClient())
+                <x-jet-responsive-nav-link href="{{ url('/pacient/doctor') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('doctors')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/pacient/event') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('events')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/pacient/store/mygift') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('gifts')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/followers') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('followers')) }}
+                </x-jet-responsive-nav-link>
 
-            
-            @endif
-            @if(Auth::user()->isAdmin())
-            <x-jet-responsive-nav-link href="{{ url('/doctor/view') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('doctors')) }}
-            </x-jet-responsive-nav-link> 
-            <x-jet-responsive-nav-link href="{{ url('/admin/client') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('Clients')) }}
-        </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ url('/admin/event') }}"
-            :active="request()->routeIs('profile.show')">
-            {{ __(trans('events')) }}
-            </x-jet-responsive-nav-link>  
+                @endif @if(Auth::user()->isAdmin())
+                <x-jet-responsive-nav-link href="{{ url('/doctor/view') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('doctors')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/admin/client') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('Clients')) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ url('/admin/event') }}" :active="request()->routeIs('profile.show')">
+                    {{ __(trans('events')) }}
+                </x-jet-responsive-nav-link>
 
-            @endif
+                @endif
 
-         
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                    :active="request()->routeIs('profile.show')">
+                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                    :active="request()->routeIs('api-tokens.index')">
+                <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                     {{ __('API Tokens') }}
                 </x-jet-responsive-nav-link>
                 @endif
@@ -309,12 +266,16 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                    <x-jet-responsive-nav-link
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                    >
                         {{ __('Logout') }}
                     </x-jet-responsive-nav-link>
                 </form>
-
+                <x-jet-nav-link href=" {{ url('lang/en') }}"> <img src="{{URL::asset('/images/en.png')}}" alt="En" height="20" width="32" /> En </x-jet-nav-link>
+                <x-jet-nav-link href=" {{ url('lang/es') }}"> <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="20" width="20" /> Es </x-jet-nav-link>
                 <!-- Team Management -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                 <div class="border-t border-gray-200"></div>
@@ -324,13 +285,11 @@
                 </div>
 
                 <!-- Team Settings -->
-                <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
-                    :active="request()->routeIs('teams.show')">
+                <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
                     {{ __('Team Settings') }}
                 </x-jet-responsive-nav-link>
 
-                <x-jet-responsive-nav-link href="{{ route('teams.create') }}"
-                    :active="request()->routeIs('teams.create')">
+                <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
                     {{ __('Create New Team') }}
                 </x-jet-responsive-nav-link>
 
@@ -343,8 +302,7 @@
 
                 @foreach (Auth::user()->allTeams() as $team)
                 <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
-                @endforeach
-                @endif
+                @endforeach @endif
             </div>
         </div>
     </div>

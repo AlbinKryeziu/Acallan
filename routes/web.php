@@ -8,6 +8,7 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\PacientController;
 use App\Http\Controllers\MeetingController;
@@ -126,3 +127,6 @@ Route::group(['middleware' => ['manager']], function () {
     Route::get('gift/{clientId}', [ManagerController::class, 'giftCient']);
     Route::get('meeting/{clientId}', [ManagerController::class, 'meetingClient']);
 });
+if (file_exists(app_path('Http/Controllers/LocalizationController.php'))) {
+    Route::get('lang/{locale}', [LocalizationController::class, 'index']);
+}
