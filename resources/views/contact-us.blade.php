@@ -29,24 +29,24 @@
 
     <div class="page-banner" style="background-image: url('../images/contact-us/banner.jpg');">
         <div class="container">
-            <h1 class="banner-title center"><span class="red-text">Contact</span> Us</h1>
+            <h1 class="banner-title center"><span class="red-text">@lang('contact_contact')</span>@lang('contact_us')
+            </h1>
         </div>
     </div>
 
     <div class="section section-1">
         <div class="container content">
             <h1 class="title">@lang('contact_us_title')</h1>
-            <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+            <p class="center">@lang('contact_desc')</p>
 
             <div class="shadow p-3 bg-white rounded flex my-auto mb-0">
                 <ul class="mx-auto">
                     <li class="flex text-sm m-4 float-left"><img src="images/icons/location.svg" alt="" width="15px"
                             class="mr-4">Mexico,D.F
-                        </li>
+                    </li>
                     <li class="flex text-sm m-4 float-left"><img src="images/icons/envelope.svg" alt="" width="15px"
                             class="mr-4">rahulkashyap@promedrep.com</li>
-                    
+
                 </ul>
             </div>
 
@@ -76,19 +76,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_name">Your Name</label>
+                                        <label for="form_name">@lang('contact_name')</label>
                                         <input id="form_name" type="text" name="name" class="form-control"
-                                            placeholder="Please enter your firstname *" required="required"
+                                            placeholder="@lang('contact_name_placeholder')" required="required"
                                             data-error="Firstname is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_lastname">Email Address</label>
+                                        <label for="form_lastname">@lang('contact_email')</label>
                                         <input id="form_lastname" type="email" name="email" class="form-control"
-                                            placeholder="Please enter your lastname *" required="required"
-                                            data-error="Lastname is required.">
+                                            placeholder="@lang('contact_email_placeholder')" required="required"
+                                            data-error="Email is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -96,24 +96,24 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_email">Phone Number</label>
-                                        <input id="form_email" type="text" name="phone" class="form-control"
-                                            placeholder="Please enter your email *" required="required"
-                                            data-error="Valid email is required.">
+                                        <label for="form_email">@lang('contact_phone')</label>
+                                        <input id="form_email" type="tel" name="phone" class="form-control"
+                                            placeholder="@lang('contact_phone_placeholder')" required="required"
+                                            data-error="Valid phone is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_need">Please specify your need </label>
+                                        <label for="form_need">@lang('contact_need')</label>
                                         <select id="form_need" name="need" class="form-control" required="required"
                                             data-error="Please specify your need.">
                                             <option value=""></option>
-                                            <option value="Request quotation">Request quotation</option>
-                                            <option value="Request order status">Request order status</option>
-                                            <option value="Request copy of an invoice">Request copy of an invoice
+                                            <option value="Request quotation">@lang('contact_need_option_1')</option>
+                                            <option value="Request order status">@lang('contact_need_option_2')</option>
+                                            <option value="Request copy of an invoice">@lang('contact_need_option_3')
                                             </option>
-                                            <option value="Other">Other</option>
+                                            <option value="Other">@lang('contact_need_option_4')</option>
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -122,15 +122,15 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="form_message">Write Message</label>
+                                        <label for="form_message">@lang('contact_message')</label>
                                         <textarea id="form_message" name="message" class="form-control"
-                                            placeholder="Message for me *" rows="4" required="required"
+                                            placeholder="@lang('contact_message_placeholder')" rows="4" required="required"
                                             data-error="Please, leave us a message."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                    <input type="submit" class="btn btn-success btn-send" value="@lang('contact_send')">
                                 </div>
                             </div>
                         </div>
@@ -138,15 +138,15 @@
                 </div>
                 <div class="map rounded col-xs-6">
                     <iframe class="col-xs-6"
-                        src="https://maps.google.com/maps?q=Mexico,D.F&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-                        aria-hidden="false" tabindex="0"></iframe>
+                        src="https://maps.google.com/maps?q=Mexico,D.F&t=&z=13&ie=UTF8&iwloc=&output=embed" width="450"
+                        height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
                 </div>
             </div>
-       
-    </div>
 
-    @include('includes/footer')
+        </div>
+
+        @include('includes/footer')
 </body>
 
 @include('includes/links')
