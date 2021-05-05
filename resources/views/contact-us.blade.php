@@ -39,15 +39,24 @@
             <h1 class="title">@lang('contact_us_title')</h1>
             <p class="center">@lang('contact_desc')</p>
 
-            <div class="shadow p-3 bg-white rounded flex my-auto mb-0">
-                <ul class="mx-auto">
-                    <li class="flex text-sm m-4 float-left"><img src="images/icons/location.svg" alt="" width="15px"
-                            class="mr-4">Mexico,D.F
-                    </li>
-                    <li class="flex text-sm m-4 float-left"><img src="images/icons/envelope.svg" alt="" width="15px"
-                            class="mr-4">rahulkashyap@promedrep.com</li>
-
-                </ul>
+            <div class="shadow">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          
+                            <li class="flex text-sm m-4 float-left"><img src="images/icons/location.svg" alt="" width="15px"
+                                class="mr-4">Mexico,D.F
+                        </li>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <li class="flex text-sm m-4 float-left"><img src="images/icons/envelope.svg" alt="" width="15px"
+                                class="mr-4">rahulkashyap@promedrep.com</li>
+                        </div>
+                    </div>
+                </div>
+              
             </div>
 
             <div class="shadow p-3 mb-5 bg-white rounded flex mt-5 col-xs-12">

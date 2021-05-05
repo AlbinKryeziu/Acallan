@@ -34,9 +34,7 @@ header {
  
 }
 
-.container {
-    margin: 0 auto;
-}
+
 
 .flex {
     display: flex;
@@ -227,9 +225,7 @@ footer {
     background-size: cover;
 }
 
-footer .logo img {
-    width: 150px;
-}
+
 
 footer .column-1 {
     width: 40%;
