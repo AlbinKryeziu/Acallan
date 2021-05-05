@@ -44,13 +44,13 @@
 
         <li class="nav-item p-2">
           <a class="lang de active" data-lang="En" href="lang/en">
-            <img src="{{URL::asset('/images/en.png')}}" alt="En" height="22" width="30">En
+            <img src="{{URL::asset('/images/en.png')}}" alt="En" height="20" width="32">En
         </a>
           
         </li>
         <li class="nav-item p-2">
           <a class="lang de active" data-lang="Es" href="lang/es">
-            <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="22" width="22"> Es
+            <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="20" width="20"> Es
         </a>
          
         </li>
