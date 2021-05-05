@@ -123,5 +123,20 @@
     "new_event": "New Event",
     "details": "Details",
     "select_doctor": "Select Doctor",
-    "event_request": "Event requests"
+    "event_request": "Event requests",
+    "profile_info":"Profile Information",
+    "update_profile_info":"Update your account's profile information and email address.",
+    "update_password":"Update Password",
+    "description_password":"Ensure your account is using a long, random password to stay secure.",
+    "current_password":"Current Password",
+    "new_password":"New Password",
+    "confirm_password":"Confirm Password",
+    "password":"Password",
+    "login":"Login",
+    "remember":"Remember me",
+    "forgot_password":"Forgot your password?",
+    "select_postion":"Select position",
+    "chose_option":"Choose an option",
+    "manger":"Mnager",
+    "alredy_register":"Already registered?"
 }

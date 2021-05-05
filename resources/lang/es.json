@@ -133,5 +133,22 @@
     "new_event": "Nuevo evento",
     "details": "Detalles",
     "select_doctor": "Seleccionar doctora",
-    "event_request": "Solicitudes de eventos"
+    "event_request": "Solicitudes de eventos",
+    "profile_info":"Información del perfil",
+    "update_profile_info":"Actualice la información de perfil y la dirección de correo electrónico de su cuenta.",
+    "update_password":"Actualiza contraseña",
+    "description_password":"Asegúrese de que su cuenta esté usando una contraseña larga y aleatoria para mantenerse seguro.",
+    "current_password":"Contraseña actual",
+    "new_password":"Nueva contraseña",
+    "confirm_password":"Confirmar Contraseña",
+    "password":"Contraseña",
+    "login":"Acceso",
+    "remember":"Recuérdame",
+    "forgot_password":"Olvidaste tu contraseña?",
+    "select_postion":"Seleccionar posición",
+    "chose_option":"Elige una opcion",
+    "manger":"Gerente",
+    "alredy_register":"Ya registrado?"
+    
 }
+
