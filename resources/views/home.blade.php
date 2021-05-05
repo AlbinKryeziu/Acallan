@@ -3,21 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
-        @include('includes/links')
-        <link rel="icon" href="{{ asset('images/logofini.png') }}" /> 
+        <title>About Us</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
+        <link rel="icon" href="{{ asset('images/logofini.png') }}" />
     </head>
     <style>
         @import "css/main.css";
-        @import "css/app.css";
-        @import "css/homepage.css";
-        
+        @import "css/general.css";
+        @import "css/about-us.css";
     </style>
 
     <body>
         @include('includes/header')
-
-        <div class="container"></div>
 
         <div
             style="background: url('{{ asset('images/banner.jpg') }}'); height:800px; background-size: cover;
@@ -26,13 +23,23 @@
     background-blend-mode: color;"
             class="jumbotron bg-cover text-white"
         >
-            <div class="container py-80 text-center bg">
-                
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="container py-40 text-center bg">
                 <h1 class="display-4 font-weight-bold"><span class="red-text">Virtual</span> ProMedRep</h1>
                 <br />
                 <p class="mb-0">@lang('home_banner')</p>
                 <br />
-                
+
                 <button role="button" class="btn px-5" style="background-color: #ed1b24;"><a href="{{url('/register')}}" style="color: white;">{{__('register')}}</a></button>
                 <button href="#" role="button" class="btn px-5" style="background-color: white;"><a href="{{url('/login')}}" style="color: #0e1a35;"> {{__('login')}}</a></button>
             </div>
@@ -82,7 +89,7 @@
 
         <br />
 
-      <div class="card card-image" style="background-image: url(images/online-marketing-hIgeoQjS_iE-unsplash.jpg); background-position: center; background-color: rgba(0, 0, 0, 0.5); background-blend-mode: color;"">
+        <div class="card card-image" style="background-image: url(images/online-marketing-hIgeoQjS_iE-unsplash.jpg); background-position: center; background-color: rgba(0, 0, 0, 0.5); background-blend-mode: color;"">
         <div class="text-white text-center rgba-stylish-strong py-5 px-4">
             <div class="py-5">
                 <!-- Content -->
@@ -92,8 +99,10 @@
                     <div class="button" style="background-color: #ed1b24;"><a href="{{url('/register')}}" style="color: white;">@lang('create_new_account')</a></div>
                 </div>
             </div>
-          </div>
-    </div>
+        </div>
+        </div>
         @include('includes/footer')
     </body>
+
+    @include('includes/links') @include('includes/links')
 </html>
