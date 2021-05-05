@@ -45,21 +45,44 @@
     "about_who_desc": "La plataforma Promedrep ha sido construida por un equipo dedicado y comprometido para cambiar las prácticas tradicionales de las estrategias de marketing y ventas farmacéuticas.",
 
     "how_it_works_step_banner_how":"Cómo",
-    "how_it_works_step_banner_it_works":"Funciona",
+    "how_it_works_step_banner_it_works":" Funciona",
 
     "how_it_work-step1": "Paso 1",
     "how_it_work-title1": "Creando una cuenta",
-    "how_it_work-paragraf1": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+    "how_it_work-paragraf1": "Para comenzar a utilizar nuestro sistema, primero debe crear una cuenta. Complete todos los campos y elija su rol. Después de eso, será redirigido al panel de control.",
 
     "how_it_works_step_2":"Paso 2",
-    "how_it_works_title_2":"",
-    "how_it_works_paragraph_2":"",
+    "how_it_works_title_2":"Iniciar sesión",
+    "how_it_works_paragraph_2":"Si ya ha creado una cuenta, puede iniciar sesión con sus credenciales. Puede encontrar la página de inicio de sesión haciendo clic en el botón INICIAR SESIÓN en el menú.",
 
     "how_it_works_step_3":"Paso 3",
-    "how_it_works_title_3":"",
-    "how_it_works_paragraph_3":"",
+    "how_it_works_title_3":"Gestiona tu cuenta",
+    "how_it_works_paragraph_3":"Después de iniciar sesión correctamente, ahora está en su panel de control. Podrá agregar médicos, ver eventos, sus obsequios, etc.",
 
     "contact_us_title": "Cómo llegar a nosotras",
+    "contact_contact":"Contacta ",
+    "contact_us":"con nosotros",
+    "contact_desc":"Si desea comunicarse con nosotros, puede enviarnos un correo electrónico o completar el formulario de contacto a continuación. Vamos a tratar de responder lo más pronto posible.",
+   
+    "contact_name":"Tu nombre",
+    "contact_name_placeholder":"Por favor, introduzca su nombre de pila *",
+
+    "contact_email":"Dirección de correo electrónico",
+    "contact_email_placeholder":"Ingrese su dirección de correo electrónico *",
+
+    "contact_phone":"Número de teléfono",
+    "contact_phone_placeholder":"Ingrese su número telefónico *",
+
+    "contact_need":"Por favor especifique su necesidad",
+    "contact_need_option_1":"Solicitar cotización",
+    "contact_need_option_2":"Solicitar estado de pedido",
+    "contact_need_option_3":"Solicitar copia de una factura",
+    "contact_need_option_4":"Otro",
+
+    "contact_message":"Escribe un mensaje",
+    "contact_message_placeholder":"Mensaje para mi *",
+    "contact_send":"Enviar mensaje",
+
 
     "table_doctor": "Mis doctores",
     "event_table": "Mis Eventos",

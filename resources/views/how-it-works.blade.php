@@ -42,16 +42,15 @@
 
     <div class="section section-2">
         <div class="container content">
-            <h1 class="title">Step 2</h1>
+            <h1 class="title">@lang('how_it_works_step_2')</h1>
             {{-- <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p> --}}
 
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/login.jpg" alt="">
                 <div class="my-auto">
-                    <h2>Log In</h2>
-                    <h4>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                        deleniti atque</h4>
+                    <h2>@lang('how_it_works_title_2')</h2>
+                    <h4>@lang('how_it_works_paragraph_2')</h4>
                 </div>
             </div>
         </div>
@@ -66,8 +65,8 @@
             <div class="shadow p-3 mb-5 bg-white rounded flex">
                 <img src="images/how-it-works/manage.jpg" alt="">
                 <div class="my-auto">
-                    <h2>Manage Your Account</h2>
-                    <h4>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta</h4>
+                    <h2>@lang('how_it_works_title_3')</h2>
+                    <h4>@lang('how_it_works_paragraph_3')</h4>
                 </div>
             </div>
         </div>
