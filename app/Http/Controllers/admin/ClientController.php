@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AccessRequest;
 use App\Http\Requests\EventAdminRequest;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
@@ -59,7 +60,7 @@ class ClientController extends Controller
             'activeAccess' => $activeAccess,
         ]);
     }
-    public function accessDoctor(Request $request)
+    public function accessDoctor(AccessRequest $request)
     {
         $userId = $request->userId;
         $user = User::where('id', $request->userId)->update([
