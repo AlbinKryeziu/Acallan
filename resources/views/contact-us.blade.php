@@ -153,8 +153,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="map rounded col-xs-6">
-                    <iframe class="col-xs-6"
+                <div class="map rounded col-md-6">
+                    <iframe class="col-md-12"
                         src="https://maps.google.com/maps?q=Mexico,D.F&t=&z=13&ie=UTF8&iwloc=&output=embed" width="450"
                         height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
                         tabindex="0"></iframe>
