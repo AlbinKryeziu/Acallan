@@ -167,8 +167,8 @@
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
-                <x-jet-nav-link href=" {{ url('lang/en') }}"> <img src="{{URL::asset('/images/en.png')}}" alt="En" height="5" width="32" /> En </x-jet-nav-link>
-                <x-jet-nav-link href=" {{ url('lang/es') }}"> <img src="{{URL::asset('/images/es3.png')}}" alt="Es" height="20" width="35" />Es </x-jet-nav-link>
+                <x-jet-nav-link href=" {{ url('lang/en') }}"> <img src="{{URL::asset('/images/en.png')}}" alt="En" height="4" width="29" /> En </x-jet-nav-link>
+                <x-jet-nav-link href=" {{ url('lang/es') }}"> <img src="{{URL::asset('/images/es3.png')}}" alt="Es" height="20" width="33" />Es </x-jet-nav-link>
             </div>
 
             <!-- Hamburger -->
