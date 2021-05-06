@@ -45,7 +45,7 @@
 
         <li class="nav-item p-2">
           <a class="lang de active" data-lang="En" href="lang/en">
-            <img src="{{URL::asset('/images/en.png')}}" alt="En" height="20" width="32">En
+            <img src="{{URL::asset('/images/eng1.png')}}" alt="En" height="20" width="20"> En
         </a>
           
         </li>

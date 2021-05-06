@@ -104,5 +104,4 @@
         @include('includes/footer')
     </body>
 
-    @include('includes/links') @include('includes/links')
 </html>

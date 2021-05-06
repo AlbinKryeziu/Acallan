@@ -28,12 +28,20 @@
     @include('includes/header')
 
     <div class="page-banner" style="background-image: url('../images/contact-us/banner.jpg');">
-        <div class="container">
-            <h1 class="banner-title center"><span class="red-text">@lang('contact_contact')</span>@lang('contact_us')
-            </h1>
-        </div>
-    </div>
+        <div class="container  text-center ">
+           <br>
+            <h1 class="display-4 " style="color: white;font-size:100px; font-weight: 500;"><span class="red-text">@lang('contact_contact')</span> @lang('contact_us')</h1>
+            <br />
+           
+            <br />
 
+            
+        </div>
+        
+    </div>
+    
+   
+    </div>
     <div class="section section-1">
         <div class="container content">
             <h1 class="title">@lang('contact_us_title')</h1>
@@ -158,6 +166,6 @@
         @include('includes/footer')
 </body>
 
-@include('includes/links')
+
 
 </html>
