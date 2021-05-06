@@ -42,7 +42,7 @@
                           <a class="lang" data-lang="En" href="lang/en"> <img src="{{URL::asset('/images/eng1.png')}}" alt="En" height="20" width="21" /> En </a>
                       </li>
                       <li class="nav-item p-2">
-                          <a class="lang" data-lang="Es" href="lang/es"> <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="18" width="19" /> Es </a>
+                          <a class="lang" data-lang="Es" href="lang/es"> <img src="{{URL::asset('/images/es2.png')}}" alt="Es" height="19" width="19" /> Es </a>
                       </li>
                   </div>
               </li>
