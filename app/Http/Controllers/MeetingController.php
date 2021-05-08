@@ -13,7 +13,7 @@ use Carbon\Carbon;
 use Facade\FlareClient\Http\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Validator;
 class MeetingController extends Controller
 {
     public function __construct()
@@ -33,20 +33,45 @@ class MeetingController extends Controller
 
         return view('meetings.index', compact('meeting'));
     }
-
     public function store(Request $request)
     {
-        $zommdata = $this->create($request->all());
-        if ($zommdata) {
-            $creteZoom = ZoomMeeting::create([
-                'start_data' => Carbon::parse($zommdata['data']['start_time'])->format('Y-m-d H:i'),
-                'duration' => $zommdata['data']['duration'],
-                'start_url' => $zommdata['data']['start_url'],
-                'join_url' => $zommdata['data']['join_url'],
-                'doctor_id' => Auth::id(),
-                'request_id' => $request->client_id,
-                'event_id' => $request->event_id,
-            ]);
+        $validator = Validator::make($request->all(), [
+            'start_time' => 'required|date',
+        ]);
+
+        if ($validator->fails()) {
+            return [
+                'success' => false,
+                'data' => $validator->errors(),
+            ];
+        }
+        $data = $validator->validated();
+
+        $path = 'users/me/meetings';
+        $response = $this->zoomPost($path, [
+            'type' => self::MEETING_TYPE_SCHEDULE,
+            'start_time' => $this->toZoomTimeFormat($data['start_time']),
+            'duration' => 180,
+
+            'settings' => [
+                'host_video' => false,
+                'participant_video' => false,
+                'waiting_room' => true,
+            ],
+        ]);
+
+        $data = json_decode($response->body(), true);
+
+        if ($data) {
+            $zoom = new ZoomMeeting();
+            $zoom->start_data = Carbon::parse($data['start_time'])->format('Y-m-d H:i');
+            $zoom->duration = $data['duration'];
+            $zoom->start_url = $data['start_url'];
+            $zoom->join_url = $data['join_url'];
+            $zoom->request_id = $request->client_id;
+            $zoom->event_id = $request->event_id;
+            $zoom->save();
+
             $event = Event::where('id', $request->event_id)->first();
             $doctor = User::where('id', $event->user_id)->first();
             $client = User::where('id', $request->client_id)->first();
@@ -54,11 +79,10 @@ class MeetingController extends Controller
                 'name' => $client->name,
                 'doctor' => $doctor->name,
                 'start' => $event->start,
-                'join_url' => $zommdata['data']['join_url'],
+                'join_url' => $data['join_url'],
             ];
             Mail::to($client->email)->send(new ZoomLink($data));
         }
-
         return back();
     }
 
