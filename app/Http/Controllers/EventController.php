@@ -59,20 +59,8 @@ class EventController extends Controller
                 'start' => $doctor->start,
                 'end' => $doctor->end,
             ];
-        //     $eemail = Mail::to($eventRequest->requestClient->email)->send(new EventAccepted($data));
-        //     if ($eemail) {
-        //         $emailDb = new Email();
-        //         $emailDb->type = 'Event Accepted';
-        //         $emailDb->doctor_id = $doctor->user->id;
-        //         $emailDb->doctor_id = $eventRequest->requestClient->id;
-        //         $emailDb->status = 1;
-        //         $emailDb->save();
-        //     } else {
-        //         $emailDb->update([
-        //             'status' => 0,
-        //         ]);
-        //     }
-        // }
+            $eemail = Mail::to($eventRequest->requestClient->email)->send(new EventAccepted($data));
+  
         }
         $eventrefuzed = EventRequest::where('event_id', $eventId)
             ->where('status', 0)
