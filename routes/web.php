@@ -55,6 +55,7 @@ Route::get('lang/{locale}', [HomeController::class, 'lang']);
 Route::post('/fullcalendareventmaster/create', [FullCalendarController::class, 'create']);
 Route::post('/fullcalendareventmaster/update', [FullCalendarController::class, 'update']);
 Route::post('/fullcalendareventmaster/delete', [FullCalendarController::class, 'destroy']);
+Route::post('/fullcalendareventmaster/store', [FullCalendarController::class, 'store']);
 
 Route::delete('/events/delete/{eventId}', [EventController::class, 'delete']);
 Route::get('/events/doctor', [EventController::class, 'index']);

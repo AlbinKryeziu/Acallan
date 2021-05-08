@@ -48,4 +48,13 @@ class FullCalendarController extends Controller
 
         return response()->json($data);
     }
+    public function store(Request $request){
+        $event =new Event();
+        $event->title = $request->title;
+        $event->start = $request->startData;
+        $event->end = $request->endData;
+        $event->user_id = Auth::id();
+        $event->save();
+        return back();
+    }
 }
