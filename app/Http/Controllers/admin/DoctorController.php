@@ -56,6 +56,7 @@ class DoctorController extends Controller
 
     public function addDoctor(DoctorRequest $request)
     {
+      
         $id = IdGenerator::generate(['table' => 'doctors', 'field' => 'id_doctor', 'length' => 10, 'prefix' => 'IDD-']);
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
         $password = substr($random, 0, 10);
@@ -85,7 +86,7 @@ class DoctorController extends Controller
                 'email' => $request->email,
             ];
 
-            // Mail::to($request->email)->send(new WelcomeMail($data));
+            Mail::to($request->email)->send(new WelcomeMail($data));
         }
 
         return redirect()

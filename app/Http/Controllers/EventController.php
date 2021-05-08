@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventUpdateRequest;
 use App\Mail\EventAccepted;
 use App\Models\Email;
 use App\Models\Event;
@@ -94,8 +95,9 @@ class EventController extends Controller
             'event' => $event,
         ]);
     }
-    public function updateEvent(Request $request, $eventId)
+    public function updateEvent(EventUpdateRequest $request, $eventId)
     {
+        
         $start = Carbon::parse($request->start)->format('Y-m-d H:s:i');
         $end = Carbon::parse($request->end)->format('Y-m-d H:s:i');
 

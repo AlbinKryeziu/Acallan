@@ -26,18 +26,26 @@
                             <strong>{{ $message }}</strong>
                         </div>
                         @endif
+                       
 
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="name">Name</label>
                             <div class="col-md-12">
                                 <input id="name" name="title" type="text" placeholder="{{ $event->title }}"  value="{{ $event->title}}" class="form-control input-md" />
+                                @error('title')
+                            <p style="color:red">{{ $message }}</p>
+                        @enderror
                             </div>
+                            
                         </div>
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="event_name">Start Date</label>
                             <div class="col-md-12">
                                 {{ $event->start }}
                                 <input id="event_name" name="start" type="datetime-local" value="" class="form-control input-md" />
+                                @error('start')
+                                    <p style="color:red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,6 +53,9 @@
                             <div class="col-md-12">
                                 {{ $event->end }}
                                 <input id="event_name" name="end" type="datetime-local" placeholder="Event Name" class="form-control input-md" />
+                                @error('end')
+                            <p style="color:red">{{ $message }}</p>
+                        @enderror
                             </div>
                         </div>
                         <div class="form-group">
