@@ -47,11 +47,12 @@
                                     @if(!$event->zoom)
                                     <td>
                                         <form method="POST" action="{{ url('/meetings') }}">
+                                            @csrf
                                             <input type="hidden" name="start_time" value="{{$event->start  }}" />
                                             <input type="hidden" name="client_id" value="{{$event->requestEvent->first()->request_id}}" />
                                             <input type="hidden" name="event_id" value="{{$event->id  }}" />
                                             <button type="submit" class="btn btn-outline-info">Generate</button>
-                                            @csrf
+                                           
                                         </form>
                                     </td>
                                     @else

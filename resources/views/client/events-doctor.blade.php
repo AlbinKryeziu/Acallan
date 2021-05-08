@@ -248,9 +248,15 @@
                         <div class="modal-body">
                             <label style="float: left"><strong>Product</strong></label>
                            <input type="text" name="product" class="form-control ">
+                           @error('product')
+                               <p style="color:red">{{ $message }}</p>
+                           @enderror
                            <br>
                            <label style="float: left"><strong>Article</strong></label>
                            <input type="text" name="article" class="form-control">
+                           @error('article')
+                               <p style="color:red">{{ $message }}</p>
+                           @enderror
                          
                             <input type="hidden" name="eventId" id="eventId" />
                         </div>
@@ -286,3 +292,8 @@
         </div>
 
 </x-app-layout>
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        $('#myModal').modal('show');
+    @endif
+    </script>

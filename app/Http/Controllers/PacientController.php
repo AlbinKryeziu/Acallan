@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequestPacient;
 use App\Http\Requests\GiftRequest;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
@@ -78,6 +79,7 @@ class PacientController extends Controller
 
     public function eventsByDoctor($doctorId)
     {
+      
         $eventId = EventRequest::where('request_id', Auth::id())->pluck('event_id');
         if (count($eventId) >= 1) {
             $event = Event::with('user', 'requestEvent')
@@ -101,8 +103,9 @@ class PacientController extends Controller
         ]);
     }
 
-    public function requestEvent(Request $request)
+    public function requestEvent(EventRequestPacient $request)
     {
+        
         $eventId = $request->eventId;
         $event = EventRequest::create([
             'request_id' => Auth::id(),
