@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -48,11 +49,15 @@ class FullCalendarController extends Controller
 
         return response()->json($data);
     }
-    public function store(Request $request){
-        $event =new Event();
+    public function store(Request $request)
+    {
+        $dateStart = $request->startData . ' ' . $request->startTime;
+        $dateEnd = $request->endData . ' ' . $request->endTime;
+
+        $event = new Event();
         $event->title = $request->title;
-        $event->start = $request->startData;
-        $event->end = $request->endData;
+        $event->start = $dateStart;
+        $event->end = $dateEnd;
         $event->user_id = Auth::id();
         $event->save();
         return back();
