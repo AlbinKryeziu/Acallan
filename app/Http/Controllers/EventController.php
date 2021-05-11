@@ -24,7 +24,7 @@ class EventController extends Controller
     }
     public function index()
     {
-        $event = Event::where('user_id', Auth::id());
+        $event = Event::where('user_id', Auth::id())->latest();
         return view('events/events', [
             'events' => $event->paginate(10),
         ]);

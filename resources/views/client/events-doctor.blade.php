@@ -208,7 +208,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($event as $key => $event)
+                                                @foreach($events as $key => $event)
                                                 <tr>
                                                     <td>@php echo $i++ @endphp</td>
                                                     <td>{{ $event->title }}</td>
@@ -223,6 +223,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{ $events->links() }}
                               
                                 </div>
                             </div>

@@ -121,7 +121,7 @@
             </svg>
         </a>
     </div>
-    <td><i class="fa fa-clock-o acceptEvent" data-eventId="" aria-hidden="true"></i>aefaefaef</td>
+   
     <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-3">
         <div class="p-4">
             <div class="flex items-center">

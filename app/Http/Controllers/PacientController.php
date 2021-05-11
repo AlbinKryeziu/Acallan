@@ -85,13 +85,11 @@ class PacientController extends Controller
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
                 ->whereNotIn('id', $eventId)
-                ->where('status', 0)
-                ->get();
+                ->where('status', 0)->latest();
         } else {
             $event = Event::with('user', 'requestEvent')
                 ->where('user_id', $doctorId)
-                ->where('status', 0)
-                ->get();
+                ->where('status', 0)->latest();
         }
 
         $doctor = User::with('doctor')
@@ -99,7 +97,7 @@ class PacientController extends Controller
             ->get();
         return view('client/events-doctor', [
             'doctor' => $doctor,
-            'event' => $event,
+            'events' => $event->paginate(10),
         ]);
     }
 
