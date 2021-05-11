@@ -44,8 +44,8 @@
                                     <th>@lang('email')</th>
 
                                     <th>@lang('specialties')</th>
-                                    <th>@lang('gift')</th>
-                                    <th>@lang('event')</th>
+                                    <th>@lang('gifts')</th>
+                                    <th>@lang('events')</th>
                                     <th>@lang('action')</th>
                                 </tr>
                             </thead>

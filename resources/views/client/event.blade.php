@@ -25,7 +25,6 @@
                                      <th>@lang('product')</th>
                                      <th>@lang('article')</th>
                                     <th>@lang('start_date')</th>
-                                    <th>@lang('end_date')</th>
                                     <th>@lang('status')</th>
                                     <th>Zoom Link</th>
                                     <th>@lang('action')</th>
@@ -40,7 +39,6 @@
                                     <td>{{ $event->product}}</td>
                                     <td>{{ $event->article}}</td>
                                     <td>{{ $event->event->start}}</td>
-                                    <td>{{ $event->event->end}}</td>
                                     @if($event->status == 0)
                                     <td><i class="fa fa-circle-o fa-lg" aria-hidden="true" style="color: #0b51be;" data-togle="ieafnhajuefn"></i></td>
                                     @elseif($event->status == 1)

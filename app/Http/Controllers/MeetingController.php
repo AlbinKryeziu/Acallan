@@ -35,30 +35,35 @@ class MeetingController extends Controller
     }
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'start_time' => 'required|date',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'start_time' => 'required|date',
+            ]);
 
-        if ($validator->fails()) {
-            return [
-                'success' => false,
-                'data' => $validator->errors(),
-            ];
+            if ($validator->fails()) {
+                return [
+                    'success' => false,
+                    'data' => $validator->errors(),
+                ];
+            }
+            $data = $validator->validated();
+
+            $path = 'users/me/meetings';
+            $response = $this->zoomPost($path, [
+                'type' => self::MEETING_TYPE_SCHEDULE,
+                'start_time' => $this->toZoomTimeFormat($request->start_time),
+                'duration' => 180,
+                'settings' => [
+                    'host_video' => false,
+                    'participant_video' => false,
+                    'waiting_room' => true,
+                ],
+            ]);
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
         }
-        $data = $validator->validated();
-
-        $path = 'users/me/meetings';
-        $response = $this->zoomPost($path, [
-            'type' => self::MEETING_TYPE_SCHEDULE,
-            'start_time' => $this->toZoomTimeFormat($data['start_time']),
-            'duration' => 180,
-
-            'settings' => [
-                'host_video' => false,
-                'participant_video' => false,
-                'waiting_room' => true,
-            ],
-        ]);
 
         $data = json_decode($response->body(), true);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccessRequest;
 use App\Http\Requests\EventAdminRequest;
+use App\Http\Requests\EventRequestPacient;
 use App\Models\ClientDoctor;
 use App\Models\Doctor;
 use App\Models\Event;
@@ -242,8 +243,9 @@ class ClientController extends Controller
         ]);
     }
 
-    public function updateEventRequest(Request $request, $eventId)
+    public function updateEventRequest(EventRequestPacient $request, $eventId)
     {
+      
         $update = EventRequest::where('id', $eventId)->update([
             'product' => $request->product,
             'article' => $request->article,

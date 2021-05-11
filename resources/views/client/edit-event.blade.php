@@ -39,6 +39,9 @@
                                 <label class="col-md-12 control-label" for="name">Product</label>
                                 <div class="col-md-12">
                                 <input type="text" class="form-control" name="product" value="{{ $event->product }}">
+                                @error('product')
+                                   <label style="color: red" class="p-1">{{ $message }}</label> 
+                                @enderror
                                 </select>
                             </div>
                         </div>
@@ -46,7 +49,9 @@
                             <label class="col-md-12 control-label" for="name">Article</label>
                             <div class="col-md-12">
                             <input type="text" class="form-control" name="article" value="{{ $event->article }}">
-                            </select>
+                            @error('article')
+                            <label style="color: red" class="p-1">{{ $message }}</label> 
+                              @enderror
                             </div>
                         </div>
                     
