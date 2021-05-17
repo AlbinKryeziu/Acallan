@@ -60,7 +60,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <li class="flex text-sm m-4 float-left"><img src="images/icons/envelope.svg" alt="" width="15px"
-                                class="mr-4">rahulkashyap@promedrep.com</li>
+                                class="mr-4">contact@promedrep.com</li>
                         </div>
                     </div>
                 </div>
