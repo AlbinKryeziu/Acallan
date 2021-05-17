@@ -31,7 +31,7 @@
                 <h4>@lang('contact_contact')</h4>
             <br>
             <h6 class="p-1">@lang('footer_location')</h6>
-            <h6 class="p-1">rahulkashyap@promedrep.com</h6>
+            <h6 class="p-1">contact@promedrep.com</h6>
                 
             </div>
         </div>
